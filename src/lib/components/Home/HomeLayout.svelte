@@ -4,7 +4,7 @@
 	export let backgroundStyle: string;
 </script>
 
-<div class="carousel-content-layout">
+<div class="home-layout">
 	<!-- TODO delete slot if not used -->
 	<slot name="background">
 		<div class="bg" style={`background: ${backgroundStyle};`} />
@@ -30,7 +30,7 @@
 	}
 	/** DEBUG END */
 
-	.carousel-content-layout {
+	.home-layout {
 		position: relative;
 	}
 
