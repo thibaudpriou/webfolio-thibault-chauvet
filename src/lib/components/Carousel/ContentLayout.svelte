@@ -1,14 +1,15 @@
 <script lang="ts">
 	export let backgroundStyle: string;
+	export let title: string;
 </script>
 
 <div class="carousel-content-layout">
-	<div class="bg" style={`background: ${backgroundStyle};`}/>
+	<div class="bg" style={`background: ${backgroundStyle};`} />
 	<div class="grid">
 		<span>Indicators</span>
-		<span>Title</span>
-		<span class="details">details 1</span>
-		<span class="details">details 2</span>
+		<span class="title">{title}</span>
+		<span class="details"><slot name="detail-1" /></span>
+		<span class="details"><slot name="detail-2" /></span>
 		<span>image</span>
 		<span>scroll button desktop</span>
 	</div>
@@ -57,6 +58,10 @@
 
 	.grid span:nth-child(6) {
 		display: none;
+	}
+
+	.title {
+		text-transform: uppercase;
 	}
 
 	@media (min-width: 1250px) {
