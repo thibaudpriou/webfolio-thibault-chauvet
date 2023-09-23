@@ -2,15 +2,18 @@
 	import { fade } from 'svelte/transition';
 
 	export let backgroundStyle: string;
-	export let title: string;
 </script>
 
 <div class="carousel-content-layout">
-	<div class="bg" style={`background: ${backgroundStyle};`} />
+	<!-- TODO delete slot if not used -->
+	<slot name="background">
+		<div class="bg" style={`background: ${backgroundStyle};`} />
+	</slot>
+
 	<div class="grid">
 		<span>Indicators</span>
 		<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
-		<span class="title" transition:fade={{ duration: 500 }}>{title}</span>
+		<span class="title" transition:fade={{ duration: 500 }}><slot name="title" /></span>
 		<span class="details" transition:fade={{ duration: 500 }}> <slot name="detail-1" /></span>
 		<span class="details" transition:fade={{ duration: 500 }}><slot name="detail-2" /></span>
 		<span transition:fade={{ duration: 500 }}>image</span>
