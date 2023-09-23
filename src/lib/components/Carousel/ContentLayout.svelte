@@ -1,14 +1,9 @@
 <script lang="ts">
-	export let primaryDarkColor: string;
-	export let primaryLightColor: string;
+	export let backgroundStyle: string;
 </script>
 
-<div
-	class="carousel-content-layout"
-	style:--primary-light={primaryLightColor}
-	style:--primary-dark={primaryDarkColor}
->
-	<div class="bg" />
+<div class="carousel-content-layout">
+	<div class="bg" style={`background: ${backgroundStyle};`} />
 	<div class="grid">
 		<span>Indicators</span>
 		<span>Title</span>
@@ -35,12 +30,6 @@
 	.bg {
 		position: absolute;
 		z-index: -1;
-		background: linear-gradient(
-			90deg,
-			var(--primary-dark) 0%,
-			var(--primary-light) 50%,
-			var(--primary-dark) 100%
-		);
 		width: 100%;
 		height: calc(100% - 68px); /** FIXME value */
 	}
