@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { fade } from 'svelte/transition';
+
 	export let backgroundStyle: string;
 	export let title: string;
 </script>
@@ -7,10 +9,11 @@
 	<div class="bg" style={`background: ${backgroundStyle};`} />
 	<div class="grid">
 		<span>Indicators</span>
-		<span class="title">{title}</span>
-		<span class="details"><slot name="detail-1" /></span>
-		<span class="details"><slot name="detail-2" /></span>
-		<span>image</span>
+		<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
+		<span class="title" transition:fade={{ duration: 500 }}>{title}</span>
+		<span class="details" transition:fade={{ duration: 500 }}> <slot name="detail-1" /></span>
+		<span class="details" transition:fade={{ duration: 500 }}><slot name="detail-2" /></span>
+		<span transition:fade={{ duration: 500 }}>image</span>
 		<span>scroll button desktop</span>
 	</div>
 </div>
