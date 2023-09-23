@@ -1,0 +1,110 @@
+<script lang="ts">
+	export let primaryDarkColor: string;
+	export let primaryLightColor: string;
+</script>
+
+<div
+	class="carousel-content-layout"
+	style:--primary-light={primaryLightColor}
+	style:--primary-dark={primaryDarkColor}
+>
+	<div class="bg" />
+	<div class="grid">
+		<span>Indicators</span>
+		<span>Title</span>
+		<span class="details">details 1</span>
+		<span class="details">details 2</span>
+		<span>image</span>
+		<span>scroll button desktop</span>
+	</div>
+</div>
+
+<style>
+	/** DEBUG */
+	.grid span {
+		border: solid 1px red;
+		box-sizing: border-box;
+		color: red;
+	}
+	/** DEBUG END */
+
+	.carousel-content-layout {
+		position: relative;
+	}
+
+	.bg {
+		position: absolute;
+		z-index: -1;
+		background: linear-gradient(
+			90deg,
+			var(--primary-dark) 0%,
+			var(--primary-light) 50%,
+			var(--primary-dark) 100%
+		);
+		width: 100%;
+		height: calc(100% - 68px); /** FIXME value */
+	}
+
+	.grid {
+		display: flex;
+		flex-flow: row wrap;
+
+		width: 100%;
+		height: 500px; /** FIXME value */
+		padding-top: 158px; /** FIXME value */
+		background: transparent;
+	}
+
+	.grid span {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-basis: 100%;
+	}
+
+	.grid span.details {
+		flex-basis: 50%;
+	}
+
+	.grid span:nth-child(6) {
+		display: none;
+	}
+
+	@media (min-width: 1250px) {
+		/** FIXME value */
+		.grid {
+			flex-direction: column;
+		}
+
+		.grid span {
+			flex-grow: 1;
+		}
+
+		/** with these values: title text and ellipsis should touch top. I will padding-top the container*/
+		.grid span:nth-child(1) {
+			order: 6;
+			flex-basis: 34%;
+		}
+		.grid span:nth-child(2) {
+			order: 3;
+			flex-basis: 24%;
+		}
+		.grid span:nth-child(3) {
+			order: 1;
+			flex-basis: 66%;
+		}
+		.grid span:nth-child(4) {
+			order: 5;
+			flex-basis: 66%;
+		}
+		.grid span:nth-child(5) {
+			order: 4;
+			flex-basis: 76%;
+		}
+		.grid span:nth-child(6) {
+			order: 2;
+			flex-basis: 34%;
+			display: inline-flex;
+		}
+	}
+</style>
