@@ -3,7 +3,7 @@
 </script>
 
 <div class="carousel-content-layout">
-	<div class="bg" style={`background: ${backgroundStyle};`} />
+	<div class="bg" style={`background: ${backgroundStyle};`}/>
 	<div class="grid">
 		<span>Indicators</span>
 		<span>Title</span>
