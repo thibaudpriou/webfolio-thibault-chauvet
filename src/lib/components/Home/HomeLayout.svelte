@@ -12,7 +12,7 @@
 	</slot>
 
 	<div class="grid">
-		<span>Indicators</span>
+		<span class="indicators"><slot name="indicators" /></span>
 		<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
 		<span class="title" transition:fade={{ duration: 500 }}><slot name="title" /></span>
 		<span class="details" transition:fade={{ duration: 500 }}>
@@ -33,8 +33,8 @@
 <style>
 	/** DEBUG */
 	.grid span {
-		border: solid 1px red;
-		box-sizing: border-box;
+		/* border: solid 1px red;
+		box-sizing: border-box; */
 		color: red;
 	}
 	/** DEBUG END */

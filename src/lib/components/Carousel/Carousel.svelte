@@ -14,7 +14,7 @@
 	let nbItems = 0;
 
 	setContext<CarouselContext>('carousel', {
-		register: (): number => {
+		register: () => {
 			const id = nbItems;
 			nbItems += 1;
 			return id;
@@ -33,4 +33,4 @@
 
 <button on:click={goPrev}>prev</button>
 <button on:click={goNext}>next</button>
-<slot {activeItemId} />
+<slot {activeItemId} {nbItems} />
