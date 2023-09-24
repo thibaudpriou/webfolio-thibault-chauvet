@@ -6,9 +6,7 @@
 
 <Carousel let:activeItemId>
 	<CarouselItem {activeItemId}>
-		<HomeLayout
-			backgroundStyle="linear-gradient(90deg, #010A44 0%, #001477 50%, #010A44 100%);"
-		>
+		<HomeLayout backgroundStyle="linear-gradient(90deg, #010A44 0%, #001477 50%, #010A44 100%);">
 			<svelte:fragment slot="title">design graphique</svelte:fragment>
 			<span slot="detail-1">Imaginer et concevoir des créations graphiques</span>
 			<span slot="detail-2">Branding & direction artistique Logotype, affiche, brochure...</span
@@ -17,9 +15,7 @@
 	</CarouselItem>
 
 	<CarouselItem {activeItemId}>
-		<HomeLayout
-			backgroundStyle="linear-gradient(90deg, #3C071B 0%, #9C0E43 50%, #3C071B 100%);"
-		>
+		<HomeLayout backgroundStyle="linear-gradient(90deg, #3C071B 0%, #9C0E43 50%, #3C071B 100%);">
 			<svelte:fragment slot="title">webdesign</svelte:fragment>
 			<span slot="detail-1">Design, parcours utilisateur, ergonomie sur mesure</span>
 			<span slot="detail-2">Website, application mobile. Charte web, interface plateforme</span>
@@ -27,9 +23,7 @@
 	</CarouselItem>
 
 	<CarouselItem {activeItemId}>
-		<HomeLayout
-			backgroundStyle="linear-gradient(90deg, #0A1C21 0%, #1B3E4A 50%, #0A1C21 100%);"
-		>
+		<HomeLayout backgroundStyle="linear-gradient(90deg, #0A1C21 0%, #1B3E4A 50%, #0A1C21 100%);">
 			<svelte:fragment slot="title">graphisme print</svelte:fragment>
 			<span slot="detail-1">Créations imprimés, à l'image de votre identité de marque</span>
 			<span slot="detail-2">Graphisme, marketing. Magazine, charte graphique...</span>

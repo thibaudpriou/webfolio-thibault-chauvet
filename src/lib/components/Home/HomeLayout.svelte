@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
+	import HomeDetails from './HomeDetails.svelte';
 
 	export let backgroundStyle: string;
 </script>
@@ -14,8 +15,16 @@
 		<span>Indicators</span>
 		<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
 		<span class="title" transition:fade={{ duration: 500 }}><slot name="title" /></span>
-		<span class="details" transition:fade={{ duration: 500 }}> <slot name="detail-1" /></span>
-		<span class="details" transition:fade={{ duration: 500 }}><slot name="detail-2" /></span>
+		<span class="details" transition:fade={{ duration: 500 }}>
+			<HomeDetails>
+				<slot name="detail-1" />
+			</HomeDetails>
+		</span>
+		<span class="details" transition:fade={{ duration: 500 }}>
+			<HomeDetails>
+				<slot name="detail-2" />
+			</HomeDetails>
+		</span>
 		<span transition:fade={{ duration: 500 }}>image</span>
 		<span>scroll button desktop</span>
 	</div>
@@ -46,7 +55,7 @@
 		flex-flow: row wrap;
 
 		width: 100%;
-		height: 500px; /** FIXME value */
+		height: 600px; /** FIXME value */
 		padding-top: 158px; /** FIXME value */
 		background: transparent;
 	}
