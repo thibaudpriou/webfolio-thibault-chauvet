@@ -1,11 +1,16 @@
 <script lang="ts">
-	export let activeItemId: number;
-	export let nbItems: number;
+	import { getContext } from "svelte";
+	import type { CarouselContext } from "./Carousel.svelte";
+
+	const ctx = getContext<CarouselContext>('carousel');
+	const activeItemId = ctx.activeItemId;
+	const nbItems = ctx.nbItems;
+
 </script>
 
 <span class="container">
-	{#each new Array(nbItems) as _, i}
-		<span class="indicator" class:active={activeItemId === i} />
+	{#each new Array($nbItems) as _, i}
+		<span class="indicator" class:active={$activeItemId === i} />
 	{/each}
 </span>
 
