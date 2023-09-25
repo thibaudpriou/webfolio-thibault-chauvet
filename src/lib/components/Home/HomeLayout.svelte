@@ -3,31 +3,41 @@
 	import HomeDetails from './HomeDetails.svelte';
 
 	export let backgroundStyle: string;
+
+	const customFadeIn = (node: Element, { delay = 0, duration = 400, z = 1 }) => {
+		const o = +getComputedStyle(node).opacity;
+
+		return {
+			delay,
+			duration,
+			css: (t: number) => `opacity: ${t * o}; z-index: ${z};`
+		};
+	};
 </script>
 
-<div class="home-layout">
-	<!-- TODO delete slot if not used -->
-	<slot name="background">
-		<div class="bg" style={`background: ${backgroundStyle};`} />
-	</slot>
+<div
+	class="bg"
+	style={`background: ${backgroundStyle};`}
+	in:customFadeIn={{ duration: 500, z: -9 }}
+	out:fade={{ delay: 500, duration: 0 }}
+/>
 
-	<div class="grid">
-		<span class="indicators"><slot name="indicators" /></span>
-		<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
-		<span class="title" transition:fade={{ duration: 500 }}><slot name="title" /></span>
-		<span class="details" transition:fade={{ duration: 500 }}>
-			<HomeDetails>
-				<slot name="detail-1" />
-			</HomeDetails>
-		</span>
-		<span class="details" transition:fade={{ duration: 500 }}>
-			<HomeDetails>
-				<slot name="detail-2" />
-			</HomeDetails>
-		</span>
-		<span transition:fade={{ duration: 500 }}>image</span>
-		<span>scroll button desktop</span>
-	</div>
+<div class="grid">
+	<span class="indicators"><slot name="indicators" /></span>
+	<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
+	<span class="title" transition:fade={{ duration: 500 }}><slot name="title" /></span>
+	<span class="details" transition:fade={{ duration: 500 }}>
+		<HomeDetails>
+			<slot name="detail-1" />
+		</HomeDetails>
+	</span>
+	<span class="details" transition:fade={{ duration: 500 }}>
+		<HomeDetails>
+			<slot name="detail-2" />
+		</HomeDetails>
+	</span>
+	<span transition:fade={{ duration: 500 }}>image</span>
+	<span>scroll button desktop</span>
 </div>
 
 <style>
@@ -39,13 +49,11 @@
 	}
 	/** DEBUG END */
 
-	.home-layout {
-		position: relative;
-	}
-
 	.bg {
-		position: absolute;
-		z-index: -1;
+		position: absolute; /** relative to some parent outside of this component (Carousel here)*/
+		z-index: -10;
+		top: 0;
+		left: 0;
 		width: 100%;
 		height: calc(100% - 68px); /** FIXME value */
 	}

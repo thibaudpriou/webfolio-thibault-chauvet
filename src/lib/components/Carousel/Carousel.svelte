@@ -32,12 +32,11 @@
 		});
 	};
 
-
 	/**
 	 * Derive a writable store to a readonly one
 	 * @param s
 	 */
-	 const readonly = <T>(s: Writable<T>): Readable<T> => derived(s, (v) => v);
+	const readonly = <T>(s: Writable<T>): Readable<T> => derived(s, (v) => v);
 
 	setContext<CarouselContext>('carousel', {
 		register: () => {
@@ -53,4 +52,14 @@
 
 <button on:click={goPrev}>prev</button>
 <button on:click={goNext}>next</button>
-<slot />
+
+<div class="carousel">
+	<slot />
+</div>
+
+<style>
+	.carousel {
+		position: relative;
+		z-index: 0; /* stacking context creation */
+	}
+</style>
