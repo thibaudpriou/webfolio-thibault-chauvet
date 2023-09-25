@@ -26,14 +26,18 @@
 	<span class="indicators"><slot name="indicators" /></span>
 	<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
 	<span class="title" transition:fade={{ duration: 500 }}><slot name="title" /></span>
-	<span class="details" transition:fade={{ duration: 500 }}>
+	<span class="details">
 		<HomeDetails>
-			<slot name="detail-1" />
+			<span transition:fade={{ duration: 500 }}>
+				<slot name="detail-1" />
+			</span>
 		</HomeDetails>
 	</span>
-	<span class="details" transition:fade={{ duration: 500 }}>
+	<span class="details">
 		<HomeDetails>
-			<slot name="detail-2" />
+			<span transition:fade={{ duration: 500 }}>
+				<slot name="detail-2" />
+			</span>
 		</HomeDetails>
 	</span>
 	<span transition:fade={{ duration: 500 }}>image</span>
@@ -42,7 +46,7 @@
 
 <style>
 	/** DEBUG */
-	.grid span {
+	.grid > span {
 		/* border: solid 1px red;
 		box-sizing: border-box; */
 		color: red;
