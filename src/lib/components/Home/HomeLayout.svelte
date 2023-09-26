@@ -1,8 +1,16 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import HomeDetails from './HomeDetails.svelte';
+	import { getContext } from 'svelte';
+	import type { CarouselContext } from '../Carousel/Carousel.svelte';
 
 	export let backgroundStyle: string;
+
+	const ctx = getContext<CarouselContext>('carousel');
+	let grid: HTMLElement | undefined;
+	$: {
+		if (grid) ctx.setHeight(grid.clientHeight);
+	}
 
 	const customFadeIn = (node: Element, { delay = 0, duration = 400, z = 1 }) => {
 		const o = +getComputedStyle(node).opacity;
@@ -14,7 +22,7 @@
 		};
 	};
 
-	const bgTransitionDur = 500
+	const bgTransitionDur = 500;
 </script>
 
 <div
@@ -24,25 +32,32 @@
 	out:fade={{ delay: bgTransitionDur, duration: 0 }}
 />
 
-<div class="grid">
+<div class="grid" bind:this={grid}>
 	<span class="indicators"><slot name="indicators" /></span>
 	<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
-	<span class="title" transition:fade={{ duration: 500 }}><slot name="title" /></span>
+	<span
+		class="title"
+		in:customFadeIn={{ duration: 500, z: 1 }}
+		out:fade={{ duration: 0 }}
+	>
+		<slot name="title" /></span
+	>
 	<span class="details">
 		<HomeDetails>
-			<span transition:fade={{ duration: 500 }}>
+			<span in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>
 				<slot name="detail-1" />
 			</span>
 		</HomeDetails>
 	</span>
 	<span class="details">
 		<HomeDetails>
-			<span transition:fade={{ duration: 500 }}>
+			<span in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>
 				<slot name="detail-2" />
 			</span>
 		</HomeDetails>
 	</span>
-	<span transition:fade={{ duration: 500 }}>image</span>
+	<span in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>image</span
+	>
 	<span>scroll button desktop</span>
 </div>
 
@@ -72,6 +87,11 @@
 		height: 600px; /** FIXME value */
 		padding-top: 158px; /** FIXME value */
 		background: transparent;
+
+		position: absolute; /** relative to some parent outside of this component (Carousel here)*/
+		z-index: 0;
+		top: 0;
+		left: 0;
 	}
 
 	.grid span {

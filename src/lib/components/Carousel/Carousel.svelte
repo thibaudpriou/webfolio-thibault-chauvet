@@ -8,6 +8,7 @@
 		activeItemIdx: Readable<number>;
 		activeItemKey: Readable<string>;
 		nbItems: Readable<number>;
+		setHeight: (h: number) => void;
 	};
 </script>
 
@@ -17,6 +18,8 @@
 
 	const activeIdx = writable(0);
 	const items = writable([] as string[]);
+
+	let height = 'auto';
 
 	const goPrev = () => {
 		activeIdx.update((id) => {
@@ -39,14 +42,17 @@
 		},
 		activeItemIdx: derived(activeIdx, (id) => id), // readonly
 		activeItemKey: derived([activeIdx, items], ([id, arr]) => arr[id]), // readonly
-		nbItems: derived(items, (arr) => arr.length) // readonly
+		nbItems: derived(items, (arr) => arr.length), // readonly
+		setHeight: (h) => {
+			height = `${h}px`;
+		}
 	});
 </script>
 
 <button on:click={goPrev}>prev</button>
 <button on:click={goNext}>next</button>
 
-<div class="carousel">
+<div class="carousel" style:height>
 	<slot />
 </div>
 
@@ -54,5 +60,6 @@
 	.carousel {
 		position: relative;
 		z-index: 0; /* stacking context creation */
+		overflow: hidden;
 	}
 </style>
