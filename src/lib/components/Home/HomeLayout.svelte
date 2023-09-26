@@ -14,7 +14,7 @@
 		};
 	};
 
-	const bgTransitionDur = 10000
+	const bgTransitionDur = 500
 </script>
 
 <div

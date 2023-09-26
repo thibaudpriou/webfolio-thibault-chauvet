@@ -3,14 +3,14 @@
 	import type { CarouselContext } from "./Carousel.svelte";
 
 	const ctx = getContext<CarouselContext>('carousel');
-	const activeItemId = ctx.activeItemId;
+	const activeItemIdx = ctx.activeItemIdx;
 	const nbItems = ctx.nbItems;
 
 </script>
 
 <span class="container">
 	{#each new Array($nbItems) as _, i}
-		<span class="indicator" class:active={$activeItemId === i} />
+		<span class="indicator" class:active={$activeItemIdx === i} />
 	{/each}
 </span>
 

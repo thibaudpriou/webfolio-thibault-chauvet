@@ -2,12 +2,14 @@
 	import { getContext } from 'svelte';
 	import type { CarouselContext } from './Carousel.svelte';
 
+	export let key: string
+
 	const ctx = getContext<CarouselContext>('carousel');
-	const id = ctx.register();
+	ctx.register(key);
 
-	const activeItemId = ctx.activeItemId;
-
-	$: active = id === $activeItemId;
+	const activeItemId = ctx.activeItemKey;
+	
+	$: active = key === $activeItemId;
 </script>
 
 {#if active}

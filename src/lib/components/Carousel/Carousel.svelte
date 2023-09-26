@@ -2,10 +2,11 @@
 	import type { Readable, Writable } from 'svelte/store';
 	export type CarouselContext = {
 		/**
-		 * @returns {int} ID of item
+		 * @param {string} ID of item
 		 */
-		register: () => number;
-		activeItemId: Readable<number>;
+		register: (key: string) => void;
+		activeItemIdx: Readable<number>;
+		activeItemKey: Readable<string>;
 		nbItems: Readable<number>;
 	};
 </script>
@@ -14,39 +15,31 @@
 	import { setContext } from 'svelte';
 	import { derived, writable } from 'svelte/store';
 
-	let activeItemId = writable(0);
-	let nbItems = writable(0);
+	const activeIdx = writable(0);
+	const items = writable([] as string[]);
 
 	const goPrev = () => {
-		activeItemId.update((id) => {
-			if (id <= 0) return $nbItems - 1;
+		activeIdx.update((id) => {
+			if (id <= 0) return $items.length - 1;
 
 			return id - 1;
 		});
 	};
 	const goNext = () => {
-		activeItemId.update((id) => {
-			if (id >= $nbItems - 1) return 0;
+		activeIdx.update((id) => {
+			if (id >= $items.length - 1) return 0;
 
 			return id + 1;
 		});
 	};
 
-	/**
-	 * Derive a writable store to a readonly one
-	 * @param s
-	 */
-	const readonly = <T>(s: Writable<T>): Readable<T> => derived(s, (v) => v);
-
 	setContext<CarouselContext>('carousel', {
-		register: () => {
-			const id = $nbItems;
-			nbItems.update((v) => v + 1);
-
-			return id;
+		register: (key: string) => {
+			items.update((arr) => [...arr, key]);
 		},
-		activeItemId: readonly(activeItemId),
-		nbItems: readonly(nbItems)
+		activeItemIdx: derived(activeIdx, (id) => id), // readonly
+		activeItemKey: derived([activeIdx, items], ([id, arr]) => arr[id]), // readonly
+		nbItems: derived(items, (arr) => arr.length) // readonly
 	});
 </script>
 
