@@ -13,13 +13,15 @@
 			css: (t: number) => `opacity: ${t * o}; z-index: ${z};`
 		};
 	};
+
+	const bgTransitionDur = 10000
 </script>
 
 <div
 	class="bg"
 	style={`background: ${backgroundStyle};`}
-	in:customFadeIn={{ duration: 500, z: -9 }}
-	out:fade={{ delay: 500, duration: 0 }}
+	in:customFadeIn={{ duration: bgTransitionDur, z: -9 }}
+	out:fade={{ delay: bgTransitionDur, duration: 0 }}
 />
 
 <div class="grid">
