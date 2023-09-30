@@ -49,8 +49,6 @@
 			height: 100%;
 			box-sizing: border-box;
 			align-items: start;
-
-			padding: 30px; /** FIXME value */
 		}
 	}
 </style>

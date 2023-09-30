@@ -35,39 +35,31 @@
 <div class="grid" bind:this={grid}>
 	<span class="indicators"><slot name="indicators" /></span>
 	<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
-	<span
-		class="title"
-		in:customFadeIn={{ duration: 500, z: 1 }}
-		out:fade={{ duration: 0 }}
-	>
+	<span class="title" in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>
 		<slot name="title" /></span
 	>
-	<span class="details">
+	<span class="details-1">
 		<HomeDetails>
 			<span in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>
 				<slot name="detail-1" />
 			</span>
 		</HomeDetails>
 	</span>
-	<span class="details">
+	<span class="details-2">
 		<HomeDetails>
 			<span in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>
 				<slot name="detail-2" />
 			</span>
 		</HomeDetails>
 	</span>
-	<span in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>image</span
+	<span class="image-container" in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}
+		><slot name="image" /></span
 	>
-	<span>scroll button desktop</span>
+	<span class="scroll-btn">scroll button desktop</span>
 </div>
 
 <style>
 	/** DEBUG */
-	.grid > span {
-		/* border: solid 1px red;
-		box-sizing: border-box; */
-		color: red;
-	}
 	/** DEBUG END */
 
 	.bg {
@@ -76,17 +68,33 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: calc(100% - 68px); /** FIXME value */
+		height: calc(100% - 40px); /** FIXME value */
 	}
 
 	.grid {
-		display: flex;
-		flex-flow: row wrap;
+		--w-spacing: 30px; /** FIXME value */
+		--h-spacing: 20px; /** FIXME value */
+
+		--details-width: calc(220px); /** FIXME value*/
+		--title-height: 70px; /** FIXME value OR remove property */
+		--image-width: calc(700px); /** FIXME value*/
+
+		display: grid;
+		grid-template:
+			'indicators indicators' auto
+			'title title' auto
+			'd1 d2' auto
+			'image image' auto / var(--details-width) var(--details-width);
+		row-gap: var(--h-spacing);
+		column-gap: var(--w-spacing);
+		padding: 0 var(--w-spacing);
+		justify-items: center;
+		align-items: start;
 
 		width: 100%;
-		height: 600px; /** FIXME value */
 		padding-top: 158px; /** FIXME value */
 		background: transparent;
+		color: white;
 
 		position: absolute; /** relative to some parent outside of this component (Carousel here)*/
 		z-index: 0;
@@ -94,60 +102,46 @@
 		left: 0;
 	}
 
-	.grid span {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		flex-basis: 100%;
+	.details-1 {
+		grid-area: d1;
 	}
-
-	.grid span.details {
-		flex-basis: 50%;
+	.details-2 {
+		grid-area: d2;
 	}
-
-	.grid span:nth-child(6) {
+	.image-container {
+		grid-area: image;
+	}
+	.scroll-btn {
+		grid-area: scroll-btn;
 		display: none;
+	}
+	.indicators {
+		grid-area: indicators;
 	}
 
 	.title {
+		grid-area: title;
 		text-transform: uppercase;
 	}
 
-	@media (min-width: 1250px) {
-		/** FIXME value */
+	/** FIXME value @media */
+	@media (min-width: 1300px) {
+		.bg {
+			height: calc(100% - 68px); /** FIXME value */
+		}
+
 		.grid {
-			flex-direction: column;
+			grid-template:
+				'd1 title d2' var(--title-height)
+				'd1 image d2' auto
+				'scroll-btn image indicators' 1fr / var(--details-width) var(--image-width) var(--details-width);
 		}
 
-		.grid span {
-			flex-grow: 1;
-		}
-
-		/** with these values: title text and ellipsis should touch top. I will padding-top the container*/
-		.grid span:nth-child(1) {
-			order: 6;
-			flex-basis: 34%;
-		}
-		.grid span:nth-child(2) {
-			order: 3;
-			flex-basis: 24%;
-		}
-		.grid span:nth-child(3) {
-			order: 1;
-			flex-basis: 66%;
-		}
-		.grid span:nth-child(4) {
-			order: 5;
-			flex-basis: 66%;
-		}
-		.grid span:nth-child(5) {
-			order: 4;
-			flex-basis: 76%;
-		}
-		.grid span:nth-child(6) {
-			order: 2;
-			flex-basis: 34%;
+		.indicators {
 			display: inline-flex;
+		}
+		.scroll-btn {
+			display: revert;
 		}
 	}
 </style>
