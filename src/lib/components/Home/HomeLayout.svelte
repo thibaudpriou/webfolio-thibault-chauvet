@@ -7,9 +7,14 @@
 	export let backgroundStyle: string;
 
 	const ctx = getContext<CarouselContext>('carousel');
-	let grid: HTMLElement | undefined;
+
+		/**
+		 * !FIXME somehow, the gridHeight starts at some value then goes up to the real height.
+		 * It causes some unwanted visual effects on the background...
+		 */
+	let gridHeight: number = 0;
 	$: {
-		if (grid) ctx.setHeight(grid.clientHeight);
+		ctx.setHeight(gridHeight);
 	}
 
 	const customFadeIn = (node: Element, { delay = 0, duration = 400, z = 1 }) => {
@@ -32,7 +37,7 @@
 	out:fade={{ delay: bgTransitionDur, duration: 0 }}
 />
 
-<div class="grid" bind:this={grid}>
+<div class="grid" bind:clientHeight={gridHeight}>
 	<span class="indicators"><slot name="indicators" /></span>
 	<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
 	<span class="title" in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>
@@ -52,9 +57,11 @@
 			</span>
 		</HomeDetails>
 	</span>
-	<span class="image-container" in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}
-		><slot name="image" /></span
-	>
+	<span class="image-container">
+		<span in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>
+			<slot name="image" />
+		</span>
+	</span>
 	<span class="scroll-btn">scroll button desktop</span>
 </div>
 
