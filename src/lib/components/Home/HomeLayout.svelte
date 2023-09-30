@@ -8,10 +8,10 @@
 
 	const ctx = getContext<CarouselContext>('carousel');
 
-		/**
-		 * !FIXME somehow, the gridHeight starts at some value then goes up to the real height.
-		 * It causes some unwanted visual effects on the background...
-		 */
+	/**
+	 * !FIXME somehow, the gridHeight starts at some value then goes up to the real height.
+	 * It causes some unwanted visual effects on the background...
+	 */
 	let gridHeight: number = 0;
 	$: {
 		ctx.setHeight(gridHeight);
@@ -38,19 +38,21 @@
 />
 
 <div class="grid" bind:clientHeight={gridHeight}>
-	<span class="indicators"><slot name="indicators" /></span>
+	<span class="indicators-container"><slot name="indicators" /></span>
 	<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
-	<span class="title" in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>
-		<slot name="title" /></span
-	>
-	<span class="details-1">
+	<span class="title-container" >
+		<span in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>
+			<slot name="title" />
+		</span>
+	</span>
+	<span class="details-1-container">
 		<HomeDetails>
 			<span in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>
 				<slot name="detail-1" />
 			</span>
 		</HomeDetails>
 	</span>
-	<span class="details-2">
+	<span class="details-2-container">
 		<HomeDetails>
 			<span in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>
 				<slot name="detail-2" />
@@ -62,7 +64,7 @@
 			<slot name="image" />
 		</span>
 	</span>
-	<span class="scroll-btn">scroll button desktop</span>
+	<span class="scroll-btn-container">scroll button desktop</span>
 </div>
 
 <style>
@@ -89,7 +91,7 @@
 		display: grid;
 		grid-template:
 			'indicators indicators' auto
-			'title title' auto
+			'title title' var(--title-height)
 			'd1 d2' auto
 			'image image' auto / var(--details-width) var(--details-width);
 		row-gap: var(--h-spacing);
@@ -109,24 +111,24 @@
 		left: 0;
 	}
 
-	.details-1 {
+	.details-1-container {
 		grid-area: d1;
 	}
-	.details-2 {
+	.details-2-container {
 		grid-area: d2;
 	}
 	.image-container {
 		grid-area: image;
 	}
-	.scroll-btn {
+	.scroll-btn-container {
 		grid-area: scroll-btn;
 		display: none;
 	}
-	.indicators {
+	.indicators-container {
 		grid-area: indicators;
 	}
 
-	.title {
+	.title-container {
 		grid-area: title;
 		text-transform: uppercase;
 	}
@@ -144,10 +146,10 @@
 				'scroll-btn image indicators' 1fr / var(--details-width) var(--image-width) var(--details-width);
 		}
 
-		.indicators {
+		.indicators-container {
 			display: inline-flex;
 		}
-		.scroll-btn {
+		.scroll-btn-container {
 			display: revert;
 		}
 	}
