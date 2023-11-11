@@ -1,11 +1,10 @@
 <script lang="ts">
 	import { getContext } from "svelte";
-	import type { CarouselContext } from "./Carousel.svelte";
+	import type { CarouselContext } from './Carousel.svelte';
 
 	const ctx = getContext<CarouselContext>('carousel');
 	const activeItemIdx = ctx.activeItemIdx;
 	const nbItems = ctx.nbItems;
-
 </script>
 
 <span class="container">

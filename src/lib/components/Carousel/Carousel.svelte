@@ -1,5 +1,4 @@
 <script lang="ts" context="module">
-	import type { Readable, Writable } from 'svelte/store';
 	export type CarouselContext = {
 		/**
 		 * @param {string} ID of item
@@ -14,37 +13,21 @@
 
 <script lang="ts">
 	import { setContext } from 'svelte';
-	import { derived, writable } from 'svelte/store';
+	import { carousel, goNext, goPrev } from './carousel';
+	import type { Readable } from 'svelte/store';
 
-	const activeIdx = writable(0);
-	const items = writable([] as string[]);
+	let height: string | undefined = undefined;
 
-	let height = 'auto';
-
-	const goPrev = () => {
-		activeIdx.update((id) => {
-			if (id <= 0) return $items.length - 1;
-
-			return id - 1;
-		});
-	};
-	const goNext = () => {
-		activeIdx.update((id) => {
-			if (id >= $items.length - 1) return 0;
-
-			return id + 1;
-		});
-	};
-
+	/**
+	 * Each Carousel has its own context
+	 */
 	setContext<CarouselContext>('carousel', {
-		register: (key: string) => {
-			items.update((arr) => [...arr, key]);
-		},
-		activeItemIdx: derived(activeIdx, (id) => id), // readonly
-		activeItemKey: derived([activeIdx, items], ([id, arr]) => arr[id]), // readonly
-		nbItems: derived(items, (arr) => arr.length), // readonly
+		...carousel,
 		setHeight: (h) => {
-			height = `${h}px`;
+			if (height === undefined && h !== 0) {
+				// only at init
+				height = `${h}px`;
+			}
 		}
 	});
 </script>
@@ -52,7 +35,7 @@
 <button on:click={goPrev}>prev</button>
 <button on:click={goNext}>next</button>
 
-<div class="carousel" style:height>
+<div class="carousel" style:height={height ?? 'auto'}>
 	<slot />
 </div>
 
