@@ -2,12 +2,45 @@
 	import Carousel from '$lib/components/Carousel/Carousel.svelte';
 	import CarouselIndicators from '$lib/components/Carousel/CarouselIndicators.svelte';
 	import CarouselItem from '$lib/components/Carousel/CarouselItem.svelte';
+	import HomeBackground from '$lib/components/Home/HomeBackground.svelte';
 	import HomeLayout from '$lib/components/Home/HomeLayout.svelte';
 </script>
 
-<Carousel>
+<Carousel let:activeIdx>
+	<HomeBackground
+		activeCarouselItemIdx={activeIdx}
+		gradients={{
+			'0': [
+				{ color: '#010A44', position: 0 },
+				{ color: '#001477', position: 50 },
+				{ color: '#001477', position: 50 },
+				{ color: '#010A44', position: 100 }
+			],
+
+			'1': [
+				{ color: '#3C071B', position: 0 },
+				{ color: '#9C0E43', position: 50 },
+				{ color: '#9C0E43', position: 50 },
+				{ color: '#3C071B', position: 100 }
+			],
+
+			'2': [
+				{ color: '#0A1C21', position: 0 },
+				{ color: '#1B3E4A', position: 50 },
+				{ color: '#1B3E4A', position: 50 },
+				{ color: '#0A1C21', position: 100 }
+			],
+
+			'3': [
+				{ color: '#BE0F39', position: 0 },
+				{ color: '#FE696C', position: 42.5 },
+				{ color: '#FE696C', position: 59.69 },
+				{ color: '#BE0F39', position: 100 }
+			]
+		}}
+	/>
 	<CarouselItem key="0">
-		<HomeLayout backgroundStyle="linear-gradient(90deg, #010A44 0%, #001477 50%, #010A44 100%);">
+		<HomeLayout>
 			<CarouselIndicators slot="indicators" />
 
 			<svelte:fragment slot="title">design graphique</svelte:fragment>
@@ -18,18 +51,23 @@
 	</CarouselItem>
 
 	<CarouselItem key="1">
-		<HomeLayout backgroundStyle="linear-gradient(90deg, #3C071B 0%, #9C0E43 50%, #3C071B 100%);">
+		<HomeLayout>
 			<CarouselIndicators slot="indicators" />
 
 			<svelte:fragment slot="title">webdesign</svelte:fragment>
 			<span slot="detail-1">Design, parcours utilisateur, ergonomie sur mesure</span>
 			<span slot="detail-2">Website, application mobile. Charte web, interface plateforme</span>
-			<img slot="image" class="image" src="/imgs/devices.png" alt="Exemples de webdesign sur différentes plateformes" />
+			<img
+				slot="image"
+				class="image"
+				src="/imgs/devices.png"
+				alt="Exemples de webdesign sur différentes plateformes"
+			/>
 		</HomeLayout>
 	</CarouselItem>
 
 	<CarouselItem key="2">
-		<HomeLayout backgroundStyle="linear-gradient(90deg, #0A1C21 0%, #1B3E4A 50%, #0A1C21 100%);">
+		<HomeLayout>
 			<CarouselIndicators slot="indicators" />
 
 			<svelte:fragment slot="title">graphisme print</svelte:fragment>
@@ -40,15 +78,18 @@
 	</CarouselItem>
 
 	<CarouselItem key="3">
-		<HomeLayout
-			backgroundStyle="linear-gradient(90deg, #BE0F39 0%, #FE696C 42.5%, #FE696C 59.69%, #BE0F39 100%);"
-		>
+		<HomeLayout>
 			<CarouselIndicators slot="indicators" />
 
 			<svelte:fragment slot="title">identité visuelle</svelte:fragment>
 			<span slot="detail-1">Être identifiable et mémorisable en un coup d'œil</span>
 			<span slot="detail-2">Image de marque. Personnalisation multi-support</span>
-			<img slot="image" class="image" src="/imgs/branding.png" alt="Exemples d'identités visuelles" />
+			<img
+				slot="image"
+				class="image"
+				src="/imgs/branding.png"
+				alt="Exemples d'identités visuelles"
+			/>
 		</HomeLayout>
 	</CarouselItem>
 </Carousel>

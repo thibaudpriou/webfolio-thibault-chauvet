@@ -1,21 +1,9 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import HomeDetails from './HomeDetails.svelte';
-	import { getContext } from 'svelte';
-	import type { CarouselContext } from '../Carousel/Carousel.svelte';
 
-	export let backgroundStyle: string;
-
-	const ctx = getContext<CarouselContext>('carousel');
-
-	/**
-	 * !FIXME somehow, the gridHeight starts at some value then goes up to the real height.
-	 * It causes some unwanted visual effects on the background...
-	 */
-	let gridHeight: number = 0;
-	$: {
-		ctx.setHeight(gridHeight);
-	}
+	/** transition duration in ms */
+	export let transitionDurationMs = 500
 
 	const customFadeIn = (node: Element, { delay = 0, duration = 400, z = 1 }) => {
 		const o = +getComputedStyle(node).opacity;
@@ -27,40 +15,32 @@
 		};
 	};
 
-	const bgTransitionDur = 500;
 </script>
 
-<div
-	class="bg"
-	style={`background: ${backgroundStyle};`}
-	in:customFadeIn={{ duration: bgTransitionDur, z: -9 }}
-	out:fade={{ delay: bgTransitionDur, duration: 0 }}
-/>
-
-<div class="grid" bind:clientHeight={gridHeight}>
+<div class="grid">
 	<span class="indicators-container"><slot name="indicators" /></span>
 	<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
 	<span class="title-container" >
-		<span in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>
+		<span in:customFadeIn={{ duration: transitionDurationMs, z: 1 }} out:fade={{ duration: 0 }}>
 			<slot name="title" />
 		</span>
 	</span>
 	<span class="details-1-container">
 		<HomeDetails>
-			<span in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>
+			<span in:customFadeIn={{ duration: transitionDurationMs, z: 1 }} out:fade={{ duration: 0 }}>
 				<slot name="detail-1" />
 			</span>
 		</HomeDetails>
 	</span>
 	<span class="details-2-container">
 		<HomeDetails>
-			<span in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>
+			<span in:customFadeIn={{ duration: transitionDurationMs, z: 1 }} out:fade={{ duration: 0 }}>
 				<slot name="detail-2" />
 			</span>
 		</HomeDetails>
 	</span>
 	<span class="image-container">
-		<span in:customFadeIn={{ duration: 500, z: 1 }} out:fade={{ duration: 0 }}>
+		<span in:customFadeIn={{ duration: transitionDurationMs, z: 1 }} out:fade={{ duration: 0 }}>
 			<slot name="image" />
 		</span>
 	</span>
@@ -68,18 +48,6 @@
 </div>
 
 <style>
-	/** DEBUG */
-	/** DEBUG END */
-
-	.bg {
-		position: absolute; /** relative to some parent outside of this component (Carousel here)*/
-		z-index: -10;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: calc(100% - 40px); /** FIXME value */
-	}
-
 	.grid {
 		--w-spacing: 30px; /** FIXME value */
 		--h-spacing: 20px; /** FIXME value */
@@ -104,11 +72,6 @@
 		padding-top: 158px; /** FIXME value */
 		background: transparent;
 		color: white;
-
-		position: absolute; /** relative to some parent outside of this component (Carousel here)*/
-		z-index: 0;
-		top: 0;
-		left: 0;
 	}
 
 	.details-1-container {
@@ -135,9 +98,6 @@
 
 	/** FIXME value @media */
 	@media (min-width: 1300px) {
-		.bg {
-			height: calc(100% - 68px); /** FIXME value */
-		}
 
 		.grid {
 			grid-template:

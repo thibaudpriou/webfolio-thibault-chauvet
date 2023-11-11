@@ -30,13 +30,15 @@
 			}
 		}
 	});
+
+	const activeItemIdx = carousel.activeItemIdx
 </script>
 
 <button on:click={goPrev}>prev</button>
 <button on:click={goNext}>next</button>
 
 <div class="carousel" style:height={height ?? 'auto'}>
-	<slot />
+	<slot activeIdx={$activeItemIdx}/>
 </div>
 
 <style>
