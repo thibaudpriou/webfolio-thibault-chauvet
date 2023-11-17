@@ -3,7 +3,7 @@
 	import HomeDetails from './HomeDetails.svelte';
 
 	/** transition duration in ms */
-	export let transitionDurationMs = 500
+	export let transitionDurationMs = 200;
 
 	const customFadeIn = (node: Element, { delay = 0, duration = 400, z = 1 }) => {
 		const o = +getComputedStyle(node).opacity;
@@ -15,32 +15,53 @@
 		};
 	};
 
+	const fadeWithSlide = (node: Element, { delay = 0, duration = 400, z = 1, direction = 1 }) => {
+		const o = +getComputedStyle(node).opacity;
+
+		return {
+			delay,
+			duration,
+			css: (t: number, u: number) => {
+				const trx = direction * u * 100;
+				return `opacity: ${t * o}; z-index: ${z}; transform: translateX(${trx}%);`;
+			}
+		};
+	};
 </script>
 
 <div class="grid">
 	<span class="indicators-container"><slot name="indicators" /></span>
 	<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
-	<span class="title-container" >
+	<span class="title-container">
 		<span in:customFadeIn={{ duration: transitionDurationMs, z: 1 }} out:fade={{ duration: 0 }}>
 			<slot name="title" />
 		</span>
 	</span>
 	<span class="details-1-container">
 		<HomeDetails>
-			<span in:customFadeIn={{ duration: transitionDurationMs, z: 1 }} out:fade={{ duration: 0 }}>
+			<span
+				in:fadeWithSlide={{ duration: transitionDurationMs, delay: transitionDurationMs, z: 1 }}
+				out:fadeWithSlide={{ duration: transitionDurationMs, direction: -1 }}
+			>
 				<slot name="detail-1" />
 			</span>
 		</HomeDetails>
 	</span>
 	<span class="details-2-container">
 		<HomeDetails>
-			<span in:customFadeIn={{ duration: transitionDurationMs, z: 1 }} out:fade={{ duration: 0 }}>
+			<span
+				in:fadeWithSlide={{ duration: transitionDurationMs, delay: transitionDurationMs, z: 1 }}
+				out:fadeWithSlide={{ duration: transitionDurationMs, direction: -1 }}
+			>
 				<slot name="detail-2" />
 			</span>
 		</HomeDetails>
 	</span>
 	<span class="image-container">
-		<span in:customFadeIn={{ duration: transitionDurationMs, z: 1 }} out:fade={{ duration: 0 }}>
+		<span
+			in:fadeWithSlide={{ duration: transitionDurationMs, delay: transitionDurationMs, z: 1 }}
+			out:fadeWithSlide={{ duration: transitionDurationMs, direction: -1 }}
+		>
 			<slot name="image" />
 		</span>
 	</span>
@@ -98,7 +119,6 @@
 
 	/** FIXME value @media */
 	@media (min-width: 1300px) {
-
 		.grid {
 			grid-template:
 				'd1 title d2' var(--title-height)

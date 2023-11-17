@@ -18,5 +18,6 @@
 		box-sizing: border-box;
 
 		color: #ffffff;
+		overflow: hidden;
 	}
 </style>
