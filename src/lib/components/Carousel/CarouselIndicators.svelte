@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { getContext } from "svelte";
+	import { getContext } from 'svelte';
 	import type { CarouselContext } from './Carousel.svelte';
+	import { goTo } from './carousel';
 
 	const ctx = getContext<CarouselContext>('carousel');
 	const activeItemIdx = ctx.activeItemIdx;
@@ -9,7 +10,8 @@
 
 <span class="container">
 	{#each new Array($nbItems) as _, i}
-		<span class="indicator" class:active={$activeItemIdx === i} />
+		<!-- FIXME ARIA role -->
+		<span class="indicator" class:active={$activeItemIdx === i} on:click={() => goTo(i)} />
 	{/each}
 </span>
 
@@ -35,10 +37,33 @@
 		box-sizing: border-box;
 		border: 1px solid #ffffff;
 		border-radius: var(--size);
+		background: none;
+
+		position: relative;
 	}
 
-	.indicator.active {
-		background: #ffffff;
+	.indicator::after {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+
+		border-radius: 100%;
+		background-color: #ffffff;
+
+		transform: translate(-50%, -50%);
+		position: absolute;
+		top: 50%;
+		left: 50%;
+	}
+
+	.indicator.active::after {
+		opacity: 1;
+	}
+
+	.indicator:hover {
+		cursor: pointer;
 	}
 
 	@media (min-width: 1250px) {

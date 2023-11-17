@@ -59,6 +59,22 @@ export const goNext = () => {
 	});
 };
 
+/**
+ * Activate a specific carousel item
+ *
+ * @param idx
+ */
+export const goTo = (idx: number) => {
+	carouselStore.update((s) => {
+		if (idx < 0 || idx >= s.items.size) return;
+
+		return {
+			...s,
+			activeIdx: idx
+		};
+	});
+};
+
 export const carousel = {
 	register: registerItem,
 	activeItemIdx: derived(carouselStore, (s) => s.activeIdx),
