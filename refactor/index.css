@@ -1,0 +1,231 @@
+/** css reset */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+body {
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+	isolation: isolate;
+}
+
+/** HOME-LAYOUT */
+.layout-home {
+	--w-spacing: 30px; /** @FIXME value */
+	--h-spacing: 20px; /** @FIXME value */
+
+	--details-width: calc(220px); /** @FIXME value*/
+	--title-height: 70px; /** @FIXME value OR remove property */
+	--image-width: calc(700px); /** @FIXME value*/
+
+	display: grid;
+	grid:
+		'indicators indicators' auto
+		'title title' var(--title-height)
+		'd1 d2' auto
+		'image image' auto
+		/ var(--details-width) var(--details-width);
+	row-gap: var(--h-spacing);
+	column-gap: var(--w-spacing);
+	padding: 0 var(--w-spacing);
+	justify-items: center;
+	align-items: start;
+
+	width: 100%;
+	padding-top: 158px; /** @FIXME value */
+	background: transparent;
+	color: white;
+}
+
+.layout-home-item {
+	width: 100%;
+	height: 100%;
+}
+
+.layout-home-details-1-container {
+	grid-area: d1;
+}
+
+.layout-home-details-2-container {
+	grid-area: d2;
+}
+
+.layout-home-image-container {
+	grid-area: image;
+}
+
+.layout-home-details {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	width: 220px; /** FIXME value */
+	height: 377px; /** FIXME value */
+	padding: 37px;
+
+	border: 1px solid #ffffff;
+	border-radius: 200px; /** FIXME value */
+	box-sizing: border-box;
+
+	color: #ffffff;
+	overflow: hidden;
+}
+
+.layout-home-image {
+	width: 100%;
+}
+
+.layout-home-scroll-btn-container {
+	grid-area: scroll-btn;
+	display: none;
+}
+.layout-home-indicators-container {
+	grid-area: indicators;
+}
+
+.layout-home-title-container {
+	grid-area: title;
+	text-transform: uppercase;
+}
+
+/** @FIXME value @media */
+@media (min-width: 1300px) {
+	.layout-home {
+		grid:
+			'd1 title d2' var(--title-height)
+			'd1 image d2' auto
+			'scroll-btn image indicators' 1fr
+			/ var(--details-width) var(--image-width) var(--details-width);
+	}
+
+	.layout-home-indicators-container {
+		display: inline-flex;
+	}
+	.layout-home-scroll-btn-container {
+		display: revert;
+	}
+}
+
+/** CAROUSEL */
+
+.carousel-item {
+	position: relative;
+	z-index: 0; /* stacking context creation */
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.carousel-item > [data-carousel-idx] {
+	display: none;
+
+	position: absolute; /** relative to some parent outside of this component (Carousel here)*/
+	z-index: 0;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+}
+
+.carousel-item > [data-carousel-idx].active {
+	display: unset;
+}
+
+.carousel-indicators {
+	--size: 9px; /** FIXME value */
+
+	width: 100%;
+
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	padding: 15px; /** FIXME value */
+}
+
+.carousel-indicator {
+	width: var(--size);
+	height: var(--size);
+	margin-left: calc(var(--size) + 1px);
+
+	box-sizing: border-box;
+	border: 1px solid #ffffff;
+	border-radius: var(--size);
+	background: none;
+
+	position: relative;
+}
+
+.carousel-indicator::after {
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+
+	border-radius: 100%;
+	background-color: #ffffff;
+
+	transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+.carousel-indicator.active::after {
+	opacity: 1;
+}
+
+.carousel-indicator:hover {
+	cursor: pointer;
+}
+
+@media (min-width: 1250px) {
+	/** FIXME value */
+
+	.carousel-indicators {
+		height: 100%;
+		box-sizing: border-box;
+		align-items: start;
+	}
+}

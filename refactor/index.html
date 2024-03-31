@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="stylesheet" href="index.css" />
+		<script type="text/javascript" src="index.js" defer></script>
+	</head>
+	<body>
+		<div>
+			<!-- HOME-LAYOUT -->
+			<!-- TODO: fix animations -->
+			<div class="layout-home">
+				<span class="layout-home-item layout-home-indicators-container">
+					<span class="carousel-indicators">
+						<span data-carousel-idx="0" class="carousel-indicator" onclick="goTo(0)"></span>
+						<span data-carousel-idx="1" class="carousel-indicator" onclick="goTo(1)"></span>
+						<span data-carousel-idx="2" class="carousel-indicator" onclick="goTo(2)"></span>
+						<span data-carousel-idx="3" class="carousel-indicator" onclick="goTo(3)"></span>
+					</span>
+				</span>
+				<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
+				<span class="layout-home-item layout-home-title-container">
+					<span class="carousel-item">
+						<span data-carousel-idx="0">design graphique</span>
+						<span data-carousel-idx="1">webdesign</span>
+						<span data-carousel-idx="2">graphisme print</span>
+						<span data-carousel-idx="3">identité visuelle</span>
+					</span>
+				</span>
+				<span class="layout-home-item layout-home-details-1-container">
+					<span class="layout-home-details">
+						<span class="carousel-item">
+							<span data-carousel-idx="0">Imaginer et concevoir des créations graphiques</span>
+							<span data-carousel-idx="1">Design, parcours utilisateur, ergonomie sur mesure</span>
+							<span data-carousel-idx="2"
+								>Créations imprimés, à l'image de votre identité de marque</span
+							>
+							<span data-carousel-idx="3">Être identifiable et mémorisable en un coup d'œil</span>
+						</span>
+					</span>
+				</span>
+				<span class="layout-home-item layout-home-details-2-container">
+					<span class="layout-home-details">
+						<span class="carousel-item">
+							<span data-carousel-idx="0"
+								>Branding & direction artistique Logotype, affiche, brochure...</span
+							>
+							<span data-carousel-idx="1"
+								>Website, application mobile. Charte web, interface plateforme</span
+							>
+							<span data-carousel-idx="2">Graphisme, marketing. Magazine, charte graphique..</span>
+							<span data-carousel-idx="3">Image de marque. Personnalisation multi-support</span>
+						</span>
+					</span>
+				</span>
+				<span class="layout-home-item layout-home-image-container">
+					<span class="carousel-item">
+						<span data-carousel-idx="0">
+							<img
+								class="layout-home-image"
+								src="imgs/home/design.png"
+								alt="Exemples de design graphiques"
+							/>
+						</span>
+						<span data-carousel-idx="1">
+							<img
+								class="layout-home-image"
+								src="imgs/home/devices.png"
+								alt="Exemples de webdesign sur différentes plateformes"
+							/>
+						</span>
+						<span data-carousel-idx="2">
+							<img
+								class="layout-home-image"
+								src="imgs/home/print.png"
+								alt="Exemples de graphisme print"
+							/>
+						</span>
+						<span data-carousel-idx="3">
+							<img
+								class="layout-home-image"
+								src="imgs/home/branding.png"
+								alt="Exemples d'identités visuelles"
+							/>
+						</span>
+					</span>
+				</span>
+				<span class="layout-home-item layout-home-scroll-btn-container">scroll button desktop</span>
+			</div>
+		</div>
+	</body>
+</html>
