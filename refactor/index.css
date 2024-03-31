@@ -145,6 +145,10 @@ h6 {
 
 /** CAROUSEL */
 
+#carousel {
+	position: relative;
+}
+
 .carousel-item {
 	position: relative;
 	z-index: 0; /* stacking context creation */
@@ -218,6 +222,124 @@ h6 {
 
 .carousel-indicator:hover {
 	cursor: pointer;
+}
+
+.carousel-background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
+
+	--bg-transitionDur: 1s;
+	transition-property: --bg-color1, --bg-position1, --bg-color2, --bg-position2, --bg-color3,
+		--bg-position3, --bg-color4, --bg-position4;
+	transition-duration: var(--bg-transitionDur);
+	background: linear-gradient(
+		90deg,
+		var(--bg-color1) var(--bg-position1),
+		var(--bg-color2) var(--bg-position2),
+		var(--bg-color3) var(--bg-position3),
+		var(--bg-color4) var(--bg-position4)
+	);
+}
+
+#carousel[data-active='0'] .carousel-background {
+	--bg-color1: #010a44;
+	--bg-position1: 0%;
+	--bg-color2: #001477;
+	--bg-position2: 50%;
+	--bg-color3: #001477;
+	--bg-position3: 50%;
+	--bg-color4: #010a44;
+	--bg-position4: 100%;
+}
+#carousel[data-active='1'] .carousel-background {
+	--bg-color1: #3c071b;
+	--bg-position1: 0%;
+	--bg-color2: #9c0e43;
+	--bg-position2: 50%;
+	--bg-color3: #9c0e43;
+	--bg-position3: 50%;
+	--bg-color4: #3c071b;
+	--bg-position4: 100%;
+}
+#carousel[data-active='2'] .carousel-background {
+	--bg-color1: #0a1c21;
+	--bg-position1: 0%;
+	--bg-color2: #1b3e4a;
+	--bg-position2: 50%;
+	--bg-color3: #1b3e4a;
+	--bg-position3: 50%;
+	--bg-color4: #0a1c21;
+	--bg-position4: 100%;
+}
+#carousel[data-active='3'] .carousel-background {
+	--bg-color1: #be0f39;
+	--bg-position1: 0%;
+	--bg-color2: #fe696c;
+	--bg-position2: 42.5%;
+	--bg-color3: #fe696c;
+	--bg-position3: 57.5%;
+	--bg-color4: #be0f39;
+	--bg-position4: 100%;
+}
+
+/** FIXME fallback when houdini is not supported */
+@property --bg-color1 {
+	syntax: '<color>';
+	initial-value: white;
+	inherits: false;
+}
+
+@property --bg-color2 {
+	syntax: '<color>';
+	initial-value: white;
+	inherits: false;
+}
+
+@property --bg-color3 {
+	syntax: '<color>';
+	initial-value: white;
+	inherits: false;
+}
+
+@property --bg-color4 {
+	syntax: '<color>';
+	initial-value: white;
+	inherits: false;
+}
+
+@property --bg-position1 {
+	syntax: '<percentage>';
+	initial-value: 0%;
+	inherits: false;
+}
+
+@property --bg-position2 {
+	syntax: '<percentage>';
+	initial-value: 50%;
+	inherits: false;
+}
+
+@property --bg-position3 {
+	syntax: '<percentage>';
+	initial-value: 50%;
+	inherits: false;
+}
+
+@property --bg-position4 {
+	syntax: '<percentage>';
+	initial-value: 100%;
+	inherits: false;
+}
+
+/** FIXME value @media */
+@media (min-width: 1300px) {
+	.bg {
+		height: calc(100% - 68px); /** FIXME value */
+	}
 }
 
 @media (min-width: 1250px) {

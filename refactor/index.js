@@ -1,20 +1,26 @@
 const NB_CAROUSEL_ITEM = 4;
 
 let activeItemIdx = 0; // init
+const carousel = document.getElementById('carousel');
 
 /**
  * Update Carousel with new active item index
  * @param {number} idx
  */
 function updateCarousel(idx) {
+	if (!carousel) return;
+
 	const currentActiveElements = document.querySelectorAll(`[data-carousel-idx="${activeItemIdx}"]`);
 	for (let i = 0; i < currentActiveElements.length; i++) {
 		currentActiveElements[i].classList.remove('active');
 	}
+
 	const newActiveElements = document.querySelectorAll(`[data-carousel-idx="${idx}"]`);
 	for (let i = 0; i < currentActiveElements.length; i++) {
 		newActiveElements[i].classList.add('active');
 	}
+
+	carousel.setAttribute('data-active', idx);
 	activeItemIdx = idx;
 }
 
