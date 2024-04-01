@@ -143,6 +143,46 @@ h6 {
 	}
 }
 
+/** HOME-DETAILS */
+.home-details-content {
+	display: flex;
+	font-size: 0.75em;
+	gap: 2em;
+	text-align: center;
+	flex-direction: column;
+	align-items: center;
+	padding: 2em 0;
+}
+
+.home-details-1-logo {
+	width: 3em;
+	height: 3em;
+}
+
+.home-details-1-letsgo {
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+	align-items: center;
+}
+
+.home-details-1-letsgo-text {
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.home-details-1-letsgo-logo {
+	width: 3em;
+	height: 3em;
+	padding: 1em;
+	background-color: var(--letsgo-logo-color);
+	border-radius: 100%;
+}
+
+.home-details-1-image {
+	height: 6.5em;
+}
+
 /** CAROUSEL */
 
 #carousel {
@@ -158,20 +198,17 @@ h6 {
 }
 
 .carousel-item > [data-carousel-idx] {
-	display: none;
-
 	position: absolute; /** relative to some parent outside of this component (Carousel here)*/
 	z-index: 0;
 	top: 0;
 	left: 0;
 
 	width: 100%;
-	height: auto;
 	overflow: hidden;
 }
 
-.carousel-item > [data-carousel-idx].active {
-	display: unset;
+.carousel-item > [data-carousel-idx]:not(.active) {
+	display: none;
 }
 
 .carousel-indicators {
