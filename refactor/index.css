@@ -210,7 +210,7 @@ body {
 .home-details-content {
 	display: flex;
 	font-size: 0.75em;
-	gap: 2.5em;
+	gap: 2em;
 	text-align: center;
 	flex-direction: column;
 	align-items: center;
@@ -219,6 +219,65 @@ body {
 
 .home-details-content-text {
 	font-weight: 300;
+}
+
+.home-details-content-image {
+	height: 6.5em;
+}
+
+.home-details-content-cards {
+	display: block;
+	height: 6em;
+	width: 100%;
+	position: relative;
+}
+
+.home-details-content-card {
+	position: absolute;
+	width: 4.5em;
+	height: 8em;
+	display: block;
+	border: 1px solid #ffffff;
+	border-radius: 10em;
+	box-sizing: border-box;
+	overflow: hidden;
+
+	--z-rotation-base: 11deg; /** adjust this value and everything follows ;) */
+	transform: translate(-50%, 0) rotateZ(var(--z-rotate));
+	transform-origin: bottom;
+	left: 50%;
+	bottom: 0;
+}
+
+.home-details-content-card:nth-child(1) {
+	z-index: 3;
+	--z-rotate: calc(var(--z-rotation-base) * -1);
+}
+.home-details-content-card:nth-child(2) {
+	z-index: 2;
+	--z-rotate: 0;
+}
+.home-details-content-card:nth-child(3) {
+	z-index: 1;
+	--z-rotate: var(--z-rotation-base);
+}
+
+.home-details-content-card img {
+	height: 100%;
+	object-fit: cover;
+}
+
+.home-details-content-title {
+	display: block;
+	font-family: 'Felix Titling';
+	text-transform: uppercase;
+	text-align: center;
+	text-wrap: nowrap;
+	font-size: 2em;
+}
+
+.home-details-content-line {
+	width: 25%;
 }
 
 .home-details-1-logo {
@@ -244,10 +303,6 @@ body {
 	padding: 1em;
 	background-color: var(--letsgo-logo-color);
 	border-radius: 100%;
-}
-
-.home-details-1-image {
-	height: 6.5em;
 }
 
 /** CAROUSEL */
@@ -336,8 +391,7 @@ body {
 	z-index: -1;
 
 	--bg-transitionDur: 1s;
-	transition-property: --bg-color1, --bg-position1, --bg-color2, --bg-position2, --bg-color3,
-		--bg-position3, --bg-color4, --bg-position4;
+	transition-property: --bg-color1, --bg-position1, --bg-color2, --bg-position2, --bg-color3, --bg-position3, --bg-color4, --bg-position4;
 	transition-duration: var(--bg-transitionDur);
 	background: linear-gradient(
 		90deg,
