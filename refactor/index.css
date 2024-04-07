@@ -98,21 +98,29 @@ body {
 	font-weight: 400;
 }
 
+#carousel {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: center;
+}
+
 /** HOME-LAYOUT */
 .layout-home {
-	--w-spacing: 30px; /** @FIXME value */
-	--h-spacing: 20px; /** @FIXME value */
+	--w-spacing: 1em;
+	--h-spacing: 1em;
 
-	--details-width: calc(220px); /** @FIXME value*/
-	--title-height: 70px; /** @FIXME value OR remove property */
-	--image-width: calc(700px); /** @FIXME value*/
+	--details-width: 14em;
+	--title-height: 3em;
+	--image-width: 52em;
+	--bottom-height: 14em;
 
 	display: grid;
 	grid:
 		'indicators indicators' auto
 		'title title' var(--title-height)
 		'd1 d2' auto
-		'image image' auto
+		'image image' calc(var(--bottom-height) + 6em)
 		/ var(--details-width) var(--details-width);
 	row-gap: var(--h-spacing);
 	column-gap: var(--w-spacing);
@@ -120,8 +128,7 @@ body {
 	justify-items: center;
 	align-items: start;
 
-	width: 100%;
-	padding-top: 158px; /** @FIXME value */
+	padding-top: 11em;
 	background: transparent;
 	color: white;
 }
@@ -151,7 +158,7 @@ body {
 
 	width: 220px; /** FIXME value */
 	height: 377px; /** FIXME value */
-	padding: 2em 1.25em;
+	padding: 2em 0.75em;
 
 	border: 1px solid #ffffff;
 	border-radius: 200px; /** FIXME value */
@@ -184,7 +191,7 @@ body {
 		grid:
 			'd1 title d2' var(--title-height)
 			'd1 image d2' auto
-			'scroll-btn image indicators' 1fr
+			'scroll-btn image indicators' var(--bottom-height)
 			/ var(--details-width) var(--image-width) var(--details-width);
 	}
 
@@ -203,7 +210,7 @@ body {
 	font-size: 4em;
 	text-align: center;
 	text-wrap: nowrap;
-	line-height: 0.7em;
+	margin-top: -0.4em;
 }
 
 /** HOME-DETAILS */
@@ -322,8 +329,6 @@ body {
 .carousel-item > [data-carousel-idx] {
 	position: absolute; /** relative to some parent outside of this component (Carousel here)*/
 	z-index: 0;
-	top: 0;
-	left: 0;
 
 	width: 100%;
 	overflow: hidden;
@@ -385,7 +390,7 @@ body {
 .carousel-background {
 	position: absolute;
 	width: 100%;
-	height: 100%;
+	height: 90%;
 	top: 0;
 	left: 0;
 	z-index: -1;
