@@ -7,7 +7,7 @@
 		<script type="text/javascript" src="index.js" defer></script>
 	</head>
 	<body>
-		<div id="carousel">
+		<section id="carousel">
 			<div class="carousel-background"></div>
 
 			<!-- HOME-LAYOUT -->
@@ -311,6 +311,217 @@
 				<!-- TODO fix button -->
 				<span class="layout-home-item layout-home-scroll-btn-container">scroll button desktop</span>
 			</div>
-		</div>
+		</section>
+		<section class="projects-container">
+			<h1>Projects</h1>
+			<p>Chaque projet est une histoire visuelle tissée avec soin et passion</p>
+			<!-- TODO menu -->
+			<div class="grid grid-12-columns">
+				<div class="grid-item grid-item-square grid-item-4-columns">
+					<div class="card">
+						<div class="card-link-container">
+							<a class="card-link">Voir le projet</a>
+							<p class="card-link-title">Titre du projet</p>
+						</div>
+						<img class="card-img" src="imgs/placeholder.jpeg" />
+					</div>
+				</div>
+				<div class="grid-item grid-item-square grid-item-4-columns">
+					<div class="card">
+						<div class="card-link-container">
+							<a class="card-link">Voir le projet</a>
+							<p class="card-link-title">Titre du projet</p>
+						</div>
+						<img class="card-img" src="imgs/placeholder.jpeg" />
+					</div>
+				</div>
+				<div class="grid-item grid-item-square grid-item-4-columns">
+					<div class="card">
+						<div class="card-link-container">
+							<a class="card-link">Voir le projet</a>
+							<p class="card-link-title">Titre du projet</p>
+						</div>
+						<img class="card-img" src="imgs/placeholder.jpeg" />
+					</div>
+				</div>
+				<div class="grid-item grid-item-square grid-item-3-columns">
+					<div class="card">
+						<div class="card-link-container">
+							<a class="card-link">Voir le projet</a>
+							<p class="card-link-title">Titre du projet</p>
+						</div>
+						<img class="card-img" src="imgs/placeholder.jpeg" />
+					</div>
+				</div>
+				<div class="grid-item grid-item-square grid-item-3-columns">
+					<div class="card">
+						<div class="card-link-container">
+							<a class="card-link">Voir le projet</a>
+							<p class="card-link-title">Titre du projet</p>
+						</div>
+						<img class="card-img" src="imgs/placeholder.jpeg" />
+					</div>
+				</div>
+				<div class="grid-item grid-item-square grid-item-3-columns">
+					<div class="card">
+						<div class="card-link-container">
+							<a class="card-link">Voir le projet</a>
+							<p class="card-link-title">Titre du projet</p>
+						</div>
+						<img class="card-img" src="imgs/placeholder.jpeg" />
+					</div>
+				</div>
+				<div class="grid-item grid-item-square grid-item-3-columns">
+					<div class="card">
+						<div class="card-link-container">
+							<a class="card-link">Voir le projet</a>
+							<p class="card-link-title">Titre du projet</p>
+						</div>
+						<img class="card-img" src="imgs/placeholder.jpeg" />
+					</div>
+				</div>
+				<div class="grid-item grid-item-6-columns">
+					<div class="card">
+						<div class="card-link-container">
+							<a class="card-link">Voir le projet</a>
+							<p class="card-link-title">Titre du projet</p>
+						</div>
+						<img class="card-img" src="imgs/placeholder.jpeg" />
+					</div>
+				</div>
+				<div class="grid-item grid-item-square grid-item-3-columns">
+					<div class="card">
+						<div class="card-link-container">
+							<a class="card-link">Voir le projet</a>
+							<p class="card-link-title">Titre du projet</p>
+						</div>
+						<img class="card-img" src="imgs/placeholder.jpeg" />
+					</div>
+				</div>
+				<div class="grid-item grid-item-square grid-item-3-columns">
+					<div class="card">
+						<div class="card-link-container">
+							<a class="card-link">Voir le projet</a>
+							<p class="card-link-title">Titre du projet</p>
+						</div>
+						<img class="card-img" src="imgs/placeholder.jpeg" />
+					</div>
+				</div>
+				<div class="grid-item grid-item-square grid-item-6-columns">
+					<div class="card">
+						<div class="card-link-container">
+							<a class="card-link">Voir le projet</a>
+							<p class="card-link-title">Titre du projet</p>
+						</div>
+						<img class="card-img" src="imgs/placeholder.jpeg" />
+					</div>
+				</div>
+			</div>
+		</section>
+		<style>
+			.projects-container {
+				overflow: hidden;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.grid {
+				--base-size: 5em;
+				--gap: 3.5em;
+
+				display: flex;
+				flex-wrap: wrap;
+
+				margin: calc(var(--gap) / 2 * -1);
+				width: calc(100% + var(--gap));
+			}
+
+			.grid.grid-12-columns {
+				width: calc(var(--base-size) * 12);
+			}
+
+			.grid-item {
+				--width-columns: 1;
+				--size: calc(var(--base-size) * var(--width-columns));
+				padding: calc(var(--gap) / 2);
+				overflow: hidden;
+				width: var(--size);
+			}
+
+			.grid-item.grid-item-3-columns {
+				--width-columns: 3;
+			}
+
+			.grid-item.grid-item-4-columns {
+				--width-columns: 4;
+			}
+
+			.grid-item.grid-item-6-columns {
+				--width-columns: 6;
+			}
+
+			.debug-blue {
+				background-color: grey;
+			}
+
+			.grid-item.grid-item-square {
+				height: var(--size);
+			}
+
+			.card {
+				height: 100%;
+				width: 100%;
+				--border-radius: 2em;
+				border-radius: var(--border-radius);
+				position: relative;
+			}
+
+			.card-img {
+				border-radius: var(--border-radius);
+			}
+
+			.card-link-container {
+				position: absolute;
+				top: 0;
+				left: 0;
+
+				height: 100%;
+				width: 100%;
+				display: flex;
+				flex-direction: column-reverse;
+				padding-bottom: 2em;
+				align-items: center;
+				color: #ffffff;
+				font-size: 0.8em;
+				border-radius: var(--border-radius);
+
+				background: linear-gradient(0, rgba(0, 20, 119, 0.9) 10%, rgba(255, 255, 255, 0) 100%);
+				opacity: 0;
+				transition: opacity 400ms;
+			}
+
+			.card-link-container:hover {
+				opacity: 1;
+			}
+
+			.card-link-title {
+				font-size: 2em;
+				margin-bottom: 0.5em;
+			}
+
+			.card-link {
+				background-color: #b3005e;
+				border: 1px solid #b3005e;
+				padding: 0.5em 1.5em;
+				border-radius: var(--border-radius);
+				font-size: 1em;
+				transition: background-color 400ms;
+			}
+
+			.card-link:hover {
+				background-color: #850046;
+			}
+		</style>
 	</body>
 </html>
