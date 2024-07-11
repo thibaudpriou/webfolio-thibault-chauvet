@@ -107,8 +107,8 @@ body {
 
 /** HOME-LAYOUT */
 .layout-home {
-	--w-spacing: 1em;
-	--h-spacing: 1em;
+	--w-spacing: 3em;
+	--h-spacing: 3em;
 
 	--details-width: 14em;
 	--title-height: 3em;
@@ -188,6 +188,7 @@ body {
 /** @FIXME value @media */
 @media (min-width: 1300px) {
 	.layout-home {
+		--w-spacing: 1em;
 		grid:
 			'd1 title d2' var(--title-height)
 			'd1 image d2' auto
