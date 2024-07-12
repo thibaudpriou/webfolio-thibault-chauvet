@@ -251,21 +251,30 @@ body {
 	overflow: hidden;
 
 	--z-rotation-base: 11deg; /** adjust this value and everything follows ;) */
+	--z-rotate: 0;
 	transform: translate(-50%, 0) rotateZ(var(--z-rotate));
 	transform-origin: bottom;
+	
+	transition: transform 200ms 200ms;
 	left: 50%;
 	bottom: 0;
+
+	display: block;
 }
 
-.home-details-content-card:nth-child(1) {
+.carousel-item > [data-carousel-idx]:not(.active) .home-details-content-card {
+	z-index: -1; /* hid them behind other cards */
+}
+
+.carousel-item > [data-carousel-idx].active .home-details-content-card:nth-child(1) {
 	z-index: 3;
 	--z-rotate: calc(var(--z-rotation-base) * -1);
 }
 .home-details-content-card:nth-child(2) {
 	z-index: 2;
-	--z-rotate: 0;
+	--z-rotate: 0; /* default value */
 }
-.home-details-content-card:nth-child(3) {
+.carousel-item > [data-carousel-idx].active .home-details-content-card:nth-child(3) {
 	z-index: 1;
 	--z-rotate: var(--z-rotation-base);
 }
@@ -333,10 +342,11 @@ body {
 
 	width: 100%;
 	overflow: hidden;
+	opacity: 1;
 }
 
 .carousel-item > [data-carousel-idx]:not(.active) {
-	display: none;
+	opacity: 0; /* and not display:none so that we can animate on  */
 }
 
 .carousel-indicators {
