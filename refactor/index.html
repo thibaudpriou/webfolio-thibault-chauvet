@@ -315,19 +315,25 @@
 		<section class="projects-container">
 			<h1 class="section-title strikethrough">Projects</h1>
 			<p>Chaque projet est une histoire visuelle tissée avec soin et passion</p>
-			<!-- TODO menu -->
-			<div class="grid grid-12-columns">
-				<div class="grid-item grid-item-square grid-item-4-columns">
+			<div id="menu-container" data-show="">
+				<button class="menu-item" type="button" onclick="setGridActive(this)" data-show="">All</button>
+				<button class="menu-item" type="button" onclick="setGridActive(this)" data-show="webdesign">Webdesign</button>
+				<button class="menu-item" type="button" onclick="setGridActive(this)" data-show="print">Print</button>
+				<button class="menu-item" type="button" onclick="setGridActive(this)" data-show="branding">Branding</button>
+				<button class="menu-item" type="button" onclick="setGridActive(this)" data-show="illustration">Illustration</button>
+			</div>
+			<div class="grid grid-12-columns" id="grid-container" data-show="">
+				<div class="grid-item grid-item-square grid-item-4-columns" data-show="branding">
 					<div class="card">
 						<div class="card-link-container">
 							<!-- TODO fix link -->
-							<a href="#" class="card-link">Voir le projet</a>
+							<a class="card-link">Voir le projet</a>
 							<p class="card-link-title">Désenchantée</p>
 						</div>
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
 				</div>
-				<div class="grid-item grid-item-square grid-item-4-columns">
+				<div class="grid-item grid-item-square grid-item-4-columns" data-show="print">
 					<div class="card">
 						<div class="card-link-container">
 							<!-- TODO fix link -->
@@ -337,7 +343,7 @@
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
 				</div>
-				<div class="grid-item grid-item-square grid-item-4-columns">
+				<div class="grid-item grid-item-square grid-item-4-columns" data-show="branding">
 					<div class="card">
 						<div class="card-link-container">
 							<!-- TODO fix link -->
@@ -347,7 +353,7 @@
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
 				</div>
-				<div class="grid-item grid-item-square grid-item-3-columns">
+				<div class="grid-item grid-item-square grid-item-3-columns" data-show="illustration">
 					<div class="card">
 						<div class="card-link-container">
 							<!-- TODO fix link -->
@@ -357,7 +363,7 @@
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
 				</div>
-				<div class="grid-item grid-item-square grid-item-3-columns">
+				<div class="grid-item grid-item-square grid-item-3-columns" data-show="branding">
 					<div class="card">
 						<div class="card-link-container">
 							<!-- TODO fix link -->
@@ -367,7 +373,7 @@
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
 				</div>
-				<div class="grid-item grid-item-square grid-item-3-columns">
+				<div class="grid-item grid-item-square grid-item-3-columns" data-show="webdesign">
 					<div class="card">
 						<div class="card-link-container">
 							<!-- TODO fix link -->
@@ -377,7 +383,7 @@
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
 				</div>
-				<div class="grid-item grid-item-square grid-item-3-columns">
+				<div class="grid-item grid-item-square grid-item-3-columns" data-show="illustration">
 					<div class="card">
 						<div class="card-link-container">
 							<!-- TODO fix link -->
@@ -387,7 +393,7 @@
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
 				</div>
-				<div class="grid-item grid-item-6-columns grid-item-3-rows">
+				<div class="grid-item grid-item-6-columns grid-item-3-rows" data-show="illustration">
 					<div class="card">
 						<div class="card-link-container">
 							<!-- TODO fix link -->
@@ -397,7 +403,7 @@
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
 				</div>
-				<div class="grid-item grid-item-3-columns">
+				<div class="grid-item grid-item-3-columns" data-show="print">
 					<div class="card">
 						<div class="card-link-container">
 							<!-- TODO fix link -->
@@ -407,7 +413,7 @@
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
 				</div>
-				<div class="grid-item grid-item-square grid-item-3-columns">
+				<div class="grid-item grid-item-square grid-item-3-columns" data-show="print">
 					<div class="card">
 						<div class="card-link-container">
 							<!-- TODO fix link -->
@@ -417,7 +423,7 @@
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
 				</div>
-				<div class="grid-item grid-item-square grid-item-3-columns">
+				<div class="grid-item grid-item-square grid-item-3-columns" data-show="branding">
 					<div class="card">
 						<div class="card-link-container">
 							<!-- TODO fix link -->
@@ -428,7 +434,7 @@
 					</div>
 				</div>
 
-				<div class="grid-item grid-item-square grid-item-3-columns">
+				<div class="grid-item grid-item-square grid-item-3-columns" data-show="webdesign">
 					<div class="card">
 						<div class="card-link-container">
 							<!-- TODO fix link -->
@@ -439,7 +445,7 @@
 					</div>
 				</div>
 
-				<div class="grid-item grid-item-square grid-item-3-columns">
+				<div class="grid-item grid-item-square grid-item-3-columns" data-show="branding">
 					<div class="card">
 						<div class="card-link-container">
 							<!-- TODO fix link -->
@@ -450,7 +456,7 @@
 					</div>
 				</div>
 
-				<div class="grid-item grid-item-square grid-item-3-columns">
+				<div class="grid-item grid-item-square grid-item-3-columns" data-show="webdesign">
 					<div class="card">
 						<div class="card-link-container">
 							<!-- TODO fix link -->

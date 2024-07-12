@@ -1,3 +1,6 @@
+/**
+ * *--- CAROUSEL
+ */
 const NB_CAROUSEL_ITEM = 4;
 
 let activeItemIdx = 0; // init
@@ -68,3 +71,16 @@ function goTo(idx) {
 }
 
 updateCarousel(activeItemIdx); // init
+
+/**
+ * *--- Grid menu
+ */
+
+const menu = document.getElementById('menu-container');
+const grid = document.getElementById('grid-container');
+
+function setGridActive(el) {
+	const { show } = el.dataset;
+	menu.dataset.show = show;
+	grid.dataset.show = show;
+}
