@@ -321,7 +321,7 @@
 					<div class="card">
 						<div class="card-link-container">
 							<a class="card-link">Voir le projet</a>
-							<p class="card-link-title">Titre du projet</p>
+							<p class="card-link-title">Désenchantée</p>
 						</div>
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
@@ -330,7 +330,7 @@
 					<div class="card">
 						<div class="card-link-container">
 							<a class="card-link">Voir le projet</a>
-							<p class="card-link-title">Titre du projet</p>
+							<p class="card-link-title">Sans contrefaçon</p>
 						</div>
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
@@ -339,7 +339,7 @@
 					<div class="card">
 						<div class="card-link-container">
 							<a class="card-link">Voir le projet</a>
-							<p class="card-link-title">Titre du projet</p>
+							<p class="card-link-title">California</p>
 						</div>
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
@@ -348,7 +348,7 @@
 					<div class="card">
 						<div class="card-link-container">
 							<a class="card-link">Voir le projet</a>
-							<p class="card-link-title">Titre du projet</p>
+							<p class="card-link-title">Libertine</p>
 						</div>
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
@@ -357,7 +357,7 @@
 					<div class="card">
 						<div class="card-link-container">
 							<a class="card-link">Voir le projet</a>
-							<p class="card-link-title">Titre du projet</p>
+							<p class="card-link-title">Oui mais... Non</p>
 						</div>
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
@@ -366,7 +366,7 @@
 					<div class="card">
 						<div class="card-link-container">
 							<a class="card-link">Voir le projet</a>
-							<p class="card-link-title">Titre du projet</p>
+							<p class="card-link-title">Appelle mon numéro</p>
 						</div>
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
@@ -375,16 +375,25 @@
 					<div class="card">
 						<div class="card-link-container">
 							<a class="card-link">Voir le projet</a>
-							<p class="card-link-title">Titre du projet</p>
+							<p class="card-link-title">Agnus Dei</p>
 						</div>
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
 				</div>
-				<div class="grid-item grid-item-6-columns">
+				<div class="grid-item grid-item-6-columns grid-item-3-rows">
 					<div class="card">
 						<div class="card-link-container">
 							<a class="card-link">Voir le projet</a>
-							<p class="card-link-title">Titre du projet</p>
+							<p class="card-link-title">L'autre</p>
+						</div>
+						<img class="card-img" src="imgs/placeholder.jpeg" />
+					</div>
+				</div>
+				<div class="grid-item grid-item-3-columns">
+					<div class="card">
+						<div class="card-link-container">
+							<a class="card-link">Voir le projet</a>
+							<p class="card-link-title">Psychiatric</p>
 						</div>
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
@@ -393,16 +402,7 @@
 					<div class="card">
 						<div class="card-link-container">
 							<a class="card-link">Voir le projet</a>
-							<p class="card-link-title">Titre du projet</p>
-						</div>
-						<img class="card-img" src="imgs/placeholder.jpeg" />
-					</div>
-				</div>
-				<div class="grid-item grid-item-square grid-item-3-columns">
-					<div class="card">
-						<div class="card-link-container">
-							<a class="card-link">Voir le projet</a>
-							<p class="card-link-title">Titre du projet</p>
+							<p class="card-link-title">Regrets</p>
 						</div>
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
@@ -411,7 +411,7 @@
 					<div class="card">
 						<div class="card-link-container">
 							<a class="card-link">Voir le projet</a>
-							<p class="card-link-title">Titre du projet</p>
+							<p class="card-link-title">Pas de doute</p>
 						</div>
 						<img class="card-img" src="imgs/placeholder.jpeg" />
 					</div>
@@ -461,12 +461,12 @@
 				--width-columns: 6;
 			}
 
-			.debug-blue {
-				background-color: grey;
-			}
-
 			.grid-item.grid-item-square {
 				height: var(--size);
+			}
+
+			.grid-item.grid-item-3-rows {
+				height: calc(var(--base-size) * 3);
 			}
 
 			.card {
@@ -480,9 +480,12 @@
 			}
 
 			.card-img {
-				transform: scale(1);
 				transition: transform calc(var(--transition-duration) * 0.5);
 				border-radius: var(--border-radius);
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transform: scale(1);
 			}
 
 			.card-link-container {
