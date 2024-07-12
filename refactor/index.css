@@ -627,6 +627,7 @@ body {
 }
 
 
+
 /** MISC */
 
 .projects-container {
@@ -674,3 +675,4 @@ body {
 	width: var(--size-added);
 	z-index: -1;
 }
+

@@ -465,8 +465,113 @@
 
 		<section class="projects-container">
 			<h1 class="section-title strikethrough">À-propos</h1>
+
+			<div class="layout-about">
+				<div class="layout-about-item layout-about-who"></div>
+				<div class="layout-about-item layout-about-lol"></div>
+				<div class="layout-about-item layout-about-skills"></div>
+				<div class="layout-about-item layout-about-fields"></div>
+				<div class="layout-about-item layout-about-training"></div>
+				<div class="layout-about-item layout-about-stats"></div>
+				<div class="layout-about-item layout-about-links"></div>
+				<div class="layout-about-item layout-about-typo"></div>
+				<div class="layout-about-item layout-about-badges"></div>
+				<div class="layout-about-item layout-about-contact"></div>
+				<div class="layout-about-item layout-about-beau-gosse"></div>
+			</div>
 		</section>
 
-		<style></style>
+		<style>
+			/** ABOUT-LAYOUT */
+			.layout-about {
+				--w-spacing: 3em;
+				--h-spacing: 3em;
+
+				display: grid;
+				/* TODO this grid is actually desktop's one */
+				--col-1-width: 6em;
+				--col-2-width: 7em;
+				--col-3-width: 4em;
+				--col-4-width: 4em;
+
+				/* FIXME values here */
+				--row-fields-height: 2em;
+				--row-lol-height: calc(var(--row-fields-height) * 2);
+				--row-who-height: calc(var(--row-fields-height) * 3);
+				--row-typo-height: 1em;
+				--row-stats-height: calc(var(--row-fields-height) * 2 - 0.5em);
+				--row-skills-height: calc(var(--row-fields-height) * 3);
+				--row-badges-height: 1em;
+
+				grid:
+					'who	lol 	fields 		fields' calc(var(--row-fields-height))
+					'who 	lol 	training 	training' calc(var(--row-lol-height) - var(--row-fields-height))
+					'who 	skills 	training 	training' calc(var(--row-who-height) - var(--row-lol-height))
+					'typo 	skills 	beau-gosse	stats' var(--row-typo-height)
+					'links 	skills 	beau-gosse	stats' calc(var(--row-stats-height) - var(--row-typo-height))
+					'links 	skills 	beau-gosse	contact' calc(var(--row-skills-height) - var(--row-stats-height) - var(--row-typo-height))
+					'links 	badges 	badges 		contact' var(--row-badges-height)
+					/ var(--col-1-width) var(--col-2-width) var(--col-3-width) var(--col-4-width);
+				row-gap: var(--h-spacing);
+				column-gap: var(--w-spacing);
+				padding: 0 var(--w-spacing);
+				justify-items: center;
+				align-items: start;
+
+				padding-top: 11em;
+				background: transparent;
+				color: white;
+			}
+
+			.layout-about-item {
+				width: 100%;
+				height: 100%;
+			}
+
+			.layout-about-who {
+				grid-area: who;
+				background-color: blue;
+			}
+			.layout-about-lol {
+				grid-area: lol;
+				background-color: green;
+			}
+			.layout-about-fields {
+				grid-area: fields;
+				background-color: blue;
+			}
+			.layout-about-typo {
+				grid-area: typo;
+				background-color: green;
+			}
+			.layout-about-training {
+				grid-area: training;
+				background-color: red;
+			}
+			.layout-about-skills {
+				grid-area: skills;
+				background-color: orange;
+			}
+			.layout-about-links {
+				grid-area: links;
+				background-color: blue;
+			}
+			.layout-about-badges {
+				grid-area: badges;
+				background-color: red;
+			}
+			.layout-about-beau-gosse {
+				grid-area: beau-gosse;
+				background-color: green;
+			}
+			.layout-about-stats {
+				grid-area: stats;
+				background-color: orange;
+			}
+			.layout-about-contact {
+				grid-area: contact;
+				background-color: blue;
+			}
+		</style>
 	</body>
 </html>
