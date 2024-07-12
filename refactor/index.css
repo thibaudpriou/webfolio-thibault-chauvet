@@ -687,7 +687,7 @@ body {
 
 /** MISC */
 
-.projects-container {
+.section-container {
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
@@ -706,6 +706,10 @@ body {
 	padding: 0 1em;
 }
 
+.section-title.section-title-inverted {
+	color: white;
+}
+
 .strikethrough {
 	/* NOTE: requires that parent exposes a --font-size property */
 	--size-added: 25%; /* on each side */
@@ -719,7 +723,7 @@ body {
 	height: 1px;
 	background-color: #001477;
 	width: var(--size-added);
-	z-index: -1;
+	z-index: 1;
 }
 
 .strikethrough:after {
@@ -730,6 +734,13 @@ body {
 	height: 1px;
 	background-color: #001477;
 	width: var(--size-added);
-	z-index: -1;
+	z-index: 1;
 }
+
+.section-title-inverted.strikethrough:before,
+.section-title-inverted.strikethrough:after
+ {
+	background-color: white;
+}
+
 

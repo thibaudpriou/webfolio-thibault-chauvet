@@ -104,3 +104,31 @@ function setGridActive(el) {
 	menu.dataset.show = show;
 	grid.dataset.show = show;
 }
+
+/**
+ * *--- LOL le scroll
+ * yes, it starts at "500 000 000 000" and can go up to infinity
+ * just because it's fun
+ */
+
+const scrollCounterElement = document.getElementById('lol-scroll-number');
+const LOL_COUNTER_START = 500000000000;
+// let's save value for next site visit, to outsmart people
+const localStorageKey = 'lol:scrollCounter';
+let scrollCount = localStorage.getItem(localStorageKey) ?? LOL_COUNTER_START;
+
+if (scrollCounterElement) {
+	document.addEventListener('scrollend', () => {
+		scrollCount++;
+		localStorage.setItem(localStorageKey, scrollCount);
+		const scrollCountStr = scrollCount.toString().padStart(11, '0');
+		scrollCounterElement.innerHTML =
+			scrollCountStr.substring(0, 3) +
+			' ' +
+			scrollCountStr.substring(3, 6) +
+			'<br>' +
+			scrollCountStr.substring(6, 9) +
+			' ' +
+			scrollCountStr.substring(9, 12);
+	});
+}

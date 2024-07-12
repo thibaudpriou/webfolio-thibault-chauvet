@@ -22,17 +22,17 @@
 					</span>
 				</span>
 				<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
-				<span class="layout-home-item layout-home-title-container">
-					<span class="carousel-item">
+				<div class="layout-home-item layout-home-title-container">
+					<div class="carousel-item">
 						<span data-carousel-idx="0" class="home-title">design graphique</span>
 						<span data-carousel-idx="1" class="home-title">webdesign</span>
 						<span data-carousel-idx="2" class="home-title">graphisme print</span>
 						<span data-carousel-idx="3" class="home-title">identité visuelle</span>
-					</span>
-				</span>
-				<span class="layout-home-item layout-home-details-1-container">
-					<span class="layout-home-details">
-						<span class="carousel-item">
+					</div>
+				</div>
+				<div class="layout-home-item layout-home-details-1-container">
+					<div class="layout-home-details">
+						<div class="carousel-item">
 							<!-- Design graphique -->
 							<div data-carousel-idx="0" class="home-details-content">
 								<span class="home-details-1-logo">
@@ -90,7 +90,7 @@
 							</div>
 
 							<!-- Webdesign -->
-							<span data-carousel-idx="1" class="home-details-content">
+							<div data-carousel-idx="1" class="home-details-content">
 								<span class="home-details-1-logo">
 									<svg width="100%" height="100%" viewBox="0 0 44 43" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path
@@ -130,10 +130,10 @@
 									</span>
 								</div>
 								<img class="home-details-content-image" src="imgs/home/details/bague.png" alt="Bague" />
-							</span>
+							</div>
 
 							<!-- Graphisme print -->
-							<span data-carousel-idx="2" class="home-details-content">
+							<div data-carousel-idx="2" class="home-details-content">
 								<span class="home-details-1-logo">
 									<svg width="100%" height="100%" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path
@@ -167,10 +167,10 @@
 									</span>
 								</div>
 								<img class="home-details-content-image" src="imgs/home/details/lettre.png" alt="Lettre" />
-							</span>
+							</div>
 
 							<!-- Identité visuelle -->
-							<span data-carousel-idx="3" class="home-details-content">
+							<div data-carousel-idx="3" class="home-details-content">
 								<span class="home-details-1-logo">
 									<svg width="100%" height="100%" viewBox="0 0 37 38" fill="white" xmlns="http://www.w3.org/2000/svg">
 										<path
@@ -204,15 +204,15 @@
 									</span>
 								</div>
 								<img class="home-details-content-image" src="imgs/home/details/flacons.png" alt="flacons" />
-							</span>
-						</span>
-					</span>
-				</span>
-				<span class="layout-home-item layout-home-details-2-container">
-					<span class="layout-home-details">
-						<span class="carousel-item">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layout-home-item layout-home-details-2-container">
+					<div class="layout-home-details">
+						<div class="carousel-item">
 							<!-- Design graphique -->
-							<span data-carousel-idx="0" class="home-details-content">
+							<div data-carousel-idx="0" class="home-details-content">
 								<div class="home-details-content-cards">
 									<span class="home-details-content-card">
 										<img src="imgs/home/details/cards/DA1.jpg" alt="" />
@@ -227,7 +227,7 @@
 								<span class="home-details-content-title">créations</span>
 								<hr class="home-details-content-line" />
 								<span class="home-details-content-text"> Branding & direction artistique Logotype, affiche, brochure... </span>
-							</span>
+							</div>
 
 							<!-- Webdesign -->
 							<span data-carousel-idx="1" class="home-details-content">
@@ -282,9 +282,9 @@
 								<hr class="home-details-content-line" />
 								<span class="home-details-content-text"> Image de marque. Personnalisation multi-support </span>
 							</span>
-						</span>
-					</span>
-				</span>
+						</div>
+					</div>
+				</div>
 				<span class="layout-home-item layout-home-image-container">
 					<span class="carousel-item">
 						<!-- Design graphique -->
@@ -312,7 +312,7 @@
 				<span class="layout-home-item layout-home-scroll-btn-container">scroll button desktop</span>
 			</div>
 		</section>
-		<section class="projects-container">
+		<section id="projects" class="section-container">
 			<h1 class="section-title strikethrough">Projects</h1>
 			<p>Chaque projet est une histoire visuelle tissée avec soin et passion</p>
 			<div id="menu-container" data-show="">
@@ -469,46 +469,100 @@
 			</div>
 		</section>
 
-		<section class="projects-container">
-			<h1 class="section-title strikethrough">À-propos</h1>
+		<section id="about" class="section-container about-container">
+			<h1 class="section-title strikethrough section-title-inverted">À-propos</h1>
 
 			<div class="layout-about">
-				<div class="layout-about-item layout-about-who"></div>
-				<div class="layout-about-item layout-about-lol"></div>
-				<div class="layout-about-item layout-about-skills"></div>
-				<div class="layout-about-item layout-about-fields"></div>
-				<div class="layout-about-item layout-about-training"></div>
-				<div class="layout-about-item layout-about-stats"></div>
-				<div class="layout-about-item layout-about-links"></div>
-				<div class="layout-about-item layout-about-typo"></div>
-				<div class="layout-about-item layout-about-badges"></div>
-				<div class="layout-about-item layout-about-contact"></div>
-				<div class="layout-about-item layout-about-beau-gosse"></div>
+				<div class="layout-about-item layout-about-who about-card">
+					<span class="about-card-hr"><hr><hr><hr>
+					</span>
+					<p class="about-card-title">Qui suis-je ?</p>
+					<p class="about-card-text">
+						<strong>Directeur artistique, webdesigner et graphiste</strong> chevronné, je cultive ma passion créative depuis plus de 12 ans.
+						<strong>Mon approche créative</strong> se reflète dans chaque projet, offrant une esthétique distinctive et
+						<strong>une expérience utilisateur exceptionnelle.</strong>
+					</p>
+				</div>
+				<div class="layout-about-item layout-about-lol about-card about-card-dark">
+					<div class="about-card-column-content">
+						<!-- TODO icon -->
+						 <span class="about-card-column-content-20" id="lol-scroll-number">500 000<br>000 000</span>
+						 <span>de scroll<br>effectués</span>
+					</div>
+					<div class="about-card-column-content">
+						<!-- TODO icon -->
+						 <span><span class="about-card-column-content-50">99</span><span class="about-card-column-content-20">%</span></span>
+						 <span>de sourire<br>client</span>
+					</div>
+					<div class="about-card-column-content">
+						<!-- TODO icon -->
+						 <span class="about-card-column-content-50">17</span>
+						 <span>plantes<br>vertes</span>
+					</div>
+				</div>
+				<div class="layout-about-item layout-about-skills about-card">
+					<span class="about-card-hr"><hr><hr><hr></span>
+					<p class="about-card-title">Côté technique</p>
+					<p class="about-card-text">
+						Avec une parfaite assimilation de la <strong>suite Adobe</strong> (Photoshop, Illustrator, Indesign) et <strgong>Figma</strgong>, j'apporte une perspective unique à l'UI
+						Design, au webdesign et à l'édition multisupports.
+					</p>
+					<p class="about-card-text">Ma connaissance du HTML et CSS permet d'<strong>élaborer des expériences optimales.</strong></p>
+				</p>
+				</div>
+				<div class="layout-about-item layout-about-fields about-card about-card-primary"></div>
+				<div class="layout-about-item layout-about-training about-card">
+					<span class="about-card-hr"><hr><hr><hr></span>
+					<p class="about-card-title">Les fondations</p>
+					<p class="about-card-text">Titulaire d'une licence de graphiste concepteur et d'un BTS com graphique et multimédia, <strong>j'allie savoir-faire et créativité.</strong></p>
+				</div>
+				<div class="layout-about-item layout-about-stats about-card about-card-dark">
+					<div class="about-card-column-content">
+						<span class="about-card-column-content-50">186</span>
+						 <span>projets réalisés</span>
+					</div>
+					<div class="about-card-column-content">
+						 <span><span class="about-card-column-content-30">+</span><span class="about-card-column-content-50">12</span></span>
+						 <span>ans<br> d'activité</span>
+					</div>
+				</div>
+				<div class="layout-about-item layout-about-links about-card"></div>
+				<div class="layout-about-item layout-about-typo about-card about-card-primary"></div>
+				<div class="layout-about-item layout-about-badges about-card"></div>
+				<div class="layout-about-item layout-about-contact about-card about-card-primary"></div>
+				<div class="layout-about-item layout-about-beau-gosse about-card"></div>
 			</div>
 		</section>
 
+		<section id="contact" class="section-container"></section>
+
 		<style>
 			/** ABOUT-LAYOUT */
+			.about-container {
+				background: linear-gradient(90deg, #010a44 0%, #001477 50%, #010a44 100%);
+			}
+
 			.layout-about {
-				--w-spacing: 3em;
-				--h-spacing: 3em;
+				--w-spacing: 50px;
+				--h-spacing: 50px;
 
 				display: grid;
 				/* TODO this grid is actually desktop's one */
-				--col-1-width: 6em;
-				--col-2-width: 7em;
-				--col-3-width: 4em;
-				--col-4-width: 4em;
+				--col-1-width: 285px;
+				--col-2-width: 354px;
+				--col-3-width: 225px;
+				--col-4-width: 225px;
 
 				/* FIXME values here */
-				--row-fields-height: 2em;
-				--row-lol-height: calc(var(--row-fields-height) * 2);
-				--row-who-height: calc(var(--row-fields-height) * 3);
-				--row-typo-height: 1em;
-				--row-stats-height: calc(var(--row-fields-height) * 2 - 0.5em);
-				--row-skills-height: calc(var(--row-fields-height) * 3);
-				--row-badges-height: 1em;
+				--row-fields-height: 93px;
+				--row-lol-height: 200px;
+				--row-who-height: 319px;
+				--row-typo-height: 50px;
+				--row-stats-height: 165.5px;
+				--row-skills-height: 303px;
+				--row-badges-height: 100px;
 
+				/* FIXME: there is 1 more row... Training does not end at typo's start /killme  */
 				grid:
 					'who	lol 	fields 		fields' calc(var(--row-fields-height))
 					'who 	lol 	training 	training' calc(var(--row-lol-height) - var(--row-fields-height))
@@ -536,47 +590,105 @@
 
 			.layout-about-who {
 				grid-area: who;
-				background-color: blue;
 			}
 			.layout-about-lol {
 				grid-area: lol;
-				background-color: green;
 			}
 			.layout-about-fields {
 				grid-area: fields;
-				background-color: blue;
 			}
 			.layout-about-typo {
 				grid-area: typo;
-				background-color: green;
 			}
 			.layout-about-training {
 				grid-area: training;
-				background-color: red;
 			}
 			.layout-about-skills {
 				grid-area: skills;
-				background-color: orange;
 			}
 			.layout-about-links {
 				grid-area: links;
-				background-color: blue;
 			}
 			.layout-about-badges {
 				grid-area: badges;
-				background-color: red;
 			}
 			.layout-about-beau-gosse {
 				grid-area: beau-gosse;
-				background-color: green;
 			}
 			.layout-about-stats {
 				grid-area: stats;
-				background-color: orange;
 			}
 			.layout-about-contact {
 				grid-area: contact;
-				background-color: blue;
+			}
+
+			.about-card {
+				border-radius: 20px;
+				border-width: 1px;
+
+				border: 1px solid #ffffff;
+				background: linear-gradient(180deg, #ffffff 27.08%, #e0e0f1 70.31%);
+				color: black;
+				padding: 19px;
+			}
+
+			.about-card-dark {
+				border: 1px solid #3d3a3f;
+				background: linear-gradient(191.94deg, #332e2a 17.46%, #1c170c 81.3%);
+				color: white;
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.about-card-primary {
+				border: 1px solid #7a71f7;
+				background: linear-gradient(270deg, #4d43f4 23.23%, #3c35bc 77.4%);
+				color: white;
+				display: flex;
+				flex-direction: row;
+			}
+
+			.about-card-column-content {
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+				text-align: center;
+				font-size: 15px;
+			}
+			
+			.about-card-column-content-20 {
+				margin-top: 6px;
+				font-size: 20px;
+			}
+			.about-card-column-content-30 {
+				font-size: 30px;
+			}
+			.about-card-column-content-50 {
+				font-size: 50px;
+			}
+
+			.about-card-column-content:not(:first-child) 	{
+				border-left: 1px solid #3D3A3F;
+			}
+
+			.about-card-title {
+				font-weight: 700;
+				font-size: 30px;
+			}
+			
+			.about-card-text {				
+				font-size: 16px;
+				margin-top: 1em;
+			}
+
+			.about-card-hr {
+				display: flex;
+				gap: 1em;
+			}
+
+			.about-card-hr hr {
+				flex: 1;
+    			border-top: 1px solid #B3005E;
 			}
 		</style>
 	</body>
