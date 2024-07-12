@@ -2,6 +2,8 @@
  * *--- CAROUSEL
  */
 const NB_CAROUSEL_ITEM = 4;
+const AUTO_CAROUSEL_MS = 7000;
+const AUTO_CAROUSEL_RESTART_DELAY_MS = 3000; // first change will occur after this + AUTO_CAROUSEL_MS
 
 let activeItemIdx = 0; // init
 const carousel = document.getElementById('carousel');
@@ -53,11 +55,26 @@ function goNext() {
 	updateCarousel(newIndex);
 }
 
+let autoCarouselInterval = undefined;
+
+function stopAutoCarousel() {
+	if (autoCarouselInterval !== undefined) {
+		clearInterval(autoCarouselInterval);
+	}
+}
+
+function startAutoCarousel() {
+	stopAutoCarousel();
+	autoCarouselInterval = setInterval(goNext, AUTO_CAROUSEL_MS);
+}
+
 /**
  * Activates given carousel item
  * @param {number} idx
  */
 function goTo(idx) {
+	stopAutoCarousel();
+
 	let newIndex = idx;
 
 	if (idx >= NB_CAROUSEL_ITEM - 1) {
@@ -68,9 +85,12 @@ function goTo(idx) {
 	}
 
 	updateCarousel(newIndex);
+
+	setTimeout(startAutoCarousel, AUTO_CAROUSEL_RESTART_DELAY_MS);
 }
 
 updateCarousel(activeItemIdx); // init
+startAutoCarousel();
 
 /**
  * *--- Grid menu
