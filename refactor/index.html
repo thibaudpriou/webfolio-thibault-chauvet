@@ -313,14 +313,14 @@
 			</div>
 		</section>
 		<section id="projects" class="section-container">
-			<h1 class="section-title strikethrough">Projects</h1>
-			<p>Chaque projet est une histoire visuelle tissée avec soin et passion</p>
-			<div id="menu-container" data-show="">
-				<button class="menu-item" type="button" onclick="setGridActive(this)" data-show="">All</button>
-				<button class="menu-item" type="button" onclick="setGridActive(this)" data-show="webdesign">Webdesign</button>
-				<button class="menu-item" type="button" onclick="setGridActive(this)" data-show="print">Print</button>
-				<button class="menu-item" type="button" onclick="setGridActive(this)" data-show="branding">Branding</button>
-				<button class="menu-item" type="button" onclick="setGridActive(this)" data-show="illustration">Illustration</button>
+			<h1 class="section-container-title strikethrough">Projects</h1>
+			<p class="section-container-subtitle">Chaque projet est une histoire visuelle<br>tissée avec soin et passion</p>
+			<div class="projects-menu" id="menu-container" data-show="">
+				<button class="projects-menu-item" type="button" onclick="setGridActive(this)" data-show="">All</button>
+				<button class="projects-menu-item" type="button" onclick="setGridActive(this)" data-show="webdesign">Webdesign</button>
+				<button class="projects-menu-item" type="button" onclick="setGridActive(this)" data-show="print">Print</button>
+				<button class="projects-menu-item" type="button" onclick="setGridActive(this)" data-show="branding">Branding</button>
+				<button class="projects-menu-item" type="button" onclick="setGridActive(this)" data-show="illustration">Illustration</button>
 			</div>
 			<div class="grid grid-12-columns" id="grid-container" data-show="">
 				<div class="grid-item grid-item-square grid-item-4-columns" data-show="branding">
@@ -469,8 +469,8 @@
 			</div>
 		</section>
 
-		<section id="about" class="section-container about-container">
-			<h1 class="section-title strikethrough section-title-inverted">À-propos</h1>
+		<section id="about" class="section-container section-container-about">
+			<h1 class="section-container-title strikethrough section-container-title-inverted">À-propos</h1>
 
 			<div class="layout-about">
 				<div class="layout-about-item layout-about-who about-card">
@@ -528,18 +528,35 @@
 				</div>
 				<div class="layout-about-item layout-about-links about-card"></div>
 				<div class="layout-about-item layout-about-typo about-card about-card-primary"></div>
-				<div class="layout-about-item layout-about-badges about-card"></div>
+				<div class="layout-about-item layout-about-badges about-card about-card-alternative"></div>
 				<div class="layout-about-item layout-about-contact about-card about-card-primary"></div>
 				<div class="layout-about-item layout-about-beau-gosse about-card"></div>
 			</div>
 		</section>
 
-		<section id="contact" class="section-container"></section>
+		<section id="contact" class="section-container">
+			<h1 class="section-container-title strikethrough">Contact</h1>
+			<p class="section-container-subtitle">Créons l'extraordinaire ensemble.<br>Parlez-moi de votre projet</p>
+		</section>
 
 		<style>
 			/** ABOUT-LAYOUT */
-			.about-container {
+			.section-container-about {
+				position: relative;
+				padding-top: 100px;
+			}
+
+			.section-container-about:after {
+				/* use pseudo-element to control height */
+				content: '';
+				position: absolute;
+				top: 0;left: 0;
+				width: 100%;
+					/* How much we want colored background to be cropped at their bottom */
+				--background-crop-bottom: 50px;
+				height: calc(100% - var(--background-crop-bottom));
 				background: linear-gradient(90deg, #010a44 0%, #001477 50%, #010a44 100%);
+				z-index: -1;
 			}
 
 			.layout-about {
@@ -562,14 +579,13 @@
 				--row-skills-height: 303px;
 				--row-badges-height: 100px;
 
-				/* FIXME: there is 1 more row... Training does not end at typo's start /killme  */
 				grid:
 					'who	lol 	fields 		fields' calc(var(--row-fields-height))
-					'who 	lol 	training 	training' calc(var(--row-lol-height) - var(--row-fields-height))
-					'who 	skills 	training 	training' calc(var(--row-who-height) - var(--row-lol-height))
+					'who 	lol 	training 	training' calc(var(--row-lol-height) - var(--row-fields-height) - var(--h-spacing))
+					'who 	skills 	training 	training' calc(var(--row-who-height) - var(--row-lol-height) - var(--h-spacing))
 					'typo 	skills 	beau-gosse	stats' var(--row-typo-height)
-					'links 	skills 	beau-gosse	stats' calc(var(--row-stats-height) - var(--row-typo-height))
-					'links 	skills 	beau-gosse	contact' calc(var(--row-skills-height) - var(--row-stats-height) - var(--row-typo-height))
+					'links 	skills 	beau-gosse	stats' calc(var(--row-stats-height) - var(--row-typo-height) - var(--h-spacing))
+					'links 	skills 	beau-gosse	contact' calc(var(--row-skills-height) - var(--row-stats-height) - var(--row-typo-height) - 2 * var(--h-spacing))
 					'links 	badges 	beau-gosse  contact' var(--row-badges-height)
 					/ var(--col-1-width) var(--col-2-width) var(--col-3-width) var(--col-4-width);
 				row-gap: var(--h-spacing);
@@ -578,7 +594,7 @@
 				justify-items: center;
 				align-items: start;
 
-				padding-top: 11em;
+				padding-top: 40px;
 				background: transparent;
 				color: white;
 			}
@@ -648,12 +664,20 @@
 				flex-direction: row;
 			}
 
+			.about-card-alternative {
+				background: linear-gradient(84.08deg, #F6F6F6 34.2%, #FFFFFF 68.83%);
+			}
+
 			.about-card-column-content {
 				display: flex;
 				flex-direction: column;
 				flex: 1;
 				text-align: center;
 				font-size: 15px;
+			}
+
+			.about-card-column-content > * {
+				flex: 1;
 			}
 			
 			.about-card-column-content-20 {
