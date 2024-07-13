@@ -537,7 +537,65 @@
 		<section id="contact" class="section-container">
 			<h1 class="section-container-title strikethrough">Contact</h1>
 			<p class="section-container-subtitle">Créons l'extraordinaire ensemble.<br>Parlez-moi de votre projet</p>
+			<!-- TODO ask Baby for API keys -->
 		</section>
+
+		<footer>
+			<div class="footer-content">
+				<div>
+					<!-- TODO add clickable icon for the lulz -->
+					<p>Thibault Chauvet Copyright 2024</p>
+				</div>
+				<div>
+					<!-- icon 1 -->
+					<!-- icon 2 -->
+					<!-- icon 3 -->
+				</div>
+				<div>
+					<p>Directeur artistique - Webdesigner - Graphisme print</p>
+				</div>
+			</div>
+		</footer>
+
+		<style>
+			/** FOOTER */
+			footer {
+				position:relative;
+				color: white;
+			}
+
+			footer:after {
+				/* use pseudo-element to control height */
+				content: '';
+				position: absolute;
+				left: 0;
+				width: 100%;
+				/* How much we want colored background to be added at its start */
+				--background-added-top: 50px;
+				height: calc(100% + var(--background-added-top));
+				bottom: 0;
+				background: linear-gradient(90deg, #010a44 0%, #001477 50%, #010a44 100%);
+				z-index: -1;
+			}
+
+			.footer-content {
+				border: 1px solid white;
+				border-radius: 20px;
+				font-size: 20px;
+				display: flex;
+				padding: 0 30px;
+			}
+
+			.footer-content > * {
+				padding: 20px;
+				text-wrap: nowrap;
+			}
+			
+			.footer-content > *:not(:first-child) {
+				margin-left: 30px;
+				border-left: 1px solid white;
+			}
+		</style>
 
 		<style>
 			/** ABOUT-LAYOUT */
