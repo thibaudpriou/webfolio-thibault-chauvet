@@ -132,3 +132,24 @@ if (scrollCounterElement) {
 			scrollCountStr.substring(9, 12);
 	});
 }
+
+/**
+ * About phone: fake clock that actually refreshes for the LOL
+ */
+
+const clockElement = document.getElementById('about-links-topbar-clock');
+function toTwoDigits(num) {
+	const s = '00' + num;
+	return s.substring(s.length - 2);
+}
+
+function dateHoursMinutes() {
+	const now = new Date();
+	return toTwoDigits(now.getHours()) + ':' + toTwoDigits(now.getMinutes());
+}
+
+clockElement.innerHTML = dateHoursMinutes();
+
+setInterval(() => {
+	clockElement.innerHTML = dateHoursMinutes();
+}, 5000); // refresh every 10 seconds, fair enough
