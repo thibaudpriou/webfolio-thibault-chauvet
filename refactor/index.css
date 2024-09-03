@@ -192,6 +192,12 @@ body {
 	position: relative;
 	background-color: unset;
 	cursor: pointer;
+	fill: white;
+}
+
+.scroll-arrow:hover {
+	fill: black;
+	background-color: white;
 }
 
 .scroll-arrow:after {
@@ -348,9 +354,13 @@ body {
 	height: 3em;
 	padding: 1em;
 	background-color: var(--letsgo-logo-color);
+	border: 1px solid var(--letsgo-logo-color);
 	border-radius: 100%;
-	border: inherit;
 	cursor: pointer;
+}
+
+.home-details-1-letsgo-logo:hover {
+	background-color: var(--letsgo-logo-hover-color);
 }
 
 /** CAROUSEL */
@@ -377,6 +387,7 @@ body {
 }
 
 .carousel-item > [data-carousel-idx]:not(.active) {
+	z-index: -1;
 	opacity: 0; /* and not display:none so that we can animate on  */
 }
 
@@ -574,6 +585,10 @@ body {
 	padding-right: 0; /* cf parent "gap" */
 	font-weight: 500;
 	font-size: 1.25em;
+}
+
+.projects-menu-item:hover {
+	color: #4D43F4;
 }
 
 #menu-container[data-show=""] .projects-menu-item[data-show=""],
