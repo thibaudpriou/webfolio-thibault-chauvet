@@ -109,6 +109,99 @@ body {
 	justify-content: center;
 }
 
+/** HEADER: NAVIGATION */
+.nav-container {
+	position:absolute;
+	top:0;
+	width: 100%;
+	z-index: 1;
+	display: flex;
+	justify-content: center;
+	padding: 30px 0;
+}
+
+.nav {
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: calc(2 * var(--home-details-width) + var(--home-image-width) + 2 * var(--home-w-gap));
+}
+
+.nav-links {
+	width: var(--home-details-width);
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav-title {
+	font-size: 20px;
+	font-weight: 700;
+	user-select: none;
+	flex-grow: 1;
+	text-align: center;
+}
+
+.nav-link {
+	color: inherit;
+	background: none;
+	border: none;
+}
+
+.nav-link:hover {
+	font-weight: 700;
+}
+
+/** FOOTER */
+footer {
+	position:relative;
+	color: white;
+	display: flex;
+	justify-content: center;
+
+	/* How much we want colored background to be added at its start */
+	--background-added-top: 100px; /* TODO fix value */
+
+	padding: 50px;
+}
+
+footer:after {
+	/* use pseudo-element to control height */
+	content: '';
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: calc(100% + var(--background-added-top));
+	bottom: 0;
+	background: linear-gradient(90deg, #010a44 0%, #001477 50%, #010a44 100%);
+	z-index: -1;
+}
+
+.footer-content {
+	border: 1px solid white;
+	border-radius: 20px;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	height: 75px;
+	padding: 20px 0;
+}
+
+.footer-content > * {
+	height: 100%;
+	padding: 0 50px;
+	text-wrap: nowrap;
+}
+
+.footer-content > *:not(:first-child) {
+	border-left: 1px solid white;
+}
+
+.footer-content-icons {
+	display: flex;
+	gap: 30px;
+}
+
 /** HOME-LAYOUT */
 .layout-home {
 	--home-h-gap: 3em;
@@ -809,4 +902,389 @@ body {
 .section-container-title-inverted.strikethrough:after
  {
 	background-color: white;
+}
+
+/** ABOUT-LAYOUT */
+.section-container-about {
+	position: relative;
+	padding-top: 100px;
+	overflow: unset;
+}
+
+.section-container-about:after {
+	/* use pseudo-element to control height */
+	content: '';
+	position: absolute;
+	top: 0;left: 0;
+	width: 100%;
+		/* How much we want colored background to be cropped at their bottom */
+	--background-crop-bottom: 50px;
+	height: calc(100% - var(--background-crop-bottom));
+	background: linear-gradient(90deg, #010a44 0%, #001477 50%, #010a44 100%);
+	z-index: -1;
+}
+
+.layout-about {
+	
+	display: grid;
+	/* TODO this grid is actually desktop's one */
+	--col-1-width: 285px;
+	--col-2-width: 354px;
+	--col-3-width: 225px;
+	--col-4-width: 225px;
+	
+	--about-h-gap: 50px;
+	--about-w-gap: 50px;
+	--row-1-height: 100px;
+	--row-2-height: 50px;
+	--row-3-height: 75px;
+	--row-4-height: 50px;
+	--row-5-height: 60px;
+	--row-6-height: 0px;
+	--row-7-height: 90px;
+
+	grid:
+		'who	lol 	fields 		fields' var(--row-1-height)
+		'who 	lol 	training 	training' var(--row-2-height)
+		'who 	skills 	training 	training' var(--row-3-height)
+		'typo 	skills 	beau-gosse	stats' var(--row-4-height)
+		'links 	skills 	beau-gosse	stats' var(--row-5-height)
+		'links 	skills 	beau-gosse	contact' var(--row-6-height)
+		'links 	badges 	beau-gosse  contact' var(--row-7-height)
+		/ var(--col-1-width) var(--col-2-width) var(--col-3-width) var(--col-4-width);
+	row-gap: var(--about-h-gap);
+	column-gap: var(--about-w-gap);
+	justify-items: center;
+	align-items: start;
+
+	padding-top: 40px;
+	background: transparent;
+	color: white;
+}
+
+.layout-about-item {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.layout-about-who {
+	grid-area: who;
+}
+.layout-about-lol {
+	grid-area: lol;
+}
+.layout-about-fields {
+	grid-area: fields;
+}
+.layout-about-typo {
+	grid-area: typo;
+}
+.layout-about-training {
+	grid-area: training;
+}
+.layout-about-skills {
+	grid-area: skills;
+}
+.layout-about-links {
+	grid-area: links;
+}
+.layout-about-badges {
+	grid-area: badges;
+}
+.layout-about-beau-gosse {
+	grid-area: beau-gosse;
+}
+.layout-about-stats {
+	grid-area: stats;
+}
+.layout-about-contact {
+	grid-area: contact;
+}
+
+.about-card {
+	border-radius: 20px;
+	border-width: 1px;
+
+	border: 1px solid #ffffff;
+	background: linear-gradient(180deg, #ffffff 27.08%, #e0e0f1 70.31%);
+	color: black;
+	padding: 19px;
+	box-shadow: 10px 15px 30px 0px #00000033;
+	
+}
+
+
+.about-card-dark {
+	border: 1px solid #3d3a3f;
+	background: linear-gradient(191.94deg, #332e2a 17.46%, #1c170c 81.3%);
+	color: white;
+	display: flex;
+	flex-direction: row;
+
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.about-card-primary {
+	border: 1px solid #7a71f7;
+	background: linear-gradient(270deg, #4d43f4 23.23%, #3c35bc 77.4%);
+	color: white;
+	display: flex;
+	flex-direction: row;
+}
+
+.about-card-primary-inverted {
+	border: 1px solid #7a71f7;
+	background: linear-gradient(270deg, #3c35bc 23.23%, #4d43f4 77.4%);
+	color: white;
+	display: flex;
+	flex-direction: row;
+}
+
+.about-card-alternative {
+	background: linear-gradient(84.08deg, #F6F6F6 34.2%, #FFFFFF 68.83%);
+}
+
+.about-card-column-content-pretty {
+	font-family: 'Felix titling';
+}
+
+.about-card-column-content {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	text-align: center;
+	font-size: 15px;
+}
+
+.about-card-column-content > * {
+	flex: 1;
+}
+
+.about-card-column-content-20 {
+	margin-top: 6px;
+	font-size: 20px;
+}
+.about-card-column-content-30 {
+	font-size: 30px;
+}
+.about-card-column-content-50 {
+	font-size: 50px;
+}
+
+.about-card-column-content:not(:first-child) 	{
+	border-left: 1px solid #3D3A3F;
+}
+
+.about-card-title {
+	font-weight: 700;
+	font-size: 30px;
+	margin-top: 5px;
+}
+
+.about-card-text {				
+	font-size: 16px;
+	margin-top: 5px;
+	font-weight: 300;
+}
+
+.about-card-text > strong{
+	font-weight: 600;
+}
+
+.about-card-hr {
+	display: flex;
+	gap: 1em;
+}
+
+.about-card-hr hr {
+	flex: 1;
+	border-top: 1px solid #B3005E;
+}
+
+.about-who-img {
+
+	width: 86px;
+	height: 97px;
+	position: absolute;
+	right: 14px;
+	bottom: -25px;
+}
+
+.about-training {
+	padding-right: 130px;
+}
+
+.about-training-img-container {
+	position: absolute;
+	width: 151px;
+	height: 196px;
+	right: 0;
+	bottom: 0;
+	overflow: hidden;
+	border-radius: 20px;
+}
+
+.about-trainint-img {
+	transform: rotateY(180deg);
+}
+
+.about-typo {
+	display: flex;
+	align-items: center;
+	padding: 0 13px;
+}
+
+.about-typo > * {
+	flex:1;
+}
+
+.about-typo > *:not(:first-child) {
+	margin-left: 6.5px;
+}
+
+.about-typo-icon {
+	padding-top: 13px;
+	padding-bottom: 13px;
+}
+
+.about-typo-line {
+	position: relative;
+}
+.about-typo-line:after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 1px;
+	background-color: white;
+	top: 50%;
+}
+
+.about-typo-text {
+	font-size: 30px;
+	padding-bottom: 3px; /* font-dependant hack for a correct vertical center */
+}
+
+.about-typo-text-bold {
+	font-weight: 700;
+}
+
+.about-card.about-links {
+	position: relative;
+	z-index: 0;
+	padding: 0;
+	overflow: hidden;
+	border: 0px;
+}
+
+.about-links-background-container {
+	width: 469px;
+	margin-top: 13px;
+}
+
+.about-links-topbar-container {
+	position: absolute;
+	right: 130px;
+	top: 59px;
+	gap: 5px;
+	display: flex;
+	height: 10px;
+	align-items: center;
+}
+
+.about-links-topbar-clock {
+	color: white;
+	font-size: 12px;
+	font-weight: 700;
+	margin-left: 11px;
+}
+
+
+.about-links-logo-container {
+	position: absolute;
+	right: -58px;
+	top: 118px;
+	gap: 23px;
+	display: flex;
+	align-items: flex-start;
+}
+
+.about-links-logo {
+	display: flex;
+	flex-direction: column;
+	width: 73px;
+	text-decoration: none;
+	color: white;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.about-links-logo-title {
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+	margin-top: 6px;
+}
+
+a.about-links-logo:hover .about-links-logo-title {
+	text-shadow: 0px 6px 6px #000000;
+}
+
+a.about-links-logo:hover svg {
+	filter: drop-shadow(0px 6px 10px rgb(0 0 0 / 0.5));
+}
+
+.about-fields-items {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	justify-content: space-around;
+}
+
+.about-fields-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 5px;
+}
+
+.about-fields-item-icon {
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+.about-fields-item-text {
+	text-wrap: nowrap;
+	font-weight: 600;
+	font-size: 15px;
+}
+
+.about-badges-items {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.about-badges-item {
+	/* we expect --color to be set */
+	border: solid 1px white;
+	background-color: var(--color);
+	display: block;
+	width: 55px;
+	height: 55px;
+	border-radius: 100%;
+	box-shadow: 0px 5px 10px 0px #00147733;
+}
+
+.about-card.about-beau-gosse {
+	padding: 0;
+	overflow: hidden;
+}
+
+.about-beau-gosse-img-container {
+	width: 420px;
+	height: 100%;
+	margin-left: -84px;
+	margin-top: -55px;
 }
