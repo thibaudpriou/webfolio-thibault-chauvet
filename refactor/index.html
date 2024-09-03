@@ -7,7 +7,65 @@
 		<script type="text/javascript" src="index.js" defer></script>
 	</head>
 	<body>
+		<header class="nav-container">
+			<div class="nav">
+				<!-- FIXME this won't work on project page -->
+				<div class="nav-links">
+					<button class="nav-link" type="button" onclick="scrollToId('carousel')">Accueil</button>
+					<button class="nav-link" type="button" onclick="scrollToId('projects')">Projets</button>
+				</div>
+				<span class="nav-title">Thibault Chauvet</span>
+				<div class="nav-links">
+					<button class="nav-link" type="button" onclick="scrollToId('about')">À-propos</button>
+					<button class="nav-link" type="button" onclick="scrollToId('contact')">Contact</button>
+				</div>
+			</div>
+		</header>
 		<section id="carousel">
+			<style>
+				/* TODO move to main css */
+				.nav-container {
+					position:absolute;
+					top:0;
+					width: 100%;
+					z-index: 1;
+					display: flex;
+					justify-content: center;
+					padding: 30px 0;
+				}
+
+				.nav {
+					color: white;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: calc(2 * var(--home-details-width) + var(--home-image-width) + 2 * var(--home-w-gap));
+				}
+
+				.nav-links {
+					width: var(--home-details-width);
+					display: flex;
+					justify-content: space-between;
+				}
+
+				.nav-title {
+					font-size: 20px;
+					font-weight: 700;
+					user-select: none;
+					flex-grow: 1;
+					text-align: center;
+				}
+
+				.nav-link {
+					color: inherit;
+					background: none;
+					border: none;
+				}
+
+				.nav-link:hover {
+					font-weight: 700;
+				}
+			</style>
 			<div class="carousel-background"></div>
 
 			<!-- HOME-LAYOUT -->
@@ -866,13 +924,13 @@
 				
 				display: grid;
 				/* TODO this grid is actually desktop's one */
-				--w-spacing: 50px;
 				--col-1-width: 285px;
 				--col-2-width: 354px;
 				--col-3-width: 225px;
 				--col-4-width: 225px;
 				
-				--h-spacing: 50px;
+				--about-h-gap: 50px;
+				--about-w-gap: 50px;
 				--row-1-height: 100px;
 				--row-2-height: 50px;
 				--row-3-height: 75px;
@@ -890,9 +948,8 @@
 					'links 	skills 	beau-gosse	contact' var(--row-6-height)
 					'links 	badges 	beau-gosse  contact' var(--row-7-height)
 					/ var(--col-1-width) var(--col-2-width) var(--col-3-width) var(--col-4-width);
-				row-gap: var(--h-spacing);
-				column-gap: var(--w-spacing);
-				padding: 0 var(--w-spacing);
+				row-gap: var(--about-h-gap);
+				column-gap: var(--about-w-gap);
 				justify-items: center;
 				align-items: start;
 

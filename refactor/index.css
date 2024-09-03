@@ -96,6 +96,10 @@ h6 {
 body {
 	font-family: 'Mustica Pro';
 	font-weight: 400;
+
+	--home-details-width: 14em;
+	--home-image-width: 52em;
+	--home-w-gap: 3em;
 }
 
 #carousel {
@@ -107,12 +111,9 @@ body {
 
 /** HOME-LAYOUT */
 .layout-home {
-	--w-spacing: 3em;
-	--h-spacing: 3em;
+	--home-h-gap: 3em;
 
-	--details-width: 14em;
 	--title-height: 3em;
-	--image-width: 52em;
 	--bottom-height: 14em;
 
 	display: grid;
@@ -121,14 +122,14 @@ body {
 		'title title' var(--title-height)
 		'd1 d2' auto
 		'image image' calc(var(--bottom-height) + 6em)
-		/ var(--details-width) var(--details-width);
-	row-gap: var(--h-spacing);
-	column-gap: var(--w-spacing);
-	padding: 0 var(--w-spacing);
+		/ var(--home-details-width) var(--home-details-width);
+	row-gap: var(--home-h-gap);
+	column-gap: var(--home-w-gap);
+	padding: 0 var(--home-w-gap);
 	justify-items: center;
 	align-items: start;
 
-	padding-top: 11em;
+	padding-top: 150px;
 	background: transparent;
 	color: white;
 }
@@ -221,13 +222,16 @@ body {
 
 /** @FIXME value @media */
 @media (min-width: 1300px) {
+	body {
+		--home-w-gap: 1em;
+	}
+
 	.layout-home {
-		--w-spacing: 1em;
 		grid:
 			'd1 title d2' var(--title-height)
 			'd1 image d2' auto
 			'scroll-btn image indicators' var(--bottom-height)
-			/ var(--details-width) var(--image-width) var(--details-width);
+			/ var(--home-details-width) var(--home-image-width) var(--home-details-width);
 	}
 
 	.layout-home-indicators-container {
