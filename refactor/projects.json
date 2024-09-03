@@ -1,0 +1,14 @@
+{
+	"#description": "the 'projects' property is used for random navigation in projects page",
+	"#how to add projects": "page url should match links in index.html",
+	"projects": [
+		{
+			"title": "Fricote #1",
+			"page": "/projects/fricote 1.html"
+		},
+		{
+			"title": "Fricote #2",
+			"page": "/projects/fricote 2.html"
+		}
+	]
+}
