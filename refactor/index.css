@@ -176,6 +176,34 @@ body {
 	grid-area: scroll-btn;
 	display: none;
 }
+
+.scroll-arrow-container {
+	padding: 15px;
+	display: flex;
+    justify-content: center;
+}
+
+.scroll-arrow {
+	width: 25px;
+    height: 25px;
+    padding: 6px;
+    border: 1px solid white;
+    border-radius: 100%;
+	position: relative;
+	background-color: unset;
+	cursor: pointer;
+}
+
+.scroll-arrow:after {
+	--click-area-enlarged: 5px;
+	content:'';
+	position: absolute;
+	top: calc(-1 * var(--click-area-enlarged));
+	left: calc(-1 * var(--click-area-enlarged));
+	width: calc(100% + 2 * var(--click-area-enlarged));
+	height: calc(100% + 2 * var(--click-area-enlarged));
+}
+
 .layout-home-indicators-container {
 	grid-area: indicators;
 }
@@ -312,6 +340,7 @@ body {
 .home-details-1-letsgo-text {
 	font-weight: 700;
 	text-transform: uppercase;
+	user-select: none;
 }
 
 .home-details-1-letsgo-logo {
@@ -320,6 +349,8 @@ body {
 	padding: 1em;
 	background-color: var(--letsgo-logo-color);
 	border-radius: 100%;
+	border: inherit;
+	cursor: pointer;
 }
 
 /** CAROUSEL */
@@ -760,5 +791,3 @@ body {
  {
 	background-color: white;
 }
-
-

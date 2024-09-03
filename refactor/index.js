@@ -134,6 +134,16 @@ if (scrollCounterElement) {
 }
 
 /**
+ * Misc
+ */
+
+/* Scroll to a section ID */
+function scrollToId(id) {
+	const y = document.getElementById(id).offsetTop;
+	scrollTo({ top: y, behavior: 'smooth' });
+}
+
+/**
  * About phone: fake clock that actually refreshes for the LOL
  */
 
