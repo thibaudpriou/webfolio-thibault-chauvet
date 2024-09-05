@@ -137,10 +137,26 @@ if (scrollCounterElement) {
  * Misc
  */
 
-/* Scroll to a section ID */
-function scrollToId(id) {
-	const y = document.getElementById(id).offsetTop;
+function scrollToId(sectionId) {
+	/* scroll to a section ID */
+	const y = document.getElementById(sectionId).offsetTop;
 	scrollTo({ top: y, behavior: 'smooth' });
+}
+
+function onIndexLoad() {
+	const hash = document.location.hash; // #example
+	if (!hash) {
+		return; // do nothing
+	}
+
+	setTimeout(function () {
+		// override default beahaviour
+		scrollTo({ top: 0 });
+	}, 0);
+
+	setTimeout(function () {
+		scrollToId(hash.slice(1));
+	}, 0);
 }
 
 /**
