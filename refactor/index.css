@@ -150,6 +150,7 @@ body {
 
 .nav-link:hover {
 	font-weight: 700;
+	cursor: pointer;
 }
 
 /** FOOTER */
