@@ -174,8 +174,10 @@ function dateHoursMinutes() {
 	return toTwoDigits(now.getHours()) + ':' + toTwoDigits(now.getMinutes());
 }
 
-clockElement.innerHTML = dateHoursMinutes();
-
-setInterval(() => {
+if (clockElement) {
 	clockElement.innerHTML = dateHoursMinutes();
-}, 5000); // refresh every 10 seconds, fair enough
+
+	setInterval(() => {
+		clockElement.innerHTML = dateHoursMinutes();
+	}, 5000); // refresh every 10 seconds, fair enough
+}
