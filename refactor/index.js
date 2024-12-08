@@ -124,11 +124,11 @@ if (scrollCounterElement) {
 		const scrollCountStr = scrollCount.toString().padStart(11, '0');
 		scrollCounterElement.innerHTML =
 			scrollCountStr.substring(0, 3) +
-			' ' +
+			'&nbsp;' +
 			scrollCountStr.substring(3, 6) +
-			'<br>' +
-			scrollCountStr.substring(6, 9) +
 			' ' +
+			scrollCountStr.substring(6, 9) +
+			'&nbsp;' +
 			scrollCountStr.substring(9, 12);
 	});
 }

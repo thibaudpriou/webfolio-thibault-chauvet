@@ -1,647 +1,764 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="stylesheet" href="index.css" />
-		<script type="text/javascript" src="index.js" defer></script>
 
-		<!-- TODO @thibaultchauvet add title + metadata + etc  -->
-	</head>
-	<body onload="onIndexLoad()">
-		<header class="nav-container">
-			<div class="nav">
-				<!-- FIXME this won't work on project page -->
-				<div class="nav-links">
-					<button class="nav-link" type="button" onclick="scrollToId('carousel')">Accueil</button>
-					<button class="nav-link" type="button" onclick="scrollToId('projects')">Projets</button>
-				</div>
-				<span class="nav-title">Thibault Chauvet</span>
-				<div class="nav-links">
-					<button class="nav-link" type="button" onclick="scrollToId('about')">À-propos</button>
-					<button class="nav-link" type="button" onclick="scrollToId('contact')">Contact</button>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+	<link rel="stylesheet" href="index.css" />
+	<script type="text/javascript" src="index.js" defer></script>
+
+	<!-- TODO @thibaultchauvet add title + metadata + etc  -->
+</head>
+
+<body onload="onIndexLoad()">
+	<header class="nav-container">
+		<div class="nav">
+			<!-- FIXME this won't work on project page -->
+			<div class="nav-links">
+				<button class="nav-link" type="button" onclick="scrollToId('carousel')">Accueil</button>
+				<button class="nav-link" type="button" onclick="scrollToId('projects')">Projets</button>
+			</div>
+			<span class="nav-title">Thibault Chauvet</span>
+			<div class="nav-links">
+				<button class="nav-link" type="button" onclick="scrollToId('about')">À-propos</button>
+				<button class="nav-link" type="button" onclick="scrollToId('contact')">Contact</button>
+			</div>
+		</div>
+	</header>
+	<section id="carousel">
+		<div class="carousel-background"></div>
+
+		<!-- HOME-LAYOUT -->
+		<!-- TODO: fix animations -->
+		<div class="layout-home">
+			<span class="layout-home-item layout-home-indicators-container">
+				<span class="carousel-indicators">
+					<span data-carousel-idx="0" class="carousel-indicator" onclick="goTo(0)"></span>
+					<span data-carousel-idx="1" class="carousel-indicator" onclick="goTo(1)"></span>
+					<span data-carousel-idx="2" class="carousel-indicator" onclick="goTo(2)"></span>
+					<span data-carousel-idx="3" class="carousel-indicator" onclick="goTo(3)"></span>
+				</span>
+			</span>
+			<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
+			<div class="layout-home-item layout-home-title-container">
+				<div class="carousel-item">
+					<span data-carousel-idx="0" class="home-title">design graphique</span>
+					<span data-carousel-idx="1" class="home-title">webdesign</span>
+					<span data-carousel-idx="2" class="home-title">graphisme print</span>
+					<span data-carousel-idx="3" class="home-title">identité visuelle</span>
 				</div>
 			</div>
-		</header>
-		<section id="carousel">
-			<div class="carousel-background"></div>
-
-			<!-- HOME-LAYOUT -->
-			<!-- TODO: fix animations -->
-			<div class="layout-home">
-				<span class="layout-home-item layout-home-indicators-container">
-					<span class="carousel-indicators">
-						<span data-carousel-idx="0" class="carousel-indicator" onclick="goTo(0)"></span>
-						<span data-carousel-idx="1" class="carousel-indicator" onclick="goTo(1)"></span>
-						<span data-carousel-idx="2" class="carousel-indicator" onclick="goTo(2)"></span>
-						<span data-carousel-idx="3" class="carousel-indicator" onclick="goTo(3)"></span>
-					</span>
-				</span>
-				<!-- FIXME back navigation fails: absolute + customFadeIn to animate z-index -->
-				<div class="layout-home-item layout-home-title-container">
+			<div class="layout-home-item layout-home-details-1-container">
+				<div class="layout-home-details">
 					<div class="carousel-item">
-						<span data-carousel-idx="0" class="home-title">design graphique</span>
-						<span data-carousel-idx="1" class="home-title">webdesign</span>
-						<span data-carousel-idx="2" class="home-title">graphisme print</span>
-						<span data-carousel-idx="3" class="home-title">identité visuelle</span>
-					</div>
-				</div>
-				<div class="layout-home-item layout-home-details-1-container">
-					<div class="layout-home-details">
-						<div class="carousel-item">
-							<!-- Design graphique -->
-							<div data-carousel-idx="0" class="home-details-content">
-								<span class="home-details-1-logo">
-									<svg width="100%" height="100%" viewBox="0 0 37 38" fill="white" xmlns="http://www.w3.org/2000/svg">
-										<path
-											d="M26.7066 7.18885C26.7066 6.37994 27.0297 5.60417 27.6047 5.03219L22.5457 0C21.0086 1.52894 20.0117 3.49473 19.677 5.604C19.5944 6.125 19.5521 6.65476 19.5521 7.18885C19.5521 9.88519 20.629 12.4711 22.5457 14.3777C24.4625 16.2843 27.0622 17.3554 29.7729 17.3554C30.3098 17.3554 30.8424 17.3134 31.3661 17.2312C33.4867 16.8983 35.4629 15.9066 37 14.3777L31.941 9.3455C31.366 9.91748 30.5861 10.2388 29.7729 10.2388C28.9596 10.2388 28.1797 9.91748 27.6047 9.3455C27.0297 8.77352 26.7066 7.99775 26.7066 7.18885Z"
-											fill="white"
-										/>
-										<path
-											d="M7.22714 10.2388C6.41393 10.2388 5.63403 9.91748 5.059 9.3455L6.31817e-07 14.3777C1.53709 15.9066 3.51335 16.8983 5.63385 17.2312C6.15763 17.3134 6.69021 17.3554 7.22714 17.3554C9.93785 17.3554 12.5375 16.2843 14.4543 14.3777C16.371 12.4711 17.4479 9.88519 17.4479 7.18885C17.4479 6.65476 17.4056 6.125 17.323 5.604C16.9883 3.49473 15.9914 1.52894 14.4543 6.28469e-07L9.39529 5.03219C9.97031 5.60417 10.2934 6.37994 10.2934 7.18885C10.2934 7.99775 9.97031 8.77352 9.39529 9.3455C8.82026 9.91748 8.04035 10.2388 7.22714 10.2388Z"
-											fill="white"
-										/>
-										<path
-											d="M31.9398 28.6533C31.3648 28.0821 30.5855 27.7612 29.7729 27.7612C28.9596 27.7612 28.1797 28.0825 27.6047 28.6545C27.0297 29.2265 26.7066 30.0023 26.7066 30.8112C26.7066 31.6198 27.0295 32.3953 27.6042 32.9673L27.6047 32.9678L22.5457 38L22.5437 37.998C21.0077 36.4693 20.0115 34.5043 19.677 32.396C19.5944 31.875 19.5521 31.3452 19.5521 30.8112C19.5521 28.1148 20.629 25.5289 22.5457 23.6223C24.4625 21.7157 27.0622 20.6446 29.7729 20.6446C30.3098 20.6446 30.8424 20.6866 31.3661 20.7688C33.4867 21.1017 35.4629 22.0934 37 23.6223L31.941 28.6545L31.9398 28.6533Z"
-											fill="white"
-										/>
-										<path
-											d="M10.2934 30.8112C10.2934 31.6201 9.97031 32.3958 9.39529 32.9678L14.4543 38C15.9914 36.4711 16.9883 34.5053 17.323 32.396C17.4056 31.875 17.4479 31.3452 17.4479 30.8112C17.4479 28.1148 16.371 25.5289 14.4543 23.6223C12.5375 21.7157 9.93785 20.6446 7.22714 20.6446C6.69021 20.6446 6.15763 20.6866 5.63385 20.7688C3.51334 21.1017 1.53709 22.0934 0 23.6223L5.059 28.6545C5.63403 28.0825 6.41393 27.7612 7.22714 27.7612C8.04035 27.7612 8.82026 28.0825 9.39529 28.6545C9.97031 29.2265 10.2934 30.0023 10.2934 30.8112Z"
-											fill="white"
-										/>
-									</svg>
-								</span>
-								<span class="home-details-content-text">
-									Imaginer et concevoir<br />
-									des créations graphiques
-								</span>
-								<div class="home-details-1-letsgo">
-									<span class="home-details-1-letsgo-text">let's go</span>
-									<button class="home-details-1-letsgo-logo" type="button" onclick="scrollToId('projects')" style="--letsgo-logo-color: #b3005e;--letsgo-logo-hover-color: #850046;">
-										<svg width="100%" height="100%" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path d="M6 8V14" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
-											<path
-												d="M6 8C6.55228 8 7 7.55228 7 7C7 6.44772 6.55228 6 6 6C5.44772 6 5 6.44772 5 7C5 7.55228 5.44772 8 6 8Z"
-												stroke="white"
-												stroke-linecap="round"
-												stroke-linejoin="round"
-											/>
-											<path
-												d="M3 4V1.5C3 1.36739 3.04515 1.24021 3.12553 1.14645C3.2059 1.05268 3.31491 1 3.42857 1H8.57143C8.68509 1 8.7941 1.05268 8.87447 1.14645C8.95485 1.24021 9 1.36739 9 1.5V4"
-												stroke="white"
-												stroke-linecap="round"
-												stroke-linejoin="round"
-											/>
-											<path
-												d="M2.67503 4L1.04817 7.14773C1.01045 7.22272 0.994413 7.30601 1.00172 7.38895C1.00903 7.47188 1.03942 7.55143 1.08974 7.61932L6 14L10.9103 7.61932C10.9606 7.55143 10.991 7.47188 10.9983 7.38895C11.0056 7.30601 10.9895 7.22272 10.9518 7.14773L9.32497 4H2.67503Z"
-												stroke="white"
-												stroke-linecap="round"
-												stroke-linejoin="round"
-											/>
-										</svg>
-									</button>
-								</div>
-
-								<img class="home-details-content-image" src="imgs/home/details/pantone.png" alt="pantone" />
-							</div>
-
-							<!-- Webdesign -->
-							<div data-carousel-idx="1" class="home-details-content">
-								<span class="home-details-1-logo">
-									<svg width="100%" height="100%" viewBox="0 0 44 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path
-											d="M22.119 19.3024C25.4514 16.0459 25.4514 10.7654 22.119 7.5089L22.0201 7.60548C18.6876 10.8623 18.6876 16.1425 22.0201 19.399L22.119 19.3024Z"
-											fill="white"
-										/>
-										<path
-											d="M7.67697 21.6225L7.57805 21.7194C10.9105 24.9759 16.3135 24.9759 19.646 21.7194L19.7449 21.6225C16.4125 18.366 11.0094 18.366 7.67697 21.6225Z"
-											fill="white"
-										/>
-										<path
-											d="M36.6599 21.7194L36.5609 21.816C33.2285 25.0725 27.8255 25.0725 24.493 21.816L24.5919 21.7191C27.9244 18.4626 33.3274 18.4626 36.6599 21.7194Z"
-											fill="white"
-										/>
-										<path
-											d="M22.119 24.1361C18.7865 27.3926 18.7865 32.6731 22.119 35.9296L22.2179 35.833C25.5504 32.5761 25.5504 27.296 22.2179 24.0395L22.119 24.1361Z"
-											fill="white"
-										/>
-										<path
-											fill-rule="evenodd"
-											clip-rule="evenodd"
-											d="M0 21.5L22 0L44 21.5L22 43L0 21.5ZM40.4532 21.7191L22.2243 3.90457L3.99551 21.7191L22.2243 39.5339L40.4532 21.7191Z"
-											fill="white"
-										/>
-									</svg>
-								</span>
-								<span class="home-details-content-text">Design, parcours utilisateur, ergonomie sur mesure </span>
-								<div class="home-details-1-letsgo">
-									<span class="home-details-1-letsgo-text">let's go</span>
-									<button class="home-details-1-letsgo-logo" type="button" onclick="scrollToId('projects')" style="--letsgo-logo-color: #2a24e4;--letsgo-logo-hover-color: #1813A3;">
-										<svg width="100%" height="100%" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path
-												d="M12.5301 5.06383H12.4648C12.9723 4.01472 12.8247 1.88434 12.7868 1.43813L12.7285 0.773872L12.0868 0.905532C11.6523 0.994298 9.55412 1.46196 8.75383 2.29302C8.36369 1.65642 7.9209 1.05511 7.43032 0.49566L7.00042 0L6.56645 0.493872C6.07579 1.05389 5.633 1.65581 5.24294 2.29302C4.44265 1.46196 2.34451 0.994298 1.90995 0.905532L1.27065 0.774468L1.21232 1.43872C1.1744 1.88494 1.02683 4.01532 1.5343 5.06443H1.47072C1.20735 5.06478 0.948889 5.13726 0.722265 5.27431C0.495642 5.41137 0.309146 5.60798 0.182206 5.84366C0.0570846 6.06898 -0.0057506 6.32479 0.000413621 6.58376C0.00657784 6.84272 0.0815099 7.09511 0.217204 7.31396C1.34239 9.14051 4.30499 10.5637 5.84899 11.2083C5.18896 11.7542 4.7647 12.5426 4.66722 13.4043V14H9.33363V13.4043C9.28364 12.7311 9.00152 12.0978 8.53743 11.617H9.33363C9.64304 11.617 9.93977 11.7426 10.1585 11.966C10.3773 12.1894 10.5002 12.4925 10.5002 12.8085H11.6668C11.6659 12.2527 11.4749 11.7148 11.1267 11.2877C10.7785 10.8606 10.295 10.5712 9.76003 10.4696C11.2521 9.71362 12.9869 8.61864 13.7848 7.31217C13.9199 7.09306 13.9941 6.84061 13.9997 6.58177C14.0052 6.32293 13.9418 6.0674 13.8163 5.84247C13.6894 5.60733 13.5032 5.41114 13.2771 5.27423C13.0509 5.13732 12.793 5.06468 12.5301 5.06383ZM9.56695 3.15745C9.78569 2.856 10.7248 2.48485 11.6668 2.23285C11.6972 3.24562 11.6155 4.28877 11.395 4.59319C11.3063 4.71709 11.1944 4.8217 11.0657 4.90091C10.937 4.98012 10.7941 5.03234 10.6454 5.05453C10.4967 5.07671 10.3452 5.06842 10.1997 5.03012C10.0542 4.99183 9.91761 4.9243 9.79794 4.83149C9.55246 4.63894 9.39074 4.3557 9.34755 4.04267C9.30436 3.72964 9.38313 3.41179 9.56695 3.15745ZM7.00042 1.81643C7.61989 2.60996 8.16703 3.50298 8.16703 3.87234C8.16703 4.18834 8.04412 4.4914 7.82534 4.71485C7.60656 4.9383 7.30983 5.06383 7.00042 5.06383C6.69102 5.06383 6.39429 4.9383 6.17551 4.71485C5.95673 4.4914 5.83382 4.18834 5.83382 3.87234C5.83382 3.49285 6.38154 2.60638 7.00042 1.81643ZM2.33751 2.22987C3.27837 2.48187 4.21749 2.85302 4.4339 3.15745C4.61629 3.41094 4.69459 3.72714 4.65209 4.03871C4.6096 4.35028 4.44969 4.6326 4.20641 4.82553C4.08673 4.91834 3.95015 4.98587 3.80464 5.02416C3.65913 5.06246 3.50761 5.07076 3.35892 5.04857C3.21023 5.02639 3.06737 4.97416 2.93866 4.89495C2.80996 4.81574 2.698 4.71113 2.60933 4.58723C2.38884 4.28579 2.30718 3.24085 2.33751 2.22987ZM6.04031 12.8085C6.30594 12.4119 6.62977 12.0595 7.00042 11.7636C7.37108 12.0595 7.69491 12.4119 7.96054 12.8085H6.04031ZM12.7967 6.68009C12.0419 7.91447 10.1508 8.98562 8.69375 9.66953C9.08428 8.99431 9.30418 8.23046 9.33363 7.44681H8.16703C8.05912 8.43864 7.65136 9.37151 7.00042 10.1157C6.34949 9.37151 5.94173 8.43864 5.83382 7.44681H4.66722C4.69667 8.22855 4.91552 8.99063 5.30418 9.66477C3.85059 8.97906 1.96128 7.90791 1.20473 6.67949C1.18075 6.6406 1.16802 6.59558 1.16802 6.54962C1.16802 6.50366 1.18075 6.45863 1.20473 6.41974C1.23057 6.3705 1.26888 6.32925 1.31568 6.30033C1.36247 6.2714 1.41602 6.25585 1.47072 6.25532H12.5301C12.5849 6.25571 12.6386 6.27112 12.6856 6.29993C12.7326 6.32875 12.7712 6.36992 12.7973 6.41915C12.821 6.45837 12.8335 6.50359 12.8334 6.5497C12.8333 6.59581 12.8206 6.64097 12.7967 6.68009Z"
-												fill="white"
-											/>
-										</svg>
-									</button>
-								</div>
-								<img class="home-details-content-image" src="imgs/home/details/bague.png" alt="Bague" />
-							</div>
-
-							<!-- Graphisme print -->
-							<div data-carousel-idx="2" class="home-details-content">
-								<span class="home-details-1-logo">
-									<svg width="100%" height="100%" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-										<path
-											d="M26.9751 24.9954L26.973 24.9924L31.5076 21.8115L31.5084 21.8126C31.7942 22.2211 32.2024 22.528 32.6744 22.6895C33.1469 22.8512 33.6592 22.8589 34.1379 22.7115C34.4026 22.63 34.6495 22.5033 34.8684 22.3387C35.0454 22.2057 35.204 22.0478 35.339 21.8689C35.641 21.4688 35.809 20.9839 35.819 20.4838C35.8289 19.9837 35.6803 19.494 35.3945 19.085C35.2667 18.9022 35.1144 18.7397 34.9429 18.6015C34.7306 18.4304 34.4889 18.2964 34.2276 18.207C33.7551 18.0454 33.2428 18.0377 32.7642 18.1851C32.2855 18.3325 31.8651 18.6274 31.5631 19.0276L27.1578 15.7127L27.1583 15.7122C28.1648 14.3785 29.5662 13.3956 31.1615 12.9043L31.1657 12.903C32.76 12.413 34.4661 12.439 36.0397 12.9774C37.6147 13.5163 38.9762 14.5409 39.9291 15.9042C40.882 17.2675 41.3773 18.8996 41.3441 20.5666C41.3109 22.2336 40.7508 23.8499 39.7442 25.1838C38.7376 26.5178 37.3361 27.5009 35.7406 27.9922C34.1464 28.4832 32.4404 28.4581 30.8665 27.9206L30.8624 27.9191C29.2885 27.3806 27.9279 26.3572 26.9751 24.9954Z"
-											fill="white"
-										/>
-										<path
-											d="M25.6827 14.6183L25.6796 14.6204L22.5211 10.1014L22.5222 10.1006C22.9321 9.81276 23.241 9.4031 23.4049 8.93023C23.5689 8.45692 23.5791 7.94458 23.434 7.46665C23.3538 7.20234 23.2284 6.95605 23.0649 6.73795C22.9327 6.56167 22.7756 6.40379 22.5974 6.26969C22.1987 5.96968 21.7147 5.80405 21.2146 5.79656C20.7145 5.78906 20.2242 5.94008 19.8138 6.22797C19.6303 6.35665 19.4671 6.50972 19.3279 6.68194C19.1558 6.89501 19.0207 7.13739 18.93 7.39914C18.766 7.87244 18.7558 8.38478 18.9008 8.86272C19.0459 9.34066 19.3387 9.75966 19.7374 10.0597L16.4008 14.4813L16.4002 14.4809C15.0715 13.4809 14.0955 12.0844 13.6121 10.4915L13.6108 10.4873C13.1286 8.89535 13.1631 7.18917 13.7093 5.61287C14.2559 4.03518 15.2872 2.66859 16.6552 1.70897C18.0233 0.749342 19.6578 0.245948 21.3247 0.270931C22.9915 0.295914 24.6051 0.847992 25.9341 1.84804C27.2631 2.84809 28.2393 4.24476 28.7228 5.83789C29.2059 7.42962 29.1723 9.13581 28.627 10.7123L28.6256 10.7165C28.0793 12.293 27.0492 13.6588 25.6827 14.6183Z"
-											fill="white"
-										/>
-										<path
-											d="M15.9361 26.9953L15.933 26.9974C14.5665 27.957 13.5364 29.3227 12.9901 30.8992L12.9887 30.9034C12.4434 32.4799 12.4099 34.1861 12.8929 35.7778C13.3764 37.3709 14.3526 38.7676 15.6816 39.7677C17.0106 40.7677 18.6242 41.3198 20.291 41.3448C21.9579 41.3698 23.5925 40.8664 24.9605 39.9067C26.3285 38.9471 27.3598 37.5805 27.9065 36.0028C28.4526 34.4265 28.4871 32.7204 28.0049 31.1284L28.0036 31.1242C27.5201 29.5311 26.5439 28.1344 25.2149 27.1344L21.8783 31.556L21.8794 31.5569C22.2775 31.8568 22.57 32.2755 22.7149 32.753C22.8599 33.2309 22.8497 33.7433 22.6857 34.2166C22.595 34.4783 22.4599 34.7207 22.2878 34.9338C22.1487 35.106 21.9854 35.2591 21.802 35.3877C21.3915 35.6756 20.9012 35.8266 20.4011 35.8192C19.9011 35.8117 19.417 35.646 19.0183 35.346C18.8401 35.2119 18.683 35.054 18.5508 34.8778C18.3873 34.6597 18.2619 34.4134 18.1817 34.1491C18.0366 33.6711 18.0468 33.1588 18.2108 32.6855C18.3748 32.2122 18.6842 31.8022 19.0946 31.5143L15.9361 26.9953Z"
-											fill="white"
-										/>
-										<path
-											d="M14.6406 16.6203L14.6428 16.6233L10.1081 19.8042L10.1073 19.8031C9.82149 19.3946 9.41335 19.0877 8.94128 18.9262C8.46878 18.7645 7.95649 18.7568 7.47783 18.9042C7.21312 18.9858 6.96621 19.1124 6.7473 19.277C6.57036 19.41 6.41171 19.5679 6.27673 19.7468C5.97474 20.1469 5.80673 20.6318 5.79677 21.1319C5.7868 21.632 5.9354 22.1217 6.22127 22.5307C6.34905 22.7135 6.50132 22.876 6.67285 23.0142C6.88507 23.1853 7.12679 23.3193 7.38809 23.4087C7.86059 23.5703 8.37289 23.578 8.85155 23.4306C9.33021 23.2832 9.75066 22.9883 10.0526 22.5881L14.4579 25.903L14.4575 25.9035C13.4509 27.2372 12.0495 28.2201 10.4542 28.7114L10.45 28.7127C8.85569 29.2027 7.14966 29.1767 5.57604 28.6383C4.00102 28.0994 2.63951 27.0749 1.68663 25.7115C0.733741 24.3482 0.238407 22.7161 0.271615 21.0491C0.304824 19.3821 0.864873 17.7658 1.87149 16.4319C2.87811 15.0979 4.27962 14.1148 5.87515 13.6235C7.46929 13.1325 9.17533 13.1576 10.7492 13.6952L10.7533 13.6966C12.3272 14.2351 13.6878 15.2585 14.6406 16.6203Z"
-											fill="white"
-										/>
-									</svg>
-								</span>
-								<span class="home-details-content-text">Créations imprimés, à l'image de votre identité de marque </span>
-								<div class="home-details-1-letsgo">
-									<span class="home-details-1-letsgo-text">let's go</span>
-									<button class="home-details-1-letsgo-logo" type="button" onclick="scrollToId('projects')" style="--letsgo-logo-color: #b3002b;--letsgo-logo-hover-color: #76001C;">
-										<svg width="100%" height="100%" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path
-												d="M10.9959 6.11803C10.8637 4.61812 10.1401 3.21785 8.96564 2.18964C7.79121 1.16142 6.25005 0.578799 4.64196 0.55511V0.013443L1.74775 0.013443C1.2872 0.013443 0.845508 0.184648 0.519847 0.489394C0.194185 0.794141 0.0112305 1.20747 0.0112305 1.63844L0.0112305 11.3884C0.0112305 11.8194 0.194185 12.2327 0.519847 12.5375C0.845508 12.8422 1.2872 13.0134 1.74775 13.0134H4.64196V12.4718C5.51277 12.4705 6.37411 12.3026 7.17311 11.9786C7.9721 11.6545 8.6919 11.1811 9.28832 10.5873C9.88746 9.99317 10.3485 9.28929 10.6424 8.52006C10.9363 7.75083 11.0567 6.93296 10.9959 6.11803ZM8.44321 9.84632C7.95794 10.3353 7.36959 10.7248 6.71532 10.9902C6.06105 11.2557 5.35507 11.3912 4.64196 11.3884H3.48428V11.9301H1.74775C1.59424 11.9301 1.44701 11.873 1.33845 11.7715C1.2299 11.6699 1.16891 11.5321 1.16891 11.3884L1.16891 10.3051H2.3266L2.3266 9.22178H1.16891V8.13844H2.3266V7.05511H1.16891V5.97178H2.3266V4.88844H1.16891L1.16891 3.80511H2.3266L2.3266 2.72178H1.16891V1.63844C1.16891 1.49478 1.2299 1.35701 1.33845 1.25543C1.44701 1.15384 1.59424 1.09678 1.74775 1.09678H3.48428V1.63844H4.44342C5.79132 1.61681 7.09783 2.07437 8.09936 2.9188C9.1009 3.76323 9.72293 4.93168 9.83996 6.18844C9.8901 6.85539 9.79186 7.52482 9.55145 8.15443C9.31103 8.78404 8.93367 9.36014 8.44321 9.84632ZM4.64196 3.80511H3.48428V9.22178H4.64196C5.40955 9.22178 6.14571 8.93643 6.68847 8.42852C7.23124 7.92061 7.53617 7.23174 7.53617 6.51344C7.53617 5.79515 7.23124 5.10627 6.68847 4.59836C6.14571 4.09045 5.40955 3.80511 4.64196 3.80511ZM4.64196 8.13844L4.64196 4.88844C5.10252 4.88844 5.54421 5.05965 5.86987 5.36439C6.19553 5.66914 6.37849 6.08247 6.37849 6.51344C6.37849 6.94442 6.19553 7.35775 5.86987 7.66249C5.54421 7.96724 5.10252 8.13844 4.64196 8.13844Z"
-												fill="white"
-											/>
-										</svg>
-									</button>
-								</div>
-								<img class="home-details-content-image" src="imgs/home/details/lettre.png" alt="Lettre" />
-							</div>
-
-							<!-- Identité visuelle -->
-							<div data-carousel-idx="3" class="home-details-content">
-								<span class="home-details-1-logo">
-									<svg width="100%" height="100%" viewBox="0 0 37 38" fill="white" xmlns="http://www.w3.org/2000/svg">
-										<path
-											d="M26.7066 7.18885C26.7066 6.37994 27.0297 5.60417 27.6047 5.03219L22.5457 0C21.0086 1.52894 20.0117 3.49473 19.677 5.604C19.5944 6.125 19.5521 6.65476 19.5521 7.18885C19.5521 9.88519 20.629 12.4711 22.5457 14.3777C24.4625 16.2843 27.0622 17.3554 29.7729 17.3554C30.3098 17.3554 30.8424 17.3134 31.3661 17.2312C33.4867 16.8983 35.4629 15.9066 37 14.3777L31.941 9.3455C31.366 9.91748 30.5861 10.2388 29.7729 10.2388C28.9596 10.2388 28.1797 9.91748 27.6047 9.3455C27.0297 8.77352 26.7066 7.99775 26.7066 7.18885Z"
-											fill="white"
-										/>
-										<path
-											d="M7.22714 10.2388C6.41393 10.2388 5.63403 9.91748 5.059 9.3455L6.31817e-07 14.3777C1.53709 15.9066 3.51335 16.8983 5.63385 17.2312C6.15763 17.3134 6.69021 17.3554 7.22714 17.3554C9.93785 17.3554 12.5375 16.2843 14.4543 14.3777C16.371 12.4711 17.4479 9.88519 17.4479 7.18885C17.4479 6.65476 17.4056 6.125 17.323 5.604C16.9883 3.49473 15.9914 1.52894 14.4543 6.28469e-07L9.39529 5.03219C9.97031 5.60417 10.2934 6.37994 10.2934 7.18885C10.2934 7.99775 9.97031 8.77352 9.39529 9.3455C8.82026 9.91748 8.04035 10.2388 7.22714 10.2388Z"
-											fill="white"
-										/>
-										<path
-											d="M31.9398 28.6533C31.3648 28.0821 30.5855 27.7612 29.7729 27.7612C28.9596 27.7612 28.1797 28.0825 27.6047 28.6545C27.0297 29.2265 26.7066 30.0023 26.7066 30.8112C26.7066 31.6198 27.0295 32.3953 27.6042 32.9673L27.6047 32.9678L22.5457 38L22.5437 37.998C21.0077 36.4693 20.0115 34.5043 19.677 32.396C19.5944 31.875 19.5521 31.3452 19.5521 30.8112C19.5521 28.1148 20.629 25.5289 22.5457 23.6223C24.4625 21.7157 27.0622 20.6446 29.7729 20.6446C30.3098 20.6446 30.8424 20.6866 31.3661 20.7688C33.4867 21.1017 35.4629 22.0934 37 23.6223L31.941 28.6545L31.9398 28.6533Z"
-											fill="white"
-										/>
-										<path
-											d="M10.2934 30.8112C10.2934 31.6201 9.97031 32.3958 9.39529 32.9678L14.4543 38C15.9914 36.4711 16.9883 34.5053 17.323 32.396C17.4056 31.875 17.4479 31.3452 17.4479 30.8112C17.4479 28.1148 16.371 25.5289 14.4543 23.6223C12.5375 21.7157 9.93785 20.6446 7.22714 20.6446C6.69021 20.6446 6.15763 20.6866 5.63385 20.7688C3.51334 21.1017 1.53709 22.0934 0 23.6223L5.059 28.6545C5.63403 28.0825 6.41393 27.7612 7.22714 27.7612C8.04035 27.7612 8.82026 28.0825 9.39529 28.6545C9.97031 29.2265 10.2934 30.0023 10.2934 30.8112Z"
-											fill="white"
-										/>
-									</svg>
-								</span>
-								<span class="home-details-content-text">Être identifiable et mémorisable en un coup d'œil</span>
-								<div class="home-details-1-letsgo">
-									<span class="home-details-1-letsgo-text">let's go</span>
-									<button class="home-details-1-letsgo-logo" type="button" onclick="scrollToId('projects')" style="--letsgo-logo-color: #0f15b4;--letsgo-logo-hover-color: #050967;">
-										<svg width="100%" height="100%" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path
-												d="M8.33333 4.66667H7.21667L7.20611 3.5H8.33333V0H1.66667V3.5H2.77778V4.66667H1.66667C1.22464 4.66667 0.800716 4.85104 0.488155 5.17923C0.175595 5.50742 0 5.95254 0 6.41667V14H10V6.41667C10 5.95254 9.82441 5.50742 9.51185 5.17923C9.19928 4.85104 8.77536 4.66667 8.33333 4.66667ZM2.77778 1.16667H7.22222V2.33333H2.77778V1.16667ZM8.88889 12.8333H1.11111V6.41667C1.11111 6.26196 1.16964 6.11358 1.27383 6.00419C1.37802 5.89479 1.51932 5.83333 1.66667 5.83333H3.88889V3.5H6.09444L6.11667 5.83333H8.33333C8.48068 5.83333 8.62198 5.89479 8.72617 6.00419C8.83036 6.11358 8.88889 6.26196 8.88889 6.41667V12.8333ZM5.55556 8.75H6.66667V9.91667H5.55556V11.0833H4.44444V9.91667H3.33333V8.75H4.44444V7.58333H5.55556V8.75Z"
-												fill="white"
-											/>
-										</svg>
-									</button>
-								</div>
-								<img class="home-details-content-image" src="imgs/home/details/flacons.png" alt="flacons" />
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="layout-home-item layout-home-details-2-container">
-					<div class="layout-home-details">
-						<div class="carousel-item">
-							<!-- Design graphique -->
-							<div data-carousel-idx="0" class="home-details-content">
-								<div class="home-details-content-cards">
-									<span class="home-details-content-card">
-										<img src="imgs/home/details/cards/DA1.jpg" alt="" />
-									</span>
-									<span class="home-details-content-card">
-										<img src="imgs/home/details/cards/DA2.jpg" alt="" />
-									</span>
-									<span class="home-details-content-card">
-										<img src="imgs/home/details/cards/DA3.jpg" alt="" />
-									</span>
-								</div>
-								<span class="home-details-content-title">créations</span>
-								<hr class="home-details-content-line" />
-								<span class="home-details-content-text"> Branding & direction artistique Logotype, affiche, brochure... </span>
-								<button class="home-details-2-projects-btn" type="button" onclick="scrollToId('projects')" style="--letsgo-logo-color: #b3005e;--letsgo-logo-hover-color: #850046;">Voir les projets</button>
-							</div>
-
-							<!-- Webdesign -->
-							<span data-carousel-idx="1" class="home-details-content">
-								<div class="home-details-content-cards">
-									<span class="home-details-content-card">
-										<img src="imgs/home/details/cards/W1.jpg" alt="" />
-									</span>
-									<span class="home-details-content-card">
-										<img src="imgs/home/details/cards/W2.jpg" alt="" />
-									</span>
-									<span class="home-details-content-card">
-										<img src="imgs/home/details/cards/W3.jpg" alt="" />
-									</span>
-								</div>
-								<span class="home-details-content-title">ui design</span>
-								<hr class="home-details-content-line" />
-								<span class="home-details-content-text"> Website, application mobile. Charte web, interface plateforme </span>
-								<button class="home-details-2-projects-btn" type="button" onclick="scrollToId('projects')" style="--letsgo-logo-color: #2a24e4;--letsgo-logo-hover-color: #1813A3;">Voir les projets</button>
-							</span>
-
-							<!-- Graphisme print -->
-							<span data-carousel-idx="2" class="home-details-content">
-								<div class="home-details-content-cards">
-									<span class="home-details-content-card">
-										<img src="imgs/home/details/cards/P1.jpg" alt="" />
-									</span>
-									<span class="home-details-content-card">
-										<img src="imgs/home/details/cards/P2.jpg" alt="" />
-									</span>
-									<span class="home-details-content-card">
-										<img src="imgs/home/details/cards/P3.jpg" alt="" />
-									</span>
-								</div>
-								<span class="home-details-content-title">éditions</span>
-								<hr class="home-details-content-line" />
-								<span class="home-details-content-text"> Graphisme, marketing. Magazine, charte graphique.. </span>
-								<button class="home-details-2-projects-btn" type="button" onclick="scrollToId('projects')" style="--letsgo-logo-color: #b3002b;--letsgo-logo-hover-color: #76001C;">Voir les projets</button>
-							</span>
-	
-							<!-- Identité visuelle -->
-							<span data-carousel-idx="3" class="home-details-content">
-								<div class="home-details-content-cards">
-									<span class="home-details-content-card">
-										<img src="imgs/home/details/cards/B1.jpg" alt="" />
-									</span>
-									<span class="home-details-content-card">
-										<img src="imgs/home/details/cards/B2.jpg" alt="" />
-									</span>
-									<span class="home-details-content-card">
-										<img src="imgs/home/details/cards/B3.jpg" alt="" />
-									</span>
-								</div>
-								<span class="home-details-content-title">branding</span>
-								<hr class="home-details-content-line" />
-								<span class="home-details-content-text"> Image de marque. Personnalisation multi-support </span>
-								<button class="home-details-2-projects-btn" type="button" onclick="scrollToId('projects')" style="--letsgo-logo-color: #0f15b4;--letsgo-logo-hover-color: #050967;">Voir les projets</button>
-							</span>
-						</div>
-					</div>
-				</div>
-				<span class="layout-home-item layout-home-image-container">
-					<span class="carousel-item">
 						<!-- Design graphique -->
-						<span data-carousel-idx="0">
-							<img class="layout-home-image" src="imgs/home/design.png" alt="Exemples de design graphiques" />
-						</span>
+						<div data-carousel-idx="0" class="home-details-content">
+							<span class="home-details-1-logo">
+								<svg width="100%" height="100%" viewBox="0 0 37 38" fill="white"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M26.7066 7.18885C26.7066 6.37994 27.0297 5.60417 27.6047 5.03219L22.5457 0C21.0086 1.52894 20.0117 3.49473 19.677 5.604C19.5944 6.125 19.5521 6.65476 19.5521 7.18885C19.5521 9.88519 20.629 12.4711 22.5457 14.3777C24.4625 16.2843 27.0622 17.3554 29.7729 17.3554C30.3098 17.3554 30.8424 17.3134 31.3661 17.2312C33.4867 16.8983 35.4629 15.9066 37 14.3777L31.941 9.3455C31.366 9.91748 30.5861 10.2388 29.7729 10.2388C28.9596 10.2388 28.1797 9.91748 27.6047 9.3455C27.0297 8.77352 26.7066 7.99775 26.7066 7.18885Z"
+										fill="white" />
+									<path
+										d="M7.22714 10.2388C6.41393 10.2388 5.63403 9.91748 5.059 9.3455L6.31817e-07 14.3777C1.53709 15.9066 3.51335 16.8983 5.63385 17.2312C6.15763 17.3134 6.69021 17.3554 7.22714 17.3554C9.93785 17.3554 12.5375 16.2843 14.4543 14.3777C16.371 12.4711 17.4479 9.88519 17.4479 7.18885C17.4479 6.65476 17.4056 6.125 17.323 5.604C16.9883 3.49473 15.9914 1.52894 14.4543 6.28469e-07L9.39529 5.03219C9.97031 5.60417 10.2934 6.37994 10.2934 7.18885C10.2934 7.99775 9.97031 8.77352 9.39529 9.3455C8.82026 9.91748 8.04035 10.2388 7.22714 10.2388Z"
+										fill="white" />
+									<path
+										d="M31.9398 28.6533C31.3648 28.0821 30.5855 27.7612 29.7729 27.7612C28.9596 27.7612 28.1797 28.0825 27.6047 28.6545C27.0297 29.2265 26.7066 30.0023 26.7066 30.8112C26.7066 31.6198 27.0295 32.3953 27.6042 32.9673L27.6047 32.9678L22.5457 38L22.5437 37.998C21.0077 36.4693 20.0115 34.5043 19.677 32.396C19.5944 31.875 19.5521 31.3452 19.5521 30.8112C19.5521 28.1148 20.629 25.5289 22.5457 23.6223C24.4625 21.7157 27.0622 20.6446 29.7729 20.6446C30.3098 20.6446 30.8424 20.6866 31.3661 20.7688C33.4867 21.1017 35.4629 22.0934 37 23.6223L31.941 28.6545L31.9398 28.6533Z"
+										fill="white" />
+									<path
+										d="M10.2934 30.8112C10.2934 31.6201 9.97031 32.3958 9.39529 32.9678L14.4543 38C15.9914 36.4711 16.9883 34.5053 17.323 32.396C17.4056 31.875 17.4479 31.3452 17.4479 30.8112C17.4479 28.1148 16.371 25.5289 14.4543 23.6223C12.5375 21.7157 9.93785 20.6446 7.22714 20.6446C6.69021 20.6446 6.15763 20.6866 5.63385 20.7688C3.51334 21.1017 1.53709 22.0934 0 23.6223L5.059 28.6545C5.63403 28.0825 6.41393 27.7612 7.22714 27.7612C8.04035 27.7612 8.82026 28.0825 9.39529 28.6545C9.97031 29.2265 10.2934 30.0023 10.2934 30.8112Z"
+										fill="white" />
+								</svg>
+							</span>
+							<span class="home-details-content-text">
+								Imaginer et concevoir<br />
+								des créations graphiques
+							</span>
+							<div class="home-details-1-letsgo">
+								<span class="home-details-1-letsgo-text">let's go</span>
+								<button class="home-details-1-letsgo-logo" type="button"
+									onclick="scrollToId('projects')"
+									style="--letsgo-logo-color: #b3005e;--letsgo-logo-hover-color: #850046;">
+									<svg width="100%" height="100%" viewBox="0 0 12 15" fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<path d="M6 8V14" stroke="white" stroke-linecap="round"
+											stroke-linejoin="round" />
+										<path
+											d="M6 8C6.55228 8 7 7.55228 7 7C7 6.44772 6.55228 6 6 6C5.44772 6 5 6.44772 5 7C5 7.55228 5.44772 8 6 8Z"
+											stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+										<path
+											d="M3 4V1.5C3 1.36739 3.04515 1.24021 3.12553 1.14645C3.2059 1.05268 3.31491 1 3.42857 1H8.57143C8.68509 1 8.7941 1.05268 8.87447 1.14645C8.95485 1.24021 9 1.36739 9 1.5V4"
+											stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+										<path
+											d="M2.67503 4L1.04817 7.14773C1.01045 7.22272 0.994413 7.30601 1.00172 7.38895C1.00903 7.47188 1.03942 7.55143 1.08974 7.61932L6 14L10.9103 7.61932C10.9606 7.55143 10.991 7.47188 10.9983 7.38895C11.0056 7.30601 10.9895 7.22272 10.9518 7.14773L9.32497 4H2.67503Z"
+											stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+									</svg>
+								</button>
+							</div>
+
+							<img class="home-details-content-image" src="imgs/home/details/pantone.png" alt="pantone" />
+						</div>
 
 						<!-- Webdesign -->
-						<span data-carousel-idx="1">
-							<img class="layout-home-image" src="imgs/home/devices.png" alt="Exemples de webdesign sur différentes plateformes" />
+						<div data-carousel-idx="1" class="home-details-content">
+							<span class="home-details-1-logo">
+								<svg width="100%" height="100%" viewBox="0 0 44 43" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M22.119 19.3024C25.4514 16.0459 25.4514 10.7654 22.119 7.5089L22.0201 7.60548C18.6876 10.8623 18.6876 16.1425 22.0201 19.399L22.119 19.3024Z"
+										fill="white" />
+									<path
+										d="M7.67697 21.6225L7.57805 21.7194C10.9105 24.9759 16.3135 24.9759 19.646 21.7194L19.7449 21.6225C16.4125 18.366 11.0094 18.366 7.67697 21.6225Z"
+										fill="white" />
+									<path
+										d="M36.6599 21.7194L36.5609 21.816C33.2285 25.0725 27.8255 25.0725 24.493 21.816L24.5919 21.7191C27.9244 18.4626 33.3274 18.4626 36.6599 21.7194Z"
+										fill="white" />
+									<path
+										d="M22.119 24.1361C18.7865 27.3926 18.7865 32.6731 22.119 35.9296L22.2179 35.833C25.5504 32.5761 25.5504 27.296 22.2179 24.0395L22.119 24.1361Z"
+										fill="white" />
+									<path fill-rule="evenodd" clip-rule="evenodd"
+										d="M0 21.5L22 0L44 21.5L22 43L0 21.5ZM40.4532 21.7191L22.2243 3.90457L3.99551 21.7191L22.2243 39.5339L40.4532 21.7191Z"
+										fill="white" />
+								</svg>
+							</span>
+							<span class="home-details-content-text">Design, parcours utilisateur, ergonomie sur mesure
+							</span>
+							<div class="home-details-1-letsgo">
+								<span class="home-details-1-letsgo-text">let's go</span>
+								<button class="home-details-1-letsgo-logo" type="button"
+									onclick="scrollToId('projects')"
+									style="--letsgo-logo-color: #2a24e4;--letsgo-logo-hover-color: #1813A3;">
+									<svg width="100%" height="100%" viewBox="0 0 14 14" fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<path
+											d="M12.5301 5.06383H12.4648C12.9723 4.01472 12.8247 1.88434 12.7868 1.43813L12.7285 0.773872L12.0868 0.905532C11.6523 0.994298 9.55412 1.46196 8.75383 2.29302C8.36369 1.65642 7.9209 1.05511 7.43032 0.49566L7.00042 0L6.56645 0.493872C6.07579 1.05389 5.633 1.65581 5.24294 2.29302C4.44265 1.46196 2.34451 0.994298 1.90995 0.905532L1.27065 0.774468L1.21232 1.43872C1.1744 1.88494 1.02683 4.01532 1.5343 5.06443H1.47072C1.20735 5.06478 0.948889 5.13726 0.722265 5.27431C0.495642 5.41137 0.309146 5.60798 0.182206 5.84366C0.0570846 6.06898 -0.0057506 6.32479 0.000413621 6.58376C0.00657784 6.84272 0.0815099 7.09511 0.217204 7.31396C1.34239 9.14051 4.30499 10.5637 5.84899 11.2083C5.18896 11.7542 4.7647 12.5426 4.66722 13.4043V14H9.33363V13.4043C9.28364 12.7311 9.00152 12.0978 8.53743 11.617H9.33363C9.64304 11.617 9.93977 11.7426 10.1585 11.966C10.3773 12.1894 10.5002 12.4925 10.5002 12.8085H11.6668C11.6659 12.2527 11.4749 11.7148 11.1267 11.2877C10.7785 10.8606 10.295 10.5712 9.76003 10.4696C11.2521 9.71362 12.9869 8.61864 13.7848 7.31217C13.9199 7.09306 13.9941 6.84061 13.9997 6.58177C14.0052 6.32293 13.9418 6.0674 13.8163 5.84247C13.6894 5.60733 13.5032 5.41114 13.2771 5.27423C13.0509 5.13732 12.793 5.06468 12.5301 5.06383ZM9.56695 3.15745C9.78569 2.856 10.7248 2.48485 11.6668 2.23285C11.6972 3.24562 11.6155 4.28877 11.395 4.59319C11.3063 4.71709 11.1944 4.8217 11.0657 4.90091C10.937 4.98012 10.7941 5.03234 10.6454 5.05453C10.4967 5.07671 10.3452 5.06842 10.1997 5.03012C10.0542 4.99183 9.91761 4.9243 9.79794 4.83149C9.55246 4.63894 9.39074 4.3557 9.34755 4.04267C9.30436 3.72964 9.38313 3.41179 9.56695 3.15745ZM7.00042 1.81643C7.61989 2.60996 8.16703 3.50298 8.16703 3.87234C8.16703 4.18834 8.04412 4.4914 7.82534 4.71485C7.60656 4.9383 7.30983 5.06383 7.00042 5.06383C6.69102 5.06383 6.39429 4.9383 6.17551 4.71485C5.95673 4.4914 5.83382 4.18834 5.83382 3.87234C5.83382 3.49285 6.38154 2.60638 7.00042 1.81643ZM2.33751 2.22987C3.27837 2.48187 4.21749 2.85302 4.4339 3.15745C4.61629 3.41094 4.69459 3.72714 4.65209 4.03871C4.6096 4.35028 4.44969 4.6326 4.20641 4.82553C4.08673 4.91834 3.95015 4.98587 3.80464 5.02416C3.65913 5.06246 3.50761 5.07076 3.35892 5.04857C3.21023 5.02639 3.06737 4.97416 2.93866 4.89495C2.80996 4.81574 2.698 4.71113 2.60933 4.58723C2.38884 4.28579 2.30718 3.24085 2.33751 2.22987ZM6.04031 12.8085C6.30594 12.4119 6.62977 12.0595 7.00042 11.7636C7.37108 12.0595 7.69491 12.4119 7.96054 12.8085H6.04031ZM12.7967 6.68009C12.0419 7.91447 10.1508 8.98562 8.69375 9.66953C9.08428 8.99431 9.30418 8.23046 9.33363 7.44681H8.16703C8.05912 8.43864 7.65136 9.37151 7.00042 10.1157C6.34949 9.37151 5.94173 8.43864 5.83382 7.44681H4.66722C4.69667 8.22855 4.91552 8.99063 5.30418 9.66477C3.85059 8.97906 1.96128 7.90791 1.20473 6.67949C1.18075 6.6406 1.16802 6.59558 1.16802 6.54962C1.16802 6.50366 1.18075 6.45863 1.20473 6.41974C1.23057 6.3705 1.26888 6.32925 1.31568 6.30033C1.36247 6.2714 1.41602 6.25585 1.47072 6.25532H12.5301C12.5849 6.25571 12.6386 6.27112 12.6856 6.29993C12.7326 6.32875 12.7712 6.36992 12.7973 6.41915C12.821 6.45837 12.8335 6.50359 12.8334 6.5497C12.8333 6.59581 12.8206 6.64097 12.7967 6.68009Z"
+											fill="white" />
+									</svg>
+								</button>
+							</div>
+							<img class="home-details-content-image" src="imgs/home/details/bague.png" alt="Bague" />
+						</div>
+
+						<!-- Graphisme print -->
+						<div data-carousel-idx="2" class="home-details-content">
+							<span class="home-details-1-logo">
+								<svg width="100%" height="100%" viewBox="0 0 42 42" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M26.9751 24.9954L26.973 24.9924L31.5076 21.8115L31.5084 21.8126C31.7942 22.2211 32.2024 22.528 32.6744 22.6895C33.1469 22.8512 33.6592 22.8589 34.1379 22.7115C34.4026 22.63 34.6495 22.5033 34.8684 22.3387C35.0454 22.2057 35.204 22.0478 35.339 21.8689C35.641 21.4688 35.809 20.9839 35.819 20.4838C35.8289 19.9837 35.6803 19.494 35.3945 19.085C35.2667 18.9022 35.1144 18.7397 34.9429 18.6015C34.7306 18.4304 34.4889 18.2964 34.2276 18.207C33.7551 18.0454 33.2428 18.0377 32.7642 18.1851C32.2855 18.3325 31.8651 18.6274 31.5631 19.0276L27.1578 15.7127L27.1583 15.7122C28.1648 14.3785 29.5662 13.3956 31.1615 12.9043L31.1657 12.903C32.76 12.413 34.4661 12.439 36.0397 12.9774C37.6147 13.5163 38.9762 14.5409 39.9291 15.9042C40.882 17.2675 41.3773 18.8996 41.3441 20.5666C41.3109 22.2336 40.7508 23.8499 39.7442 25.1838C38.7376 26.5178 37.3361 27.5009 35.7406 27.9922C34.1464 28.4832 32.4404 28.4581 30.8665 27.9206L30.8624 27.9191C29.2885 27.3806 27.9279 26.3572 26.9751 24.9954Z"
+										fill="white" />
+									<path
+										d="M25.6827 14.6183L25.6796 14.6204L22.5211 10.1014L22.5222 10.1006C22.9321 9.81276 23.241 9.4031 23.4049 8.93023C23.5689 8.45692 23.5791 7.94458 23.434 7.46665C23.3538 7.20234 23.2284 6.95605 23.0649 6.73795C22.9327 6.56167 22.7756 6.40379 22.5974 6.26969C22.1987 5.96968 21.7147 5.80405 21.2146 5.79656C20.7145 5.78906 20.2242 5.94008 19.8138 6.22797C19.6303 6.35665 19.4671 6.50972 19.3279 6.68194C19.1558 6.89501 19.0207 7.13739 18.93 7.39914C18.766 7.87244 18.7558 8.38478 18.9008 8.86272C19.0459 9.34066 19.3387 9.75966 19.7374 10.0597L16.4008 14.4813L16.4002 14.4809C15.0715 13.4809 14.0955 12.0844 13.6121 10.4915L13.6108 10.4873C13.1286 8.89535 13.1631 7.18917 13.7093 5.61287C14.2559 4.03518 15.2872 2.66859 16.6552 1.70897C18.0233 0.749342 19.6578 0.245948 21.3247 0.270931C22.9915 0.295914 24.6051 0.847992 25.9341 1.84804C27.2631 2.84809 28.2393 4.24476 28.7228 5.83789C29.2059 7.42962 29.1723 9.13581 28.627 10.7123L28.6256 10.7165C28.0793 12.293 27.0492 13.6588 25.6827 14.6183Z"
+										fill="white" />
+									<path
+										d="M15.9361 26.9953L15.933 26.9974C14.5665 27.957 13.5364 29.3227 12.9901 30.8992L12.9887 30.9034C12.4434 32.4799 12.4099 34.1861 12.8929 35.7778C13.3764 37.3709 14.3526 38.7676 15.6816 39.7677C17.0106 40.7677 18.6242 41.3198 20.291 41.3448C21.9579 41.3698 23.5925 40.8664 24.9605 39.9067C26.3285 38.9471 27.3598 37.5805 27.9065 36.0028C28.4526 34.4265 28.4871 32.7204 28.0049 31.1284L28.0036 31.1242C27.5201 29.5311 26.5439 28.1344 25.2149 27.1344L21.8783 31.556L21.8794 31.5569C22.2775 31.8568 22.57 32.2755 22.7149 32.753C22.8599 33.2309 22.8497 33.7433 22.6857 34.2166C22.595 34.4783 22.4599 34.7207 22.2878 34.9338C22.1487 35.106 21.9854 35.2591 21.802 35.3877C21.3915 35.6756 20.9012 35.8266 20.4011 35.8192C19.9011 35.8117 19.417 35.646 19.0183 35.346C18.8401 35.2119 18.683 35.054 18.5508 34.8778C18.3873 34.6597 18.2619 34.4134 18.1817 34.1491C18.0366 33.6711 18.0468 33.1588 18.2108 32.6855C18.3748 32.2122 18.6842 31.8022 19.0946 31.5143L15.9361 26.9953Z"
+										fill="white" />
+									<path
+										d="M14.6406 16.6203L14.6428 16.6233L10.1081 19.8042L10.1073 19.8031C9.82149 19.3946 9.41335 19.0877 8.94128 18.9262C8.46878 18.7645 7.95649 18.7568 7.47783 18.9042C7.21312 18.9858 6.96621 19.1124 6.7473 19.277C6.57036 19.41 6.41171 19.5679 6.27673 19.7468C5.97474 20.1469 5.80673 20.6318 5.79677 21.1319C5.7868 21.632 5.9354 22.1217 6.22127 22.5307C6.34905 22.7135 6.50132 22.876 6.67285 23.0142C6.88507 23.1853 7.12679 23.3193 7.38809 23.4087C7.86059 23.5703 8.37289 23.578 8.85155 23.4306C9.33021 23.2832 9.75066 22.9883 10.0526 22.5881L14.4579 25.903L14.4575 25.9035C13.4509 27.2372 12.0495 28.2201 10.4542 28.7114L10.45 28.7127C8.85569 29.2027 7.14966 29.1767 5.57604 28.6383C4.00102 28.0994 2.63951 27.0749 1.68663 25.7115C0.733741 24.3482 0.238407 22.7161 0.271615 21.0491C0.304824 19.3821 0.864873 17.7658 1.87149 16.4319C2.87811 15.0979 4.27962 14.1148 5.87515 13.6235C7.46929 13.1325 9.17533 13.1576 10.7492 13.6952L10.7533 13.6966C12.3272 14.2351 13.6878 15.2585 14.6406 16.6203Z"
+										fill="white" />
+								</svg>
+							</span>
+							<span class="home-details-content-text">Créations imprimés, à l'image de votre identité de
+								marque </span>
+							<div class="home-details-1-letsgo">
+								<span class="home-details-1-letsgo-text">let's go</span>
+								<button class="home-details-1-letsgo-logo" type="button"
+									onclick="scrollToId('projects')"
+									style="--letsgo-logo-color: #b3002b;--letsgo-logo-hover-color: #76001C;">
+									<svg width="100%" height="100%" viewBox="0 0 12 14" fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<path
+											d="M10.9959 6.11803C10.8637 4.61812 10.1401 3.21785 8.96564 2.18964C7.79121 1.16142 6.25005 0.578799 4.64196 0.55511V0.013443L1.74775 0.013443C1.2872 0.013443 0.845508 0.184648 0.519847 0.489394C0.194185 0.794141 0.0112305 1.20747 0.0112305 1.63844L0.0112305 11.3884C0.0112305 11.8194 0.194185 12.2327 0.519847 12.5375C0.845508 12.8422 1.2872 13.0134 1.74775 13.0134H4.64196V12.4718C5.51277 12.4705 6.37411 12.3026 7.17311 11.9786C7.9721 11.6545 8.6919 11.1811 9.28832 10.5873C9.88746 9.99317 10.3485 9.28929 10.6424 8.52006C10.9363 7.75083 11.0567 6.93296 10.9959 6.11803ZM8.44321 9.84632C7.95794 10.3353 7.36959 10.7248 6.71532 10.9902C6.06105 11.2557 5.35507 11.3912 4.64196 11.3884H3.48428V11.9301H1.74775C1.59424 11.9301 1.44701 11.873 1.33845 11.7715C1.2299 11.6699 1.16891 11.5321 1.16891 11.3884L1.16891 10.3051H2.3266L2.3266 9.22178H1.16891V8.13844H2.3266V7.05511H1.16891V5.97178H2.3266V4.88844H1.16891L1.16891 3.80511H2.3266L2.3266 2.72178H1.16891V1.63844C1.16891 1.49478 1.2299 1.35701 1.33845 1.25543C1.44701 1.15384 1.59424 1.09678 1.74775 1.09678H3.48428V1.63844H4.44342C5.79132 1.61681 7.09783 2.07437 8.09936 2.9188C9.1009 3.76323 9.72293 4.93168 9.83996 6.18844C9.8901 6.85539 9.79186 7.52482 9.55145 8.15443C9.31103 8.78404 8.93367 9.36014 8.44321 9.84632ZM4.64196 3.80511H3.48428V9.22178H4.64196C5.40955 9.22178 6.14571 8.93643 6.68847 8.42852C7.23124 7.92061 7.53617 7.23174 7.53617 6.51344C7.53617 5.79515 7.23124 5.10627 6.68847 4.59836C6.14571 4.09045 5.40955 3.80511 4.64196 3.80511ZM4.64196 8.13844L4.64196 4.88844C5.10252 4.88844 5.54421 5.05965 5.86987 5.36439C6.19553 5.66914 6.37849 6.08247 6.37849 6.51344C6.37849 6.94442 6.19553 7.35775 5.86987 7.66249C5.54421 7.96724 5.10252 8.13844 4.64196 8.13844Z"
+											fill="white" />
+									</svg>
+								</button>
+							</div>
+							<img class="home-details-content-image" src="imgs/home/details/lettre.png" alt="Lettre" />
+						</div>
+
+						<!-- Identité visuelle -->
+						<div data-carousel-idx="3" class="home-details-content">
+							<span class="home-details-1-logo">
+								<svg width="100%" height="100%" viewBox="0 0 37 38" fill="white"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M26.7066 7.18885C26.7066 6.37994 27.0297 5.60417 27.6047 5.03219L22.5457 0C21.0086 1.52894 20.0117 3.49473 19.677 5.604C19.5944 6.125 19.5521 6.65476 19.5521 7.18885C19.5521 9.88519 20.629 12.4711 22.5457 14.3777C24.4625 16.2843 27.0622 17.3554 29.7729 17.3554C30.3098 17.3554 30.8424 17.3134 31.3661 17.2312C33.4867 16.8983 35.4629 15.9066 37 14.3777L31.941 9.3455C31.366 9.91748 30.5861 10.2388 29.7729 10.2388C28.9596 10.2388 28.1797 9.91748 27.6047 9.3455C27.0297 8.77352 26.7066 7.99775 26.7066 7.18885Z"
+										fill="white" />
+									<path
+										d="M7.22714 10.2388C6.41393 10.2388 5.63403 9.91748 5.059 9.3455L6.31817e-07 14.3777C1.53709 15.9066 3.51335 16.8983 5.63385 17.2312C6.15763 17.3134 6.69021 17.3554 7.22714 17.3554C9.93785 17.3554 12.5375 16.2843 14.4543 14.3777C16.371 12.4711 17.4479 9.88519 17.4479 7.18885C17.4479 6.65476 17.4056 6.125 17.323 5.604C16.9883 3.49473 15.9914 1.52894 14.4543 6.28469e-07L9.39529 5.03219C9.97031 5.60417 10.2934 6.37994 10.2934 7.18885C10.2934 7.99775 9.97031 8.77352 9.39529 9.3455C8.82026 9.91748 8.04035 10.2388 7.22714 10.2388Z"
+										fill="white" />
+									<path
+										d="M31.9398 28.6533C31.3648 28.0821 30.5855 27.7612 29.7729 27.7612C28.9596 27.7612 28.1797 28.0825 27.6047 28.6545C27.0297 29.2265 26.7066 30.0023 26.7066 30.8112C26.7066 31.6198 27.0295 32.3953 27.6042 32.9673L27.6047 32.9678L22.5457 38L22.5437 37.998C21.0077 36.4693 20.0115 34.5043 19.677 32.396C19.5944 31.875 19.5521 31.3452 19.5521 30.8112C19.5521 28.1148 20.629 25.5289 22.5457 23.6223C24.4625 21.7157 27.0622 20.6446 29.7729 20.6446C30.3098 20.6446 30.8424 20.6866 31.3661 20.7688C33.4867 21.1017 35.4629 22.0934 37 23.6223L31.941 28.6545L31.9398 28.6533Z"
+										fill="white" />
+									<path
+										d="M10.2934 30.8112C10.2934 31.6201 9.97031 32.3958 9.39529 32.9678L14.4543 38C15.9914 36.4711 16.9883 34.5053 17.323 32.396C17.4056 31.875 17.4479 31.3452 17.4479 30.8112C17.4479 28.1148 16.371 25.5289 14.4543 23.6223C12.5375 21.7157 9.93785 20.6446 7.22714 20.6446C6.69021 20.6446 6.15763 20.6866 5.63385 20.7688C3.51334 21.1017 1.53709 22.0934 0 23.6223L5.059 28.6545C5.63403 28.0825 6.41393 27.7612 7.22714 27.7612C8.04035 27.7612 8.82026 28.0825 9.39529 28.6545C9.97031 29.2265 10.2934 30.0023 10.2934 30.8112Z"
+										fill="white" />
+								</svg>
+							</span>
+							<span class="home-details-content-text">Être identifiable et mémorisable en un coup
+								d'œil</span>
+							<div class="home-details-1-letsgo">
+								<span class="home-details-1-letsgo-text">let's go</span>
+								<button class="home-details-1-letsgo-logo" type="button"
+									onclick="scrollToId('projects')"
+									style="--letsgo-logo-color: #0f15b4;--letsgo-logo-hover-color: #050967;">
+									<svg width="100%" height="100%" viewBox="0 0 10 14" fill="none"
+										xmlns="http://www.w3.org/2000/svg">
+										<path
+											d="M8.33333 4.66667H7.21667L7.20611 3.5H8.33333V0H1.66667V3.5H2.77778V4.66667H1.66667C1.22464 4.66667 0.800716 4.85104 0.488155 5.17923C0.175595 5.50742 0 5.95254 0 6.41667V14H10V6.41667C10 5.95254 9.82441 5.50742 9.51185 5.17923C9.19928 4.85104 8.77536 4.66667 8.33333 4.66667ZM2.77778 1.16667H7.22222V2.33333H2.77778V1.16667ZM8.88889 12.8333H1.11111V6.41667C1.11111 6.26196 1.16964 6.11358 1.27383 6.00419C1.37802 5.89479 1.51932 5.83333 1.66667 5.83333H3.88889V3.5H6.09444L6.11667 5.83333H8.33333C8.48068 5.83333 8.62198 5.89479 8.72617 6.00419C8.83036 6.11358 8.88889 6.26196 8.88889 6.41667V12.8333ZM5.55556 8.75H6.66667V9.91667H5.55556V11.0833H4.44444V9.91667H3.33333V8.75H4.44444V7.58333H5.55556V8.75Z"
+											fill="white" />
+									</svg>
+								</button>
+							</div>
+							<img class="home-details-content-image" src="imgs/home/details/flacons.png" alt="flacons" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="layout-home-item layout-home-details-2-container">
+				<div class="layout-home-details">
+					<div class="carousel-item">
+						<!-- Design graphique -->
+						<div data-carousel-idx="0" class="home-details-content">
+							<div class="home-details-content-cards">
+								<span class="home-details-content-card">
+									<img src="imgs/home/details/cards/DA1.jpg" alt="" />
+								</span>
+								<span class="home-details-content-card">
+									<img src="imgs/home/details/cards/DA2.jpg" alt="" />
+								</span>
+								<span class="home-details-content-card">
+									<img src="imgs/home/details/cards/DA3.jpg" alt="" />
+								</span>
+							</div>
+							<span class="home-details-content-title">créations</span>
+							<hr class="home-details-content-line" />
+							<span class="home-details-content-text"> Branding & direction artistique Logotype, affiche,
+								brochure... </span>
+							<button class="home-details-2-projects-btn" type="button" onclick="scrollToId('projects')"
+								style="--letsgo-logo-color: #b3005e;--letsgo-logo-hover-color: #850046;">Voir les
+								projets</button>
+						</div>
+
+						<!-- Webdesign -->
+						<span data-carousel-idx="1" class="home-details-content">
+							<div class="home-details-content-cards">
+								<span class="home-details-content-card">
+									<img src="imgs/home/details/cards/W1.jpg" alt="" />
+								</span>
+								<span class="home-details-content-card">
+									<img src="imgs/home/details/cards/W2.jpg" alt="" />
+								</span>
+								<span class="home-details-content-card">
+									<img src="imgs/home/details/cards/W3.jpg" alt="" />
+								</span>
+							</div>
+							<span class="home-details-content-title">ui design</span>
+							<hr class="home-details-content-line" />
+							<span class="home-details-content-text"> Website, application mobile. Charte web, interface
+								plateforme </span>
+							<button class="home-details-2-projects-btn" type="button" onclick="scrollToId('projects')"
+								style="--letsgo-logo-color: #2a24e4;--letsgo-logo-hover-color: #1813A3;">Voir les
+								projets</button>
 						</span>
 
 						<!-- Graphisme print -->
-						<span data-carousel-idx="2">
-							<img class="layout-home-image" src="imgs/home/print.png" alt="Exemples de graphisme print" />
+						<span data-carousel-idx="2" class="home-details-content">
+							<div class="home-details-content-cards">
+								<span class="home-details-content-card">
+									<img src="imgs/home/details/cards/P1.jpg" alt="" />
+								</span>
+								<span class="home-details-content-card">
+									<img src="imgs/home/details/cards/P2.jpg" alt="" />
+								</span>
+								<span class="home-details-content-card">
+									<img src="imgs/home/details/cards/P3.jpg" alt="" />
+								</span>
+							</div>
+							<span class="home-details-content-title">éditions</span>
+							<hr class="home-details-content-line" />
+							<span class="home-details-content-text"> Graphisme, marketing. Magazine, charte graphique..
+							</span>
+							<button class="home-details-2-projects-btn" type="button" onclick="scrollToId('projects')"
+								style="--letsgo-logo-color: #b3002b;--letsgo-logo-hover-color: #76001C;">Voir les
+								projets</button>
 						</span>
 
 						<!-- Identité visuelle -->
-						<span data-carousel-idx="3">
-							<img class="layout-home-image" src="imgs/home/branding.png" alt="Exemples d'identités visuelles" />
+						<span data-carousel-idx="3" class="home-details-content">
+							<div class="home-details-content-cards">
+								<span class="home-details-content-card">
+									<img src="imgs/home/details/cards/B1.jpg" alt="" />
+								</span>
+								<span class="home-details-content-card">
+									<img src="imgs/home/details/cards/B2.jpg" alt="" />
+								</span>
+								<span class="home-details-content-card">
+									<img src="imgs/home/details/cards/B3.jpg" alt="" />
+								</span>
+							</div>
+							<span class="home-details-content-title">branding</span>
+							<hr class="home-details-content-line" />
+							<span class="home-details-content-text"> Image de marque. Personnalisation multi-support
+							</span>
+							<button class="home-details-2-projects-btn" type="button" onclick="scrollToId('projects')"
+								style="--letsgo-logo-color: #0f15b4;--letsgo-logo-hover-color: #050967;">Voir les
+								projets</button>
 						</span>
+					</div>
+				</div>
+			</div>
+			<span class="layout-home-item layout-home-image-container">
+				<span class="carousel-item">
+					<!-- Design graphique -->
+					<span data-carousel-idx="0">
+						<img class="layout-home-image" src="imgs/home/design.png" alt="Exemples de design graphiques" />
+					</span>
+
+					<!-- Webdesign -->
+					<span data-carousel-idx="1">
+						<img class="layout-home-image" src="imgs/home/devices.png"
+							alt="Exemples de webdesign sur différentes plateformes" />
+					</span>
+
+					<!-- Graphisme print -->
+					<span data-carousel-idx="2">
+						<img class="layout-home-image" src="imgs/home/print.png" alt="Exemples de graphisme print" />
+					</span>
+
+					<!-- Identité visuelle -->
+					<span data-carousel-idx="3">
+						<img class="layout-home-image" src="imgs/home/branding.png"
+							alt="Exemples d'identités visuelles" />
 					</span>
 				</span>
-				<div class="layout-home-item layout-home-scroll-btn-container">
-					<div class="scroll-arrow-container">
-						<button class="scroll-arrow" type="button" onclick="scrollToId('projects')">
-							<svg width="100%" height="100%" viewBox="0 0 13 8" xmlns="http://www.w3.org/2000/svg">
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M0.324281 0.262844C0.7314 -0.110348 1.36397 -0.0828454 1.73716 0.324274L6.50001 5.52011L11.2629 0.324274C11.636 -0.0828454 12.2686 -0.110348 12.6757 0.262844C13.0828 0.636037 13.1104 1.2686 12.7372 1.67572L7.23716 7.67572C7.04775 7.88235 6.78031 8 6.50001 8C6.2197 8 5.95226 7.88235 5.76285 7.67572L0.262852 1.67572C-0.110341 1.2686 -0.0828378 0.636037 0.324281 0.262844Z" />
-							</svg>	
-						</button>
-					</div>
+			</span>
+			<div class="layout-home-item layout-home-scroll-btn-container">
+				<div class="scroll-arrow-container">
+					<button class="scroll-arrow" type="button" onclick="scrollToId('projects')">
+						<svg width="100%" height="100%" viewBox="0 0 13 8" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd"
+								d="M0.324281 0.262844C0.7314 -0.110348 1.36397 -0.0828454 1.73716 0.324274L6.50001 5.52011L11.2629 0.324274C11.636 -0.0828454 12.2686 -0.110348 12.6757 0.262844C13.0828 0.636037 13.1104 1.2686 12.7372 1.67572L7.23716 7.67572C7.04775 7.88235 6.78031 8 6.50001 8C6.2197 8 5.95226 7.88235 5.76285 7.67572L0.262852 1.67572C-0.110341 1.2686 -0.0828378 0.636037 0.324281 0.262844Z" />
+						</svg>
+					</button>
 				</div>
 			</div>
-		</section>
-		<section id="projects" class="section-container">
-			<h1 class="section-container-title strikethrough">Projects</h1>
-			<p class="section-container-subtitle">Chaque projet est une histoire visuelle<br>tissée avec soin et passion</p>
-			<div class="projects-menu" id="menu-container" data-show="">
-				<button class="projects-menu-item" type="button" onclick="setGridActive(this)" data-show="">All</button>
-				<button class="projects-menu-item" type="button" onclick="setGridActive(this)" data-show="webdesign">Webdesign</button>
-				<button class="projects-menu-item" type="button" onclick="setGridActive(this)" data-show="print">Print</button>
-				<button class="projects-menu-item" type="button" onclick="setGridActive(this)" data-show="branding">Branding</button>
-				<button class="projects-menu-item" type="button" onclick="setGridActive(this)" data-show="illustration">Illustration</button>
-			</div>
-			<div class="grid grid-12-columns" id="grid-container" data-show="">
-				<div class="grid-item grid-item-square grid-item-4-columns" data-show="branding">
-					<div class="card">
-						<div class="card-link-container">
-							<!-- TODO @thibaultchauvet fix link + title -->
-							<!-- href should match project filename + should be added in projects.json -->
-							<a href="/projects/fricote1.html" class="card-link">Voir le projet</a>
-							<p class="card-link-title">Désenchantée</p>
-						</div>
-						<img class="card-img" src="imgs/placeholder.jpeg" />
+		</div>
+	</section>
+	<section id="projects" class="section-container">
+		<h1 class="section-container-title strikethrough">Projects</h1>
+		<p class="section-container-subtitle">Chaque projet est une histoire visuelle<br>tissée avec soin et passion</p>
+		<div class="projects-menu" id="menu-container" data-show="">
+			<button class="projects-menu-item" type="button" onclick="setGridActive(this)" data-show="">All</button>
+			<button class="projects-menu-item" type="button" onclick="setGridActive(this)"
+				data-show="webdesign">Webdesign</button>
+			<button class="projects-menu-item" type="button" onclick="setGridActive(this)"
+				data-show="print">Print</button>
+			<button class="projects-menu-item" type="button" onclick="setGridActive(this)"
+				data-show="branding">Branding</button>
+			<button class="projects-menu-item" type="button" onclick="setGridActive(this)"
+				data-show="illustration">Illustration</button>
+		</div>
+		<div class="grid grid-12-columns" id="grid-container" data-show="">
+			<div class="grid-item grid-item-square grid-item-6-columns grid-item-md-4-columns" data-show="branding">
+				<div class="card">
+					<div class="card-link-container">
+						<!-- TODO @thibaultchauvet fix link + title -->
+						<!-- href should match project filename + should be added in projects.json -->
+						<a href="/projects/fricote1.html" class="card-link">Voir le projet</a>
+						<p class="card-link-title">Désenchantée</p>
 					</div>
-				</div>
-				<div class="grid-item grid-item-square grid-item-4-columns" data-show="print">
-					<div class="card">
-						<div class="card-link-container">
-							<!-- TODO @thibaultchauvet fix link + title -->
-							<!-- href should match project filename + should be added in projects.json -->
-							<a href="/projects/fricote2.html" class="card-link">Voir le projet</a>
-							<p class="card-link-title">Sans contrefaçon</p>
-						</div>
-						<img class="card-img" src="imgs/placeholder.jpeg" />
-					</div>
-				</div>
-				<div class="grid-item grid-item-square grid-item-4-columns" data-show="branding">
-					<div class="card">
-						<div class="card-link-container">
-							<!-- TODO @thibaultchauvet fix link + title -->
-							<!-- href should match project filename + should be added in projects.json -->
-							<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
-							<p class="card-link-title">California</p>
-						</div>
-						<img class="card-img" src="imgs/placeholder.jpeg" />
-					</div>
-				</div>
-				<div class="grid-item grid-item-square grid-item-3-columns" data-show="illustration">
-					<div class="card">
-						<div class="card-link-container">
-							<!-- TODO @thibaultchauvet fix link + title -->
-							<!-- href should match project filename + should be added in projects.json -->
-							<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
-							<p class="card-link-title">Libertine</p>
-						</div>
-						<img class="card-img" src="imgs/placeholder.jpeg" />
-					</div>
-				</div>
-				<div class="grid-item grid-item-square grid-item-3-columns" data-show="branding">
-					<div class="card">
-						<div class="card-link-container">
-							<!-- TODO @thibaultchauvet fix link + title -->
-							<!-- href should match project filename + should be added in projects.json -->
-							<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
-							<p class="card-link-title">Oui mais... Non</p>
-						</div>
-						<img class="card-img" src="imgs/placeholder.jpeg" />
-					</div>
-				</div>
-				<div class="grid-item grid-item-square grid-item-3-columns" data-show="webdesign">
-					<div class="card">
-						<div class="card-link-container">
-							<!-- TODO @thibaultchauvet fix link + title -->
-							<!-- href should match project filename + should be added in projects.json -->
-							<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
-							<p class="card-link-title">Appelle mon numéro</p>
-						</div>
-						<img class="card-img" src="imgs/placeholder.jpeg" />
-					</div>
-				</div>
-				<div class="grid-item grid-item-square grid-item-3-columns" data-show="illustration">
-					<div class="card">
-						<div class="card-link-container">
-							<!-- TODO @thibaultchauvet fix link + title -->
-							<!-- href should match project filename + should be added in projects.json -->
-							<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
-							<p class="card-link-title">Agnus Dei</p>
-						</div>
-						<img class="card-img" src="imgs/placeholder.jpeg" />
-					</div>
-				</div>
-				<div class="grid-item grid-item-6-columns grid-item-3-rows" data-show="illustration">
-					<div class="card">
-						<div class="card-link-container">
-							<!-- TODO @thibaultchauvet fix link + title -->
-							<!-- href should match project filename + should be added in projects.json -->
-							<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
-							<p class="card-link-title">L'autre</p>
-						</div>
-						<img class="card-img" src="imgs/placeholder.jpeg" />
-					</div>
-				</div>
-				<div class="grid-item grid-item-3-columns" data-show="print">
-					<div class="card">
-						<div class="card-link-container">
-							<!-- TODO @thibaultchauvet fix link + title -->
-							<!-- href should match project filename + should be added in projects.json -->
-							<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
-							<p class="card-link-title">Psychiatric</p>
-						</div>
-						<img class="card-img" src="imgs/placeholder.jpeg" />
-					</div>
-				</div>
-				<div class="grid-item grid-item-square grid-item-3-columns" data-show="print">
-					<div class="card">
-						<div class="card-link-container">
-							<!-- TODO @thibaultchauvet fix link + title -->
-							<!-- href should match project filename + should be added in projects.json -->
-							<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
-							<p class="card-link-title">Regrets</p>
-						</div>
-						<img class="card-img" src="imgs/placeholder.jpeg" />
-					</div>
-				</div>
-				<div class="grid-item grid-item-square grid-item-3-columns" data-show="branding">
-					<div class="card">
-						<div class="card-link-container">
-							<!-- TODO @thibaultchauvet fix link + title -->
-							<!-- href should match project filename + should be added in projects.json -->
-							<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
-							<p class="card-link-title">Pas de doute</p>
-						</div>
-						<img class="card-img" src="imgs/placeholder.jpeg" />
-					</div>
-				</div>
-
-				<div class="grid-item grid-item-square grid-item-3-columns" data-show="webdesign">
-					<div class="card">
-						<div class="card-link-container">
-							<!-- TODO @thibaultchauvet fix link + title -->
-							<!-- href should match project filename + should be added in projects.json -->
-							<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
-							<p class="card-link-title">Pas de doute</p>
-						</div>
-						<img class="card-img" src="imgs/placeholder.jpeg" />
-					</div>
-				</div>
-
-				<div class="grid-item grid-item-square grid-item-3-columns" data-show="branding">
-					<div class="card">
-						<div class="card-link-container">
-							<!-- TODO @thibaultchauvet fix link + title -->
-							<!-- href should match project filename + should be added in projects.json -->
-							<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
-							<p class="card-link-title">Pas de doute</p>
-						</div>
-						<img class="card-img" src="imgs/placeholder.jpeg" />
-					</div>
-				</div>
-
-				<div class="grid-item grid-item-square grid-item-3-columns" data-show="webdesign">
-					<div class="card">
-						<div class="card-link-container">
-							<!-- TODO @thibaultchauvet fix link + title -->
-							<!-- href should match project filename + should be added in projects.json -->
-							<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
-							<p class="card-link-title">Pas de doute</p>
-						</div>
-						<img class="card-img" src="imgs/placeholder.jpeg" />
-					</div>
+					<img class="card-img" src="imgs/placeholder.jpeg" />
 				</div>
 			</div>
-		</section>
+			<div class="grid-item grid-item-square grid-item-6-columns grid-item-md-4-columns" data-show="print">
+				<div class="card">
+					<div class="card-link-container">
+						<!-- TODO @thibaultchauvet fix link + title -->
+						<!-- href should match project filename + should be added in projects.json -->
+						<a href="/projects/fricote2.html" class="card-link">Voir le projet</a>
+						<p class="card-link-title">Sans contrefaçon</p>
+					</div>
+					<img class="card-img" src="imgs/placeholder.jpeg" />
+				</div>
+			</div>
+			<div class="grid-item grid-item-square grid-item-6-columns grid-item-md-4-columns" data-show="branding">
+				<div class="card">
+					<div class="card-link-container">
+						<!-- TODO @thibaultchauvet fix link + title -->
+						<!-- href should match project filename + should be added in projects.json -->
+						<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
+						<p class="card-link-title">California</p>
+					</div>
+					<img class="card-img" src="imgs/placeholder.jpeg" />
+				</div>
+			</div>
+			<div class="grid-item grid-item-square grid-item-6-columns grid-item-md-3-columns" data-show="illustration">
+				<div class="card">
+					<div class="card-link-container">
+						<!-- TODO @thibaultchauvet fix link + title -->
+						<!-- href should match project filename + should be added in projects.json -->
+						<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
+						<p class="card-link-title">Libertine</p>
+					</div>
+					<img class="card-img" src="imgs/placeholder.jpeg" />
+				</div>
+			</div>
+			<div class="grid-item grid-item-square grid-item-6-columns grid-item-md-3-columns" data-show="branding">
+				<div class="card">
+					<div class="card-link-container">
+						<!-- TODO @thibaultchauvet fix link + title -->
+						<!-- href should match project filename + should be added in projects.json -->
+						<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
+						<p class="card-link-title">Oui mais... Non</p>
+					</div>
+					<img class="card-img" src="imgs/placeholder.jpeg" />
+				</div>
+			</div>
+			<div class="grid-item grid-item-square grid-item-6-columns grid-item-md-3-columns" data-show="webdesign">
+				<div class="card">
+					<div class="card-link-container">
+						<!-- TODO @thibaultchauvet fix link + title -->
+						<!-- href should match project filename + should be added in projects.json -->
+						<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
+						<p class="card-link-title">Appelle mon numéro</p>
+					</div>
+					<img class="card-img" src="imgs/placeholder.jpeg" />
+				</div>
+			</div>
+			<div class="grid-item grid-item-square grid-item-none grid-item-md-3-columns" data-show="illustration">
+				<div class="card">
+					<div class="card-link-container">
+						<!-- TODO @thibaultchauvet fix link + title -->
+						<!-- href should match project filename + should be added in projects.json -->
+						<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
+						<p class="card-link-title">Agnus Dei</p>
+					</div>
+					<img class="card-img" src="imgs/placeholder.jpeg" />
+				</div>
+			</div>
+			<div class="grid-item grid-item-12-columns grid-item-md-6-columns grid-item-6-rows grid-item-md-3-rows" data-show="illustration">
+				<div class="card">
+					<div class="card-link-container">
+						<!-- TODO @thibaultchauvet fix link + title -->
+						<!-- href should match project filename + should be added in projects.json -->
+						<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
+						<p class="card-link-title">L'autre</p>
+					</div>
+					<img class="card-img" src="imgs/placeholder.jpeg" />
+				</div>
+			</div>
+			<div class="grid-item grid-item-3-columns" data-show="print">
+				<div class="card">
+					<div class="card-link-container">
+						<!-- TODO @thibaultchauvet fix link + title -->
+						<!-- href should match project filename + should be added in projects.json -->
+						<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
+						<p class="card-link-title">Psychiatric</p>
+					</div>
+					<img class="card-img" src="imgs/placeholder.jpeg" />
+				</div>
+			</div>
+			<div class="grid-item grid-item-square grid-item-3-columns grid-item-md-3-columns" data-show="print">
+				<div class="card">
+					<div class="card-link-container">
+						<!-- TODO @thibaultchauvet fix link + title -->
+						<!-- href should match project filename + should be added in projects.json -->
+						<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
+						<p class="card-link-title">Regrets</p>
+					</div>
+					<img class="card-img" src="imgs/placeholder.jpeg" />
+				</div>
+			</div>
+			<div class="grid-item grid-item-square grid-item-3-columns grid-item-md-3-columns" data-show="branding">
+				<div class="card">
+					<div class="card-link-container">
+						<!-- TODO @thibaultchauvet fix link + title -->
+						<!-- href should match project filename + should be added in projects.json -->
+						<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
+						<p class="card-link-title">Pas de doute</p>
+					</div>
+					<img class="card-img" src="imgs/placeholder.jpeg" />
+				</div>
+			</div>
 
-		<section id="about" class="section-container section-container-about">
-			<h1 class="section-container-title strikethrough section-container-title-inverted">À-propos</h1>
+			<div class="grid-item grid-item-square grid-item-3-columns grid-item-md-3-columns" data-show="webdesign">
+				<div class="card">
+					<div class="card-link-container">
+						<!-- TODO @thibaultchauvet fix link + title -->
+						<!-- href should match project filename + should be added in projects.json -->
+						<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
+						<p class="card-link-title">Pas de doute</p>
+					</div>
+					<img class="card-img" src="imgs/placeholder.jpeg" />
+				</div>
+			</div>
 
-			<div class="layout-about">
-				<div class="layout-about-item layout-about-who about-card">
-					<span class="about-card-hr"><hr><hr><hr>
+			<div class="grid-item grid-item-square grid-item-3-columns grid-item-md-3-columns" data-show="branding">
+				<div class="card">
+					<div class="card-link-container">
+						<!-- TODO @thibaultchauvet fix link + title -->
+						<!-- href should match project filename + should be added in projects.json -->
+						<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
+						<p class="card-link-title">Pas de doute</p>
+					</div>
+					<img class="card-img" src="imgs/placeholder.jpeg" />
+				</div>
+			</div>
+
+			<div class="grid-item grid-item-square grid-item-3-columns grid-item-md-3-columns" data-show="webdesign">
+				<div class="card">
+					<div class="card-link-container">
+						<!-- TODO @thibaultchauvet fix link + title -->
+						<!-- href should match project filename + should be added in projects.json -->
+						<a href="/projects/fixme.html" class="card-link">Voir le projet</a>
+						<p class="card-link-title">Pas de doute</p>
+					</div>
+					<img class="card-img" src="imgs/placeholder.jpeg" />
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="about" class="section-container section-container-about">
+		<h1 class="section-container-title strikethrough section-container-title-inverted">À-propos</h1>
+
+		<div class="layout-about">
+
+			<div class="layout-about-item layout-about-who">
+				<div class="about-card">
+					<span class="about-card-hr">
+						<hr>
+						<hr>
+						<hr>
 					</span>
 					<p class="about-card-title">Qui suis-je ?</p>
 					<p class="about-card-text">
-						<strong>Directeur artistique, webdesigner et graphiste</strong> chevronné, je<br> cultive ma passion créative depuis plus de 12 ans.
-						<strong>Mon approche créative</strong> se reflète dans chaque projet, offrant une esthétique distinctive et
+						<strong>Directeur artistique, webdesigner et graphiste</strong> chevronné, je<br> cultive ma
+						passion créative depuis plus de 12 ans.
+						<strong>Mon approche créative</strong> se reflète dans chaque projet, offrant une esthétique
+						distinctive et
 						<strong>une expérience utilisateur exceptionnelle.</strong>
 					</p>
 					<img class="about-who-img" src="imgs/home/about/who-iphone.png" />
 				</div>
-				<div class="layout-about-item layout-about-lol about-card about-card-dark">
-					<div class="about-card-column-content">
+			</div>
+
+			<div class="layout-about-item layout-about-lol">
+				<div class="about-card about-card-lol">
+					<div class="about-card-lol-content">
 						<!-- mouse -->
-						<svg width="100%" height="100%" viewBox="0 0 26 39" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M14.2809 20.3748C14.689 19.9139 15.392 19.8723 15.8511 20.2821L25 28.5C25.4591 28.9097 25.53 29.5895 25.122 30.0505C24.7139 30.5115 24.8422 31.2949 24.3831 30.8852L14.3733 21.9514C13.9142 21.5416 13.8729 20.8358 14.2809 20.3748Z" fill="white"/>
-							<path d="M24.5 27V12C24.5 6.20101 19.799 1.5 14 1.5C9.69729 1.5 5.99905 4.08804 4.37704 7.79235L2.94848 7.31616C4.77324 3.01605 9.0344 0 14 0C20.6274 0 26 5.37258 26 12V27C26 33.6274 20.6274 39 14 39C7.37258 39 2 33.6274 2 27V12C2 11.9185 2.00081 11.8372 2.00243 11.7561L2.5 13L3.5 15V27C3.5 32.799 8.20101 37.5 14 37.5C19.799 37.5 24.5 32.799 24.5 27Z" fill="#7A71F7"/>
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M2.91013 6.13718C2.91016 6.13719 2.9101 6.13717 2.91013 6.13718L23.6091 13.8993C24.0202 14.055 24.3739 14.3328 24.6225 14.6955C24.8712 15.0581 25.0029 15.4881 25 15.9278C24.997 16.3675 24.8596 16.7957 24.6061 17.155C24.3527 17.5142 23.9953 17.7873 23.5821 17.9376L15.0419 21.0419L11.9376 29.5821C11.7873 29.9953 11.5142 30.3527 11.155 30.6061C10.7957 30.8596 10.3675 30.997 9.92778 31C9.48811 31.0029 9.05808 30.8712 8.69546 30.6225C8.33284 30.3739 8.055 30.0202 7.89928 29.609L7.89804 29.6057L0.137183 8.91013C0.137173 8.9101 0.137193 8.91016 0.137183 8.91013C-0.00803261 8.52294 -0.0387409 8.10204 0.0487875 7.69787C0.136322 7.29368 0.338376 6.92324 0.630808 6.63081C0.92324 6.33838 1.29368 6.13632 1.69787 6.04879C2.10204 5.96126 2.52294 5.99197 2.91013 6.13718ZM2.17265 8.14673C2.17264 8.14671 2.17266 8.14676 2.17265 8.14673ZM2.1882 8.1882L22.788 15.9131L14.2918 19.0015L14.2873 19.0031C13.9931 19.1115 13.7259 19.2825 13.5042 19.5042C13.2825 19.7259 13.1115 19.9931 13.0031 20.2873L13.0015 20.2918L9.91313 28.788L2.1882 8.1882Z" fill="white"/>
-						</svg>
-						 <span class="about-card-column-content-pretty about-card-column-content-20" id="lol-scroll-number">500 000<br>000 000</span>
-						 <span>de scroll<br>effectués</span>
+						<span class="about-card-lol-content-icon">
+							<svg  width="100%" height="100%" viewBox="0 0 26 39" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M14.2809 20.3748C14.689 19.9139 15.392 19.8723 15.8511 20.2821L25 28.5C25.4591 28.9097 25.53 29.5895 25.122 30.0505C24.7139 30.5115 24.8422 31.2949 24.3831 30.8852L14.3733 21.9514C13.9142 21.5416 13.8729 20.8358 14.2809 20.3748Z"
+									fill="white" />
+								<path
+									d="M24.5 27V12C24.5 6.20101 19.799 1.5 14 1.5C9.69729 1.5 5.99905 4.08804 4.37704 7.79235L2.94848 7.31616C4.77324 3.01605 9.0344 0 14 0C20.6274 0 26 5.37258 26 12V27C26 33.6274 20.6274 39 14 39C7.37258 39 2 33.6274 2 27V12C2 11.9185 2.00081 11.8372 2.00243 11.7561L2.5 13L3.5 15V27C3.5 32.799 8.20101 37.5 14 37.5C19.799 37.5 24.5 32.799 24.5 27Z"
+									fill="#7A71F7" />
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M2.91013 6.13718C2.91016 6.13719 2.9101 6.13717 2.91013 6.13718L23.6091 13.8993C24.0202 14.055 24.3739 14.3328 24.6225 14.6955C24.8712 15.0581 25.0029 15.4881 25 15.9278C24.997 16.3675 24.8596 16.7957 24.6061 17.155C24.3527 17.5142 23.9953 17.7873 23.5821 17.9376L15.0419 21.0419L11.9376 29.5821C11.7873 29.9953 11.5142 30.3527 11.155 30.6061C10.7957 30.8596 10.3675 30.997 9.92778 31C9.48811 31.0029 9.05808 30.8712 8.69546 30.6225C8.33284 30.3739 8.055 30.0202 7.89928 29.609L7.89804 29.6057L0.137183 8.91013C0.137173 8.9101 0.137193 8.91016 0.137183 8.91013C-0.00803261 8.52294 -0.0387409 8.10204 0.0487875 7.69787C0.136322 7.29368 0.338376 6.92324 0.630808 6.63081C0.92324 6.33838 1.29368 6.13632 1.69787 6.04879C2.10204 5.96126 2.52294 5.99197 2.91013 6.13718ZM2.17265 8.14673C2.17264 8.14671 2.17266 8.14676 2.17265 8.14673ZM2.1882 8.1882L22.788 15.9131L14.2918 19.0015L14.2873 19.0031C13.9931 19.1115 13.7259 19.2825 13.5042 19.5042C13.2825 19.7259 13.1115 19.9931 13.0031 20.2873L13.0015 20.2918L9.91313 28.788L2.1882 8.1882Z"
+									fill="white" />
+							</svg>
+						</span>
+						<span class="about-card-content-pretty about-card-content-small"
+							id="lol-scroll-number">500&nbsp;000 000&nbsp;000</span>
+						<span>de scroll effectués</span>
 					</div>
-					<div class="about-card-column-content">
+					<div class="about-card-lol-content">
 						<!-- wink -->
-						<svg width="100%" height="100%" viewBox="0 0 27 39" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M10.125 17.9165C11.0225 17.9165 11.75 17.189 11.75 16.2915C11.75 15.394 11.0225 14.6665 10.125 14.6665C9.22754 14.6665 8.5 15.394 8.5 16.2915C8.5 17.189 9.22754 17.9165 10.125 17.9165Z" fill="white"/>
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M17.1499 16.2914C17.1499 15.6839 17.6424 15.1914 18.2499 15.1914H21.4999C22.1074 15.1914 22.5999 15.6839 22.5999 16.2914C22.5999 16.8989 22.1074 17.3914 21.4999 17.3914H18.2499C17.6424 17.3914 17.1499 16.8989 17.1499 16.2914Z" fill="white"/>
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M8.81409 21.2985C9.33951 20.9935 10.0127 21.1722 10.3176 21.6976C10.7936 22.5177 11.4766 23.1983 12.2983 23.6714C13.12 24.1445 14.0515 24.3936 14.9996 24.3936C15.9478 24.3936 16.8793 24.1445 17.701 23.6714C18.5226 23.1983 19.2056 22.5177 19.6816 21.6976C19.9866 21.1722 20.6598 20.9935 21.1852 21.2985C21.7106 21.6035 21.8893 22.2766 21.5843 22.802C20.9149 23.9553 19.9543 24.9125 18.7988 25.5779C17.6432 26.2433 16.3331 26.5936 14.9996 26.5936C13.6662 26.5936 12.3561 26.2433 11.2005 25.5779C10.0449 24.9125 9.08435 23.9553 8.41494 22.802C8.10997 22.2766 8.28867 21.6035 8.81409 21.2985Z" fill="white"/>
-							<path d="M3.0999 18.9999C3.0999 12.4277 8.42771 7.0999 14.9999 7.0999C19.9613 7.0999 24.2135 10.1361 25.9999 14.4519V10.1781C23.4157 6.95994 19.4484 4.8999 14.9999 4.8999C7.21269 4.8999 0.899902 11.2127 0.899902 18.9999C0.899902 26.7871 7.21269 33.0999 14.9999 33.0999C19.4484 33.0999 23.4157 31.0399 25.9999 27.8217V23.548C24.2135 27.8637 19.9613 30.8999 14.9999 30.8999C8.42771 30.8999 3.0999 25.5721 3.0999 18.9999Z" fill="white"/>
-							<path d="M25.5 27V12C25.5 6.20101 20.799 1.5 15 1.5C10.1785 1.5 6.11608 4.74971 4.88348 9.17829C4.17538 9.90751 3.54544 10.713 3.00717 11.5814C3.22775 5.1478 8.51271 0 15 0C21.6274 0 27 5.37258 27 12V27C27 33.6274 21.6274 39 15 39C8.37258 39 3 33.6274 3 27V26.4071C3.46993 27.1668 4.00999 27.8785 4.61115 28.5333C5.35326 33.6055 9.72183 37.5 15 37.5C20.799 37.5 25.5 32.799 25.5 27Z" fill="#7A71F7"/>
-						</svg>
-							
-						<span><span class="about-card-column-content-pretty about-card-column-content-50">99</span><span class="about-card-column-content-pretty about-card-column-content-20">%</span></span>
-						 <span>de sourire<br>client</span>
+						<span class="about-card-lol-content-icon">
+							<svg  width="100%" height="100%" viewBox="0 0 27 39" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+									d="M10.125 17.9165C11.0225 17.9165 11.75 17.189 11.75 16.2915C11.75 15.394 11.0225 14.6665 10.125 14.6665C9.22754 14.6665 8.5 15.394 8.5 16.2915C8.5 17.189 9.22754 17.9165 10.125 17.9165Z"
+									fill="white" />
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M17.1499 16.2914C17.1499 15.6839 17.6424 15.1914 18.2499 15.1914H21.4999C22.1074 15.1914 22.5999 15.6839 22.5999 16.2914C22.5999 16.8989 22.1074 17.3914 21.4999 17.3914H18.2499C17.6424 17.3914 17.1499 16.8989 17.1499 16.2914Z"
+									fill="white" />
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M8.81409 21.2985C9.33951 20.9935 10.0127 21.1722 10.3176 21.6976C10.7936 22.5177 11.4766 23.1983 12.2983 23.6714C13.12 24.1445 14.0515 24.3936 14.9996 24.3936C15.9478 24.3936 16.8793 24.1445 17.701 23.6714C18.5226 23.1983 19.2056 22.5177 19.6816 21.6976C19.9866 21.1722 20.6598 20.9935 21.1852 21.2985C21.7106 21.6035 21.8893 22.2766 21.5843 22.802C20.9149 23.9553 19.9543 24.9125 18.7988 25.5779C17.6432 26.2433 16.3331 26.5936 14.9996 26.5936C13.6662 26.5936 12.3561 26.2433 11.2005 25.5779C10.0449 24.9125 9.08435 23.9553 8.41494 22.802C8.10997 22.2766 8.28867 21.6035 8.81409 21.2985Z"
+									fill="white" />
+								<path
+									d="M3.0999 18.9999C3.0999 12.4277 8.42771 7.0999 14.9999 7.0999C19.9613 7.0999 24.2135 10.1361 25.9999 14.4519V10.1781C23.4157 6.95994 19.4484 4.8999 14.9999 4.8999C7.21269 4.8999 0.899902 11.2127 0.899902 18.9999C0.899902 26.7871 7.21269 33.0999 14.9999 33.0999C19.4484 33.0999 23.4157 31.0399 25.9999 27.8217V23.548C24.2135 27.8637 19.9613 30.8999 14.9999 30.8999C8.42771 30.8999 3.0999 25.5721 3.0999 18.9999Z"
+									fill="white" />
+								<path
+									d="M25.5 27V12C25.5 6.20101 20.799 1.5 15 1.5C10.1785 1.5 6.11608 4.74971 4.88348 9.17829C4.17538 9.90751 3.54544 10.713 3.00717 11.5814C3.22775 5.1478 8.51271 0 15 0C21.6274 0 27 5.37258 27 12V27C27 33.6274 21.6274 39 15 39C8.37258 39 3 33.6274 3 27V26.4071C3.46993 27.1668 4.00999 27.8785 4.61115 28.5333C5.35326 33.6055 9.72183 37.5 15 37.5C20.799 37.5 25.5 32.799 25.5 27Z"
+									fill="#7A71F7" />
+							</svg>
+						</span>
+
+						<span>
+							<span class="about-card-content-pretty about-card-content-large">99</span>
+							<span
+								class="about-card-content-pretty about-card-content-small">%</span>
+							</span>
+						<span>de sourire client</span>
 					</div>
-					<div class="about-card-column-content">
+					<div class="about-card-lol-content">
 						<!-- tulip -->
-						<svg width="100%" height="100%" viewBox="0 0 26 39" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" clip-rule="evenodd" d="M25 21.3618C23.3455 21.5012 21.7257 21.9441 20.223 22.6732C18.215 23.6475 16.4781 25.1028 15.1667 26.91V21.2301C16.7968 20.9507 18.276 20.1041 19.3433 18.8395C20.4106 17.5749 20.9973 15.9736 21 14.3182C21 11.0486 18.732 8.29387 16.5153 6.02729C15.8431 5.36878 14.94 5 13.9994 5C13.0588 5 12.1557 5.36878 11.4835 6.02729C9.26683 8.28804 7 11.0486 7 14.3182C7.00131 15.9746 7.58742 17.5773 8.65481 18.8431C9.7222 20.1089 11.2022 20.9564 12.8333 21.2359V26.9158C11.5225 25.1075 9.78598 23.6511 7.77786 22.6758C5.76975 21.7004 3.55214 21.2363 1.32183 21.3247H0L0.1645 22.6395C1.08267 30.0056 8.00217 32.5081 12.5463 32.9448C13.514 33.0184 14.4859 33.0184 15.4537 32.9448C18.3983 32.6626 22.3399 31.5124 25 28.7331V24.4758C23.2846 28.9722 18.3371 30.2105 15.694 30.5498C16.5034 28.6423 17.8238 26.9959 19.5094 25.7924C21.1281 24.6367 23.023 23.9327 25 23.7502V21.3618ZM8.49085 25.7933C6.80522 24.5898 4.81997 23.8762 2.7545 23.7314C4.1825 28.8379 9.52233 30.1925 12.306 30.551C11.4968 28.6433 10.1765 26.9968 8.49085 25.7933ZM13.3327 7.51149C11.445 9.44176 9.33333 11.894 9.33333 14.3182C9.33333 15.557 9.825 16.7451 10.7002 17.6211C11.5753 18.4971 12.7623 18.9892 14 18.9892C15.2377 18.9892 16.4247 18.4971 17.2998 17.6211C18.175 16.7451 18.6667 15.557 18.6667 14.3182C18.6667 12.1719 17.1617 10.1272 15.5085 8.35343C14.6257 10.6343 14.1163 13.0427 14 15.486H11.6667C11.7824 12.7545 12.3453 10.0605 13.3327 7.51149Z" fill="white"/>
-							<path d="M24.5 27V12C24.5 6.20101 19.799 1.5 14 1.5C8.20101 1.5 3.5 6.20101 3.5 12V21.4138C3.00317 21.3531 2.50242 21.3199 2 21.3147V12C2 5.37259 7.37258 0 14 0C20.6274 0 26 5.37258 26 12V27C26 33.6274 20.6274 39 14 39C7.552 39 2.29182 33.9144 2.01173 27.5354C2.53271 28.2728 3.13651 28.9198 3.79591 29.4855C4.91229 34.0848 9.05732 37.5 14 37.5C19.799 37.5 24.5 32.799 24.5 27Z" fill="#7A71F7"/>
-						</svg>
-							
-						 <span class="about-card-column-content-pretty about-card-column-content-50">17</span>
-						 <span>plantes<br>vertes</span>
+						<span class="about-card-lol-content-icon">
+							<svg  width="100%" height="100%" viewBox="0 0 26 39" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M25 21.3618C23.3455 21.5012 21.7257 21.9441 20.223 22.6732C18.215 23.6475 16.4781 25.1028 15.1667 26.91V21.2301C16.7968 20.9507 18.276 20.1041 19.3433 18.8395C20.4106 17.5749 20.9973 15.9736 21 14.3182C21 11.0486 18.732 8.29387 16.5153 6.02729C15.8431 5.36878 14.94 5 13.9994 5C13.0588 5 12.1557 5.36878 11.4835 6.02729C9.26683 8.28804 7 11.0486 7 14.3182C7.00131 15.9746 7.58742 17.5773 8.65481 18.8431C9.7222 20.1089 11.2022 20.9564 12.8333 21.2359V26.9158C11.5225 25.1075 9.78598 23.6511 7.77786 22.6758C5.76975 21.7004 3.55214 21.2363 1.32183 21.3247H0L0.1645 22.6395C1.08267 30.0056 8.00217 32.5081 12.5463 32.9448C13.514 33.0184 14.4859 33.0184 15.4537 32.9448C18.3983 32.6626 22.3399 31.5124 25 28.7331V24.4758C23.2846 28.9722 18.3371 30.2105 15.694 30.5498C16.5034 28.6423 17.8238 26.9959 19.5094 25.7924C21.1281 24.6367 23.023 23.9327 25 23.7502V21.3618ZM8.49085 25.7933C6.80522 24.5898 4.81997 23.8762 2.7545 23.7314C4.1825 28.8379 9.52233 30.1925 12.306 30.551C11.4968 28.6433 10.1765 26.9968 8.49085 25.7933ZM13.3327 7.51149C11.445 9.44176 9.33333 11.894 9.33333 14.3182C9.33333 15.557 9.825 16.7451 10.7002 17.6211C11.5753 18.4971 12.7623 18.9892 14 18.9892C15.2377 18.9892 16.4247 18.4971 17.2998 17.6211C18.175 16.7451 18.6667 15.557 18.6667 14.3182C18.6667 12.1719 17.1617 10.1272 15.5085 8.35343C14.6257 10.6343 14.1163 13.0427 14 15.486H11.6667C11.7824 12.7545 12.3453 10.0605 13.3327 7.51149Z"
+									fill="white" />
+								<path
+									d="M24.5 27V12C24.5 6.20101 19.799 1.5 14 1.5C8.20101 1.5 3.5 6.20101 3.5 12V21.4138C3.00317 21.3531 2.50242 21.3199 2 21.3147V12C2 5.37259 7.37258 0 14 0C20.6274 0 26 5.37258 26 12V27C26 33.6274 20.6274 39 14 39C7.552 39 2.29182 33.9144 2.01173 27.5354C2.53271 28.2728 3.13651 28.9198 3.79591 29.4855C4.91229 34.0848 9.05732 37.5 14 37.5C19.799 37.5 24.5 32.799 24.5 27Z"
+									fill="#7A71F7" />
+							</svg>
+						</span>
+
+						<span class="about-card-content-pretty about-card-content-large">17</span>
+						<span>plantes vertes</span>
 					</div>
 				</div>
-				<div class="layout-about-item layout-about-skills about-card">
-					<span class="about-card-hr"><hr><hr><hr></span>
+			</div>
+
+			<div class="layout-about-item layout-about-skills">
+				<div class="about-card">
+					<span class="about-card-hr">
+						<hr>
+						<hr>
+						<hr>
+					</span>
 					<p class="about-card-title">Côté technique</p>
 					<p class="about-card-text">
-						Avec une parfaite assimilation de la <strong>suite Adobe</strong> (Photoshop, Illustrator, Indesign) et <strgong>Figma</strgong>, j'apporte une perspective unique à l'UI
+						Avec une parfaite assimilation de la <strong>suite Adobe</strong> (Photoshop, Illustrator,
+						Indesign) et <strgong>Figma</strgong>, j'apporte une perspective unique à l'UI
 						Design, au webdesign et à l'édition multisupports.
 					</p>
-					<p class="about-card-text">Ma connaissance du HTML et CSS permet d'<strong>élaborer des expériences optimales.</strong></p>
-				</p>
+					<p class="about-card-text">Ma connaissance du HTML et CSS permet d'<strong>élaborer des expériences
+							optimales.</strong></p>
+					</p>
 				</div>
-				<div class="layout-about-item layout-about-fields about-card about-card-primary-inverted about-fields-items">
+			</div>
+
+			<div class="layout-about-item layout-about-fields">
+				<div class="about-card about-card-primary-inverted about-fields-items">
 					<!-- Webdesign -->
 					<div class="about-fields-item">
-						<svg class="about-fields-item-icon" width="100%" height="100%" viewBox="0 0 35 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M4.77273 23.3333H30.2273C31.9773 23.3333 33.3932 21.9333 33.3932 20.2222L33.4091 3.11111C33.4091 1.4 31.9773 0 30.2273 0H4.77273C3.02273 0 1.59091 1.4 1.59091 3.11111V20.2222C1.59091 21.9333 3.02273 23.3333 4.77273 23.3333ZM4.77273 3.11111H30.2273V20.2222H4.77273V3.11111Z" fill="#7A71F7"/>
-							<path d="M35 24.8889H0V28H35V24.8889Z" fill="#7A71F7"/>
-							<path d="M24 9.21698L21.6409 7L15.7181 12.566L13.3591 10.3491L11 12.566L15.7181 17L24 9.21698Z" fill="white"/>
+						<svg class="about-fields-item-icon" width="100%" height="100%" viewBox="0 0 35 28" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M4.77273 23.3333H30.2273C31.9773 23.3333 33.3932 21.9333 33.3932 20.2222L33.4091 3.11111C33.4091 1.4 31.9773 0 30.2273 0H4.77273C3.02273 0 1.59091 1.4 1.59091 3.11111V20.2222C1.59091 21.9333 3.02273 23.3333 4.77273 23.3333ZM4.77273 3.11111H30.2273V20.2222H4.77273V3.11111Z"
+								fill="#7A71F7" />
+							<path d="M35 24.8889H0V28H35V24.8889Z" fill="#7A71F7" />
+							<path
+								d="M24 9.21698L21.6409 7L15.7181 12.566L13.3591 10.3491L11 12.566L15.7181 17L24 9.21698Z"
+								fill="white" />
 						</svg>
 						<span class="about-fields-item-text">Webdesign</span>
 					</div>
 					<!-- Direction Artistique -->
 					<div class="about-fields-item">
-						<svg class="about-fields-item-icon" width="100%" height="100%" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M22.2036 12.1935L18.2917 8.28105C18.0152 8.01838 17.6696 7.88013 17.3102 7.88013C16.9508 7.88013 16.6052 8.01838 16.3288 8.28105L0.888216 23.7234C0.34911 24.2626 0.34911 25.1336 0.888216 25.6728L4.80019 29.5852C5.07666 29.8617 5.42224 29.9999 5.78164 29.9999C6.14105 29.9999 6.48663 29.8617 6.76309 29.599L22.2036 14.1566C22.7428 13.6175 22.7428 12.7327 22.2036 12.1935ZM17.3102 11.2257L19.2593 13.1751L17.642 14.7926L15.6929 12.8433L17.3102 11.2257ZM5.78164 26.6681L3.83257 24.7188L13.7438 14.7926L15.6929 16.7419L5.78164 26.6681Z" fill="white"/>
-							<path d="M24.7051 9.62212L26.2126 6.31852L29.5162 4.81106L26.2126 3.30359L24.7051 0L23.1976 3.30359L19.8941 4.81106L23.1976 6.31852L24.7051 9.62212Z" fill="#7A71F7"/>
-							<path d="M6.26272 9.62212L7.77018 6.31852L11.0738 4.81106L7.77018 3.30359L6.26272 0L4.75525 3.30359L1.45166 4.81106L4.75525 6.31852L6.26272 9.62212Z" fill="#7A71F7"/>
-							<path d="M24.7051 18.4424L23.1976 21.746L19.8941 23.2535L23.1976 24.7609L24.7051 28.0645L26.2126 24.7609L29.5162 23.2535L26.2126 21.746L24.7051 18.4424Z" fill="#7A71F7"/>
+						<svg class="about-fields-item-icon" width="100%" height="100%" viewBox="0 0 30 30" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M22.2036 12.1935L18.2917 8.28105C18.0152 8.01838 17.6696 7.88013 17.3102 7.88013C16.9508 7.88013 16.6052 8.01838 16.3288 8.28105L0.888216 23.7234C0.34911 24.2626 0.34911 25.1336 0.888216 25.6728L4.80019 29.5852C5.07666 29.8617 5.42224 29.9999 5.78164 29.9999C6.14105 29.9999 6.48663 29.8617 6.76309 29.599L22.2036 14.1566C22.7428 13.6175 22.7428 12.7327 22.2036 12.1935ZM17.3102 11.2257L19.2593 13.1751L17.642 14.7926L15.6929 12.8433L17.3102 11.2257ZM5.78164 26.6681L3.83257 24.7188L13.7438 14.7926L15.6929 16.7419L5.78164 26.6681Z"
+								fill="white" />
+							<path
+								d="M24.7051 9.62212L26.2126 6.31852L29.5162 4.81106L26.2126 3.30359L24.7051 0L23.1976 3.30359L19.8941 4.81106L23.1976 6.31852L24.7051 9.62212Z"
+								fill="#7A71F7" />
+							<path
+								d="M6.26272 9.62212L7.77018 6.31852L11.0738 4.81106L7.77018 3.30359L6.26272 0L4.75525 3.30359L1.45166 4.81106L4.75525 6.31852L6.26272 9.62212Z"
+								fill="#7A71F7" />
+							<path
+								d="M24.7051 18.4424L23.1976 21.746L19.8941 23.2535L23.1976 24.7609L24.7051 28.0645L26.2126 24.7609L29.5162 23.2535L26.2126 21.746L24.7051 18.4424Z"
+								fill="#7A71F7" />
 						</svg>
 						<span class="about-fields-item-text">Direction artistique</span>
 					</div>
 					<!-- UI design -->
 					<div class="about-fields-item">
-						<svg class="about-fields-item-icon" width="100%" height="100%" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M21.9393 15.4V25.2H2.74241V5.60005H9.62586C9.69442 4.60605 9.92752 3.66805 10.284 2.80005H2.74241C1.23408 2.80005 0 4.06005 0 5.60005V25.2C0 26.74 1.23408 28 2.74241 28H21.9393C23.4476 28 24.6817 26.74 24.6817 25.2V18.2L21.9393 15.4ZM19.8825 22.4H4.79922L8.57003 17.458L11.2576 20.762L15.0284 15.806L19.8825 22.4Z" fill="#7A71F7"/>
-							<path d="M23.7218 9.646C24.3251 8.666 24.6817 7.532 24.6817 6.3C24.6817 2.814 21.9255 0 18.5112 0C15.0969 0 12.3408 2.814 12.3408 6.3C12.3408 9.786 15.0969 12.6 18.4975 12.6C19.7042 12.6 20.8286 12.236 21.7747 11.62L26.0529 15.988L28 14L23.7218 9.646ZM18.5112 9.8C16.619 9.8 15.0832 8.232 15.0832 6.3C15.0832 4.368 16.619 2.8 18.5112 2.8C20.4035 2.8 21.9393 4.368 21.9393 6.3C21.9393 8.232 20.4035 9.8 18.5112 9.8Z" fill="white"/>
+						<svg class="about-fields-item-icon" width="100%" height="100%" viewBox="0 0 28 28" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M21.9393 15.4V25.2H2.74241V5.60005H9.62586C9.69442 4.60605 9.92752 3.66805 10.284 2.80005H2.74241C1.23408 2.80005 0 4.06005 0 5.60005V25.2C0 26.74 1.23408 28 2.74241 28H21.9393C23.4476 28 24.6817 26.74 24.6817 25.2V18.2L21.9393 15.4ZM19.8825 22.4H4.79922L8.57003 17.458L11.2576 20.762L15.0284 15.806L19.8825 22.4Z"
+								fill="#7A71F7" />
+							<path
+								d="M23.7218 9.646C24.3251 8.666 24.6817 7.532 24.6817 6.3C24.6817 2.814 21.9255 0 18.5112 0C15.0969 0 12.3408 2.814 12.3408 6.3C12.3408 9.786 15.0969 12.6 18.4975 12.6C19.7042 12.6 20.8286 12.236 21.7747 11.62L26.0529 15.988L28 14L23.7218 9.646ZM18.5112 9.8C16.619 9.8 15.0832 8.232 15.0832 6.3C15.0832 4.368 16.619 2.8 18.5112 2.8C20.4035 2.8 21.9393 4.368 21.9393 6.3C21.9393 8.232 20.4035 9.8 18.5112 9.8Z"
+								fill="white" />
 						</svg>
 						<span class="about-fields-item-text">UI design</span>
 					</div>
 					<!-- Print -->
-					 <div class="about-fields-item">
-						<svg class="about-fields-item-icon" width="100%" height="100%" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M21.0207 11.7702V18.3102H14.7641V24.8275H2.08552V4.18953C2.08552 3.90145 2.19538 3.62517 2.39093 3.42146C2.58649 3.21776 2.85172 3.10332 3.12828 3.10332H14.9185L16.1812 1.6326C16.4059 1.37414 16.6542 1.13913 16.9226 0.930908H3.12828C2.29861 0.930908 1.50292 1.27423 0.916251 1.88534C0.329585 2.49645 0 3.32529 0 4.18953V26.9999H17.2814L23.1062 20.9323V9.59775L21.0207 11.7702ZM16.8497 24.3778V20.4826H20.589L16.8497 24.3778Z" fill="#7A71F7"/>
-							<path d="M12.6045 12.2805L20.3114 3.40998C20.3981 3.31019 20.5038 3.22968 20.6218 3.17334C20.7398 3.11701 20.8677 3.08604 20.9977 3.08233C21.1277 3.07862 21.2571 3.10225 21.378 3.15177C21.4989 3.20129 21.6086 3.27567 21.7006 3.37035C21.7895 3.46169 21.86 3.57018 21.9081 3.68961C21.9563 3.80905 21.981 3.93708 21.981 4.06638C21.981 4.19568 21.9563 4.32372 21.9081 4.44315C21.86 4.56258 21.7895 4.67107 21.7006 4.76241L13.5675 13.1387C14.0421 13.676 14.4016 14.3102 14.6226 15L23.1284 6.24101C23.6866 5.66492 24.0001 4.88435 24.0001 4.07055C24.0001 3.25675 23.6866 2.47618 23.1284 1.9001C22.8418 1.60467 22.4998 1.37257 22.1231 1.218C21.7464 1.06343 21.3431 0.98965 20.9377 1.00117C20.5324 1.01269 20.1336 1.10926 19.7658 1.28499C19.398 1.46071 19.0688 1.71189 18.7985 2.02314L10.5601 11.5047C11.2884 11.6064 11.9862 11.8712 12.6045 12.2805Z" fill="white"/>
-							<path d="M9.60005 13C5.76005 13 4.80005 20 4.80005 20H9.60005C10.3639 20 11.0964 19.6313 11.6365 18.9749C12.1766 18.3185 12.48 17.4283 12.48 16.5C12.48 15.5717 12.1766 14.6815 11.6365 14.0251C11.0964 13.3687 10.3639 13 9.60005 13Z" fill="white"/>
-						</svg>							
+					<div class="about-fields-item">
+						<svg class="about-fields-item-icon" width="100%" height="100%" viewBox="0 0 24 27" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M21.0207 11.7702V18.3102H14.7641V24.8275H2.08552V4.18953C2.08552 3.90145 2.19538 3.62517 2.39093 3.42146C2.58649 3.21776 2.85172 3.10332 3.12828 3.10332H14.9185L16.1812 1.6326C16.4059 1.37414 16.6542 1.13913 16.9226 0.930908H3.12828C2.29861 0.930908 1.50292 1.27423 0.916251 1.88534C0.329585 2.49645 0 3.32529 0 4.18953V26.9999H17.2814L23.1062 20.9323V9.59775L21.0207 11.7702ZM16.8497 24.3778V20.4826H20.589L16.8497 24.3778Z"
+								fill="#7A71F7" />
+							<path
+								d="M12.6045 12.2805L20.3114 3.40998C20.3981 3.31019 20.5038 3.22968 20.6218 3.17334C20.7398 3.11701 20.8677 3.08604 20.9977 3.08233C21.1277 3.07862 21.2571 3.10225 21.378 3.15177C21.4989 3.20129 21.6086 3.27567 21.7006 3.37035C21.7895 3.46169 21.86 3.57018 21.9081 3.68961C21.9563 3.80905 21.981 3.93708 21.981 4.06638C21.981 4.19568 21.9563 4.32372 21.9081 4.44315C21.86 4.56258 21.7895 4.67107 21.7006 4.76241L13.5675 13.1387C14.0421 13.676 14.4016 14.3102 14.6226 15L23.1284 6.24101C23.6866 5.66492 24.0001 4.88435 24.0001 4.07055C24.0001 3.25675 23.6866 2.47618 23.1284 1.9001C22.8418 1.60467 22.4998 1.37257 22.1231 1.218C21.7464 1.06343 21.3431 0.98965 20.9377 1.00117C20.5324 1.01269 20.1336 1.10926 19.7658 1.28499C19.398 1.46071 19.0688 1.71189 18.7985 2.02314L10.5601 11.5047C11.2884 11.6064 11.9862 11.8712 12.6045 12.2805Z"
+								fill="white" />
+							<path
+								d="M9.60005 13C5.76005 13 4.80005 20 4.80005 20H9.60005C10.3639 20 11.0964 19.6313 11.6365 18.9749C12.1766 18.3185 12.48 17.4283 12.48 16.5C12.48 15.5717 12.1766 14.6815 11.6365 14.0251C11.0964 13.3687 10.3639 13 9.60005 13Z"
+								fill="white" />
+						</svg>
 						<span class="about-fields-item-text">Print</span>
-					 </div>
+					</div>
 				</div>
-				<div class="layout-about-item layout-about-training about-card about-training">
-					<span class="about-card-hr"><hr><hr><hr></span>
+			</div>
+
+			<div class="layout-about-item layout-about-training">
+				<div class="about-card about-training">
+					<span class="about-card-hr">
+						<hr>
+						<hr>
+						<hr>
+					</span>
 					<p class="about-card-title">Les fondations</p>
-					<p class="about-card-text">Titulaire d'une licence de graphiste concepteur et d'un BTS com graphique et multimédia, <strong>j'allie savoir-faire et créativité.</strong></p>
+					<p class="about-card-text">Titulaire d'une licence de graphiste concepteur et d'un BTS com graphique
+						et multimédia, <strong>j'allie savoir-faire et créativité.</strong></p>
 					<div class="about-training-img-container">
 						<img class="about-trainint-img" src="imgs/home/about/training-sculpture.png" />
 					</div>
 				</div>
-				<div class="layout-about-item layout-about-stats about-card about-card-dark">
-					<div class="about-card-column-content">
-						<span class="about-card-column-content-pretty about-card-column-content-50">186</span>
-						 <span>projets<br>réalisés</span>
+			</div>
+
+			<div class="layout-about-item layout-about-stats">
+				<div class="about-card about-card-dark">
+					<div class="about-card-row-content">
+						<span class="about-card-content-pretty about-stats-number">
+							<span class="about-card-content-larger">186</span></span>
+						<span>projets<br>réalisés</span>
 					</div>
-					<div class="about-card-column-content">
-						 <span class="about-card-column-content-pretty"><span class="about-card-column-content-30">+</span><span class="about-card-column-content-50">12</span></span>
-						 <span>ans<br> d'activité</span>
+					<div class="about-card-row-content">
+						<span class="about-card-content-pretty about-stats-number"><span
+								class="about-card-content-medium">+</span><span
+								class="about-card-content-larger">12</span></span>
+						<span>ans<br> d'activité</span>
 					</div>
 				</div>
-				<div class="layout-about-item layout-about-links about-links about-card">
+			</div>
+
+			<div class="layout-about-item layout-about-links">
+				<div class="about-links about-card">
 					<div class="about-links-background-container">
-						<img src="imgs/home/about/links-phone.png"/>
+						<img src="imgs/home/about/links-phone.png" />
 					</div>
 
 					<div class="about-links-topbar-container">
 						<!-- wifi -->
-						<svg width="100%" height="100%" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M1.40103 10C2.17479 10 2.80206 9.37274 2.80206 8.59897C2.80206 7.8252 2.17479 7.19794 1.40103 7.19794C0.627262 7.19794 0 7.8252 0 8.59897C0 9.37274 0.627262 10 1.40103 10Z" fill="white"/>
-							<path d="M0 0V1.81877C4.518 1.81877 8.18123 5.48201 8.18123 10H10C10 4.47943 5.52057 0 0 0ZM0 3.63753V5.4563C2.50643 5.4563 4.5437 7.49357 4.5437 10H6.36247C6.36247 6.48458 3.51542 3.63753 0 3.63753Z" fill="white"/>
+						<svg width="100%" height="100%" viewBox="0 0 10 10" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M1.40103 10C2.17479 10 2.80206 9.37274 2.80206 8.59897C2.80206 7.8252 2.17479 7.19794 1.40103 7.19794C0.627262 7.19794 0 7.8252 0 8.59897C0 9.37274 0.627262 10 1.40103 10Z"
+								fill="white" />
+							<path
+								d="M0 0V1.81877C4.518 1.81877 8.18123 5.48201 8.18123 10H10C10 4.47943 5.52057 0 0 0ZM0 3.63753V5.4563C2.50643 5.4563 4.5437 7.49357 4.5437 10H6.36247C6.36247 6.48458 3.51542 3.63753 0 3.63753Z"
+								fill="white" />
 						</svg>
 						<!-- roller -->
-						<svg width="100%" height="100%" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<path d="M9 5C9 4.18636 8.405 3.48182 7.545 3.26364L6.235 2.92727C5.81 2.81364 5.5 2.45 5.5 2.04545V0H1V6.81818H9V5ZM8 5.90909H2V0.909091H4.5V1.36364H3.75C3.61 1.36364 3.5 1.46364 3.5 1.59091C3.5 1.71818 3.61 1.81818 3.75 1.81818H4.5L4.55 2.27273H3.75C3.61 2.27273 3.5 2.37273 3.5 2.5C3.5 2.62727 3.61 2.72727 3.75 2.72727H4.655C4.88 3.23636 5.355 3.64091 5.955 3.8L7.265 4.13182C7.7 4.24091 8 4.59091 8 5V5.90909ZM1.5 7.27273C0.67 7.27273 0 7.88182 0 8.63636C0 9.39091 0.67 10 1.5 10C2.33 10 3 9.39091 3 8.63636C3 7.88182 2.33 7.27273 1.5 7.27273ZM1.5 9.09091C1.225 9.09091 1 8.88636 1 8.63636C1 8.38636 1.225 8.18182 1.5 8.18182C1.775 8.18182 2 8.38636 2 8.63636C2 8.88636 1.775 9.09091 1.5 9.09091ZM8.5 7.27273C7.67 7.27273 7 7.88182 7 8.63636C7 9.39091 7.67 10 8.5 10C9.33 10 10 9.39091 10 8.63636C10 7.88182 9.33 7.27273 8.5 7.27273ZM8.5 9.09091C8.225 9.09091 8 8.88636 8 8.63636C8 8.38636 8.225 8.18182 8.5 8.18182C8.775 8.18182 9 8.38636 9 8.63636C9 8.88636 8.775 9.09091 8.5 9.09091ZM5 7.27273C4.17 7.27273 3.5 7.88182 3.5 8.63636C3.5 9.39091 4.17 10 5 10C5.83 10 6.5 9.39091 6.5 8.63636C6.5 7.88182 5.83 7.27273 5 7.27273ZM5 9.09091C4.725 9.09091 4.5 8.88636 4.5 8.63636C4.5 8.38636 4.725 8.18182 5 8.18182C5.275 8.18182 5.5 8.38636 5.5 8.63636C5.5 8.88636 5.275 9.09091 5 9.09091Z" fill="white"/>
+						<svg width="100%" height="100%" viewBox="0 0 10 10" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M9 5C9 4.18636 8.405 3.48182 7.545 3.26364L6.235 2.92727C5.81 2.81364 5.5 2.45 5.5 2.04545V0H1V6.81818H9V5ZM8 5.90909H2V0.909091H4.5V1.36364H3.75C3.61 1.36364 3.5 1.46364 3.5 1.59091C3.5 1.71818 3.61 1.81818 3.75 1.81818H4.5L4.55 2.27273H3.75C3.61 2.27273 3.5 2.37273 3.5 2.5C3.5 2.62727 3.61 2.72727 3.75 2.72727H4.655C4.88 3.23636 5.355 3.64091 5.955 3.8L7.265 4.13182C7.7 4.24091 8 4.59091 8 5V5.90909ZM1.5 7.27273C0.67 7.27273 0 7.88182 0 8.63636C0 9.39091 0.67 10 1.5 10C2.33 10 3 9.39091 3 8.63636C3 7.88182 2.33 7.27273 1.5 7.27273ZM1.5 9.09091C1.225 9.09091 1 8.88636 1 8.63636C1 8.38636 1.225 8.18182 1.5 8.18182C1.775 8.18182 2 8.38636 2 8.63636C2 8.88636 1.775 9.09091 1.5 9.09091ZM8.5 7.27273C7.67 7.27273 7 7.88182 7 8.63636C7 9.39091 7.67 10 8.5 10C9.33 10 10 9.39091 10 8.63636C10 7.88182 9.33 7.27273 8.5 7.27273ZM8.5 9.09091C8.225 9.09091 8 8.88636 8 8.63636C8 8.38636 8.225 8.18182 8.5 8.18182C8.775 8.18182 9 8.38636 9 8.63636C9 8.88636 8.775 9.09091 8.5 9.09091ZM5 7.27273C4.17 7.27273 3.5 7.88182 3.5 8.63636C3.5 9.39091 4.17 10 5 10C5.83 10 6.5 9.39091 6.5 8.63636C6.5 7.88182 5.83 7.27273 5 7.27273ZM5 9.09091C4.725 9.09091 4.5 8.88636 4.5 8.63636C4.5 8.38636 4.725 8.18182 5 8.18182C5.275 8.18182 5.5 8.38636 5.5 8.63636C5.5 8.88636 5.275 9.09091 5 9.09091Z"
+								fill="white" />
 						</svg>
-						
+
 						<!-- clock (overidden by JS) -->
 						<span class="about-links-topbar-clock" id="about-links-topbar-clock">00:00</span>
 					</div>
@@ -650,177 +767,196 @@
 						<!-- LinkedIn logo -->
 						<!-- TODO fix link -->
 						<a class="about-links-logo" href="#">
-							<svg width="100%" height="100%" viewBox="0 0 73 73" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<rect width="73" height="73" rx="15" fill="white"/>
-								<path fill-rule="evenodd" clip-rule="evenodd" d="M19.4557 28.925V53H27.2025V28.925H19.4557ZM19 21.275C19 23.75 20.8228 25.55 23.3291 25.55C25.8354 25.55 27.6582 23.75 27.6582 21.275C27.6582 18.8 25.8354 17 23.3291 17C21.0506 17 19 18.8 19 21.275ZM47.7089 53H55V38.15C55 30.725 50.443 28.25 46.1139 28.25C42.2405 28.25 39.5063 30.725 38.8228 32.3V28.925H31.5316V53H39.2785V40.175C39.2785 36.8 41.5569 35 43.8354 35C46.1139 35 47.7089 36.125 47.7089 39.95V53Z" fill="#4D43F4"/>
+							<svg width="100%" height="100%" viewBox="0 0 73 73" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<rect width="73" height="73" rx="15" fill="white" />
+								<path fill-rule="evenodd" clip-rule="evenodd"
+									d="M19.4557 28.925V53H27.2025V28.925H19.4557ZM19 21.275C19 23.75 20.8228 25.55 23.3291 25.55C25.8354 25.55 27.6582 23.75 27.6582 21.275C27.6582 18.8 25.8354 17 23.3291 17C21.0506 17 19 18.8 19 21.275ZM47.7089 53H55V38.15C55 30.725 50.443 28.25 46.1139 28.25C42.2405 28.25 39.5063 30.725 38.8228 32.3V28.925H31.5316V53H39.2785V40.175C39.2785 36.8 41.5569 35 43.8354 35C46.1139 35 47.7089 36.125 47.7089 39.95V53Z"
+									fill="#4D43F4" />
 							</svg>
 							<span class="about-links-logo-title">LinkedIn</span>
 						</a>
-						
+
 						<!-- Arty -->
 						<!-- TODO fix link -->
 						<a class="about-links-logo" href="#">
-							<svg width="100%" height="100%" viewBox="0 0 73 73" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<rect width="73" height="73" rx="15" fill="white"/>
-								<path d="M51.0004 30.5004V21.9996H42.4996L36.5 16L30.5004 21.9996H21.9996V30.5004L16 36.5L21.9996 42.4996V51.0004H30.5004L36.5 57L42.4996 51.0004H51.0004V42.4996L57 36.5L51.0004 30.5004ZM47.3753 40.9951V47.3753H40.9951L36.5 51.8705L32.0049 47.3753H25.6247V40.9951L21.1295 36.5L25.6247 32.0049V25.6247H32.0049L36.5 21.1295L40.9951 25.6247H47.3753V32.0049L51.8705 36.5L47.3753 40.9951ZM37.0256 27.4372C35.6844 27.4372 34.3974 27.7454 33.2555 28.271C36.3731 29.7029 38.5482 32.8568 38.5482 36.5C38.5482 40.1432 36.3731 43.2971 33.2555 44.729C34.3974 45.2546 35.6844 45.5628 37.0256 45.5628C42.0283 45.5628 46.0884 41.5027 46.0884 36.5C46.0884 31.4973 42.0283 27.4372 37.0256 27.4372Z" fill="#4D43F4"/>
+							<svg width="100%" height="100%" viewBox="0 0 73 73" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<rect width="73" height="73" rx="15" fill="white" />
+								<path
+									d="M51.0004 30.5004V21.9996H42.4996L36.5 16L30.5004 21.9996H21.9996V30.5004L16 36.5L21.9996 42.4996V51.0004H30.5004L36.5 57L42.4996 51.0004H51.0004V42.4996L57 36.5L51.0004 30.5004ZM47.3753 40.9951V47.3753H40.9951L36.5 51.8705L32.0049 47.3753H25.6247V40.9951L21.1295 36.5L25.6247 32.0049V25.6247H32.0049L36.5 21.1295L40.9951 25.6247H47.3753V32.0049L51.8705 36.5L47.3753 40.9951ZM37.0256 27.4372C35.6844 27.4372 34.3974 27.7454 33.2555 28.271C36.3731 29.7029 38.5482 32.8568 38.5482 36.5C38.5482 40.1432 36.3731 43.2971 33.2555 44.729C34.3974 45.2546 35.6844 45.5628 37.0256 45.5628C42.0283 45.5628 46.0884 41.5027 46.0884 36.5C46.0884 31.4973 42.0283 27.4372 37.0256 27.4372Z"
+									fill="#4D43F4" />
 							</svg>
 							<span class="about-links-logo-title">Arty</span>
 						</a>
 
 						<!-- fake one -->
 						<span class="about-links-logo" href="#">
-							<svg width="100%" height="100%" viewBox="0 0 73 73" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<rect width="73" height="73" rx="15" fill="white"/>
+							<svg width="100%" height="100%" viewBox="0 0 73 73" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<rect width="73" height="73" rx="15" fill="white" />
 							</svg>
 						</span>
 					</div>
 				</div>
-				<div class="layout-about-item layout-about-typo about-card about-card-primary about-typo">
+			</div>
+
+			<div class="layout-about-item layout-about-typo">
+				<div class="about-card about-card-primary about-typo">
 					<!-- carousel icons -->
-					<svg class="about-typo-icon" width="100%" height="100%" viewBox="0 0 37 38" fill="white" xmlns="http://www.w3.org/2000/svg">
+					<svg class="about-typo-icon" width="100%" height="100%" viewBox="0 0 37 38" fill="white"
+						xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M26.7066 7.18885C26.7066 6.37994 27.0297 5.60417 27.6047 5.03219L22.5457 0C21.0086 1.52894 20.0117 3.49473 19.677 5.604C19.5944 6.125 19.5521 6.65476 19.5521 7.18885C19.5521 9.88519 20.629 12.4711 22.5457 14.3777C24.4625 16.2843 27.0622 17.3554 29.7729 17.3554C30.3098 17.3554 30.8424 17.3134 31.3661 17.2312C33.4867 16.8983 35.4629 15.9066 37 14.3777L31.941 9.3455C31.366 9.91748 30.5861 10.2388 29.7729 10.2388C28.9596 10.2388 28.1797 9.91748 27.6047 9.3455C27.0297 8.77352 26.7066 7.99775 26.7066 7.18885Z"
-							fill="white"
-						/>
+							fill="white" />
 						<path
 							d="M7.22714 10.2388C6.41393 10.2388 5.63403 9.91748 5.059 9.3455L6.31817e-07 14.3777C1.53709 15.9066 3.51335 16.8983 5.63385 17.2312C6.15763 17.3134 6.69021 17.3554 7.22714 17.3554C9.93785 17.3554 12.5375 16.2843 14.4543 14.3777C16.371 12.4711 17.4479 9.88519 17.4479 7.18885C17.4479 6.65476 17.4056 6.125 17.323 5.604C16.9883 3.49473 15.9914 1.52894 14.4543 6.28469e-07L9.39529 5.03219C9.97031 5.60417 10.2934 6.37994 10.2934 7.18885C10.2934 7.99775 9.97031 8.77352 9.39529 9.3455C8.82026 9.91748 8.04035 10.2388 7.22714 10.2388Z"
-							fill="white"
-						/>
+							fill="white" />
 						<path
 							d="M31.9398 28.6533C31.3648 28.0821 30.5855 27.7612 29.7729 27.7612C28.9596 27.7612 28.1797 28.0825 27.6047 28.6545C27.0297 29.2265 26.7066 30.0023 26.7066 30.8112C26.7066 31.6198 27.0295 32.3953 27.6042 32.9673L27.6047 32.9678L22.5457 38L22.5437 37.998C21.0077 36.4693 20.0115 34.5043 19.677 32.396C19.5944 31.875 19.5521 31.3452 19.5521 30.8112C19.5521 28.1148 20.629 25.5289 22.5457 23.6223C24.4625 21.7157 27.0622 20.6446 29.7729 20.6446C30.3098 20.6446 30.8424 20.6866 31.3661 20.7688C33.4867 21.1017 35.4629 22.0934 37 23.6223L31.941 28.6545L31.9398 28.6533Z"
-							fill="white"
-						/>
+							fill="white" />
 						<path
 							d="M10.2934 30.8112C10.2934 31.6201 9.97031 32.3958 9.39529 32.9678L14.4543 38C15.9914 36.4711 16.9883 34.5053 17.323 32.396C17.4056 31.875 17.4479 31.3452 17.4479 30.8112C17.4479 28.1148 16.371 25.5289 14.4543 23.6223C12.5375 21.7157 9.93785 20.6446 7.22714 20.6446C6.69021 20.6446 6.15763 20.6866 5.63385 20.7688C3.51334 21.1017 1.53709 22.0934 0 23.6223L5.059 28.6545C5.63403 28.0825 6.41393 27.7612 7.22714 27.7612C8.04035 27.7612 8.82026 28.0825 9.39529 28.6545C9.97031 29.2265 10.2934 30.0023 10.2934 30.8112Z"
-							fill="white"
-						/>
+							fill="white" />
 					</svg>
 
-					<svg class="about-typo-icon" width="100%" height="100%" viewBox="0 0 44 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<svg class="about-typo-icon" width="100%" height="100%" viewBox="0 0 44 43" fill="none"
+						xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M22.119 19.3024C25.4514 16.0459 25.4514 10.7654 22.119 7.5089L22.0201 7.60548C18.6876 10.8623 18.6876 16.1425 22.0201 19.399L22.119 19.3024Z"
-							fill="white"
-						/>
+							fill="white" />
 						<path
 							d="M7.67697 21.6225L7.57805 21.7194C10.9105 24.9759 16.3135 24.9759 19.646 21.7194L19.7449 21.6225C16.4125 18.366 11.0094 18.366 7.67697 21.6225Z"
-							fill="white"
-						/>
+							fill="white" />
 						<path
 							d="M36.6599 21.7194L36.5609 21.816C33.2285 25.0725 27.8255 25.0725 24.493 21.816L24.5919 21.7191C27.9244 18.4626 33.3274 18.4626 36.6599 21.7194Z"
-							fill="white"
-						/>
+							fill="white" />
 						<path
 							d="M22.119 24.1361C18.7865 27.3926 18.7865 32.6731 22.119 35.9296L22.2179 35.833C25.5504 32.5761 25.5504 27.296 22.2179 24.0395L22.119 24.1361Z"
-							fill="white"
-						/>
-						<path
-							fill-rule="evenodd"
-							clip-rule="evenodd"
+							fill="white" />
+						<path fill-rule="evenodd" clip-rule="evenodd"
 							d="M0 21.5L22 0L44 21.5L22 43L0 21.5ZM40.4532 21.7191L22.2243 3.90457L3.99551 21.7191L22.2243 39.5339L40.4532 21.7191Z"
-							fill="white"
-						/>
+							fill="white" />
 					</svg>
 
-					<svg class="about-typo-icon" width="100%" height="100%" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<svg class="about-typo-icon" width="100%" height="100%" viewBox="0 0 42 42" fill="none"
+						xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M26.9751 24.9954L26.973 24.9924L31.5076 21.8115L31.5084 21.8126C31.7942 22.2211 32.2024 22.528 32.6744 22.6895C33.1469 22.8512 33.6592 22.8589 34.1379 22.7115C34.4026 22.63 34.6495 22.5033 34.8684 22.3387C35.0454 22.2057 35.204 22.0478 35.339 21.8689C35.641 21.4688 35.809 20.9839 35.819 20.4838C35.8289 19.9837 35.6803 19.494 35.3945 19.085C35.2667 18.9022 35.1144 18.7397 34.9429 18.6015C34.7306 18.4304 34.4889 18.2964 34.2276 18.207C33.7551 18.0454 33.2428 18.0377 32.7642 18.1851C32.2855 18.3325 31.8651 18.6274 31.5631 19.0276L27.1578 15.7127L27.1583 15.7122C28.1648 14.3785 29.5662 13.3956 31.1615 12.9043L31.1657 12.903C32.76 12.413 34.4661 12.439 36.0397 12.9774C37.6147 13.5163 38.9762 14.5409 39.9291 15.9042C40.882 17.2675 41.3773 18.8996 41.3441 20.5666C41.3109 22.2336 40.7508 23.8499 39.7442 25.1838C38.7376 26.5178 37.3361 27.5009 35.7406 27.9922C34.1464 28.4832 32.4404 28.4581 30.8665 27.9206L30.8624 27.9191C29.2885 27.3806 27.9279 26.3572 26.9751 24.9954Z"
-							fill="white"
-						/>
+							fill="white" />
 						<path
 							d="M25.6827 14.6183L25.6796 14.6204L22.5211 10.1014L22.5222 10.1006C22.9321 9.81276 23.241 9.4031 23.4049 8.93023C23.5689 8.45692 23.5791 7.94458 23.434 7.46665C23.3538 7.20234 23.2284 6.95605 23.0649 6.73795C22.9327 6.56167 22.7756 6.40379 22.5974 6.26969C22.1987 5.96968 21.7147 5.80405 21.2146 5.79656C20.7145 5.78906 20.2242 5.94008 19.8138 6.22797C19.6303 6.35665 19.4671 6.50972 19.3279 6.68194C19.1558 6.89501 19.0207 7.13739 18.93 7.39914C18.766 7.87244 18.7558 8.38478 18.9008 8.86272C19.0459 9.34066 19.3387 9.75966 19.7374 10.0597L16.4008 14.4813L16.4002 14.4809C15.0715 13.4809 14.0955 12.0844 13.6121 10.4915L13.6108 10.4873C13.1286 8.89535 13.1631 7.18917 13.7093 5.61287C14.2559 4.03518 15.2872 2.66859 16.6552 1.70897C18.0233 0.749342 19.6578 0.245948 21.3247 0.270931C22.9915 0.295914 24.6051 0.847992 25.9341 1.84804C27.2631 2.84809 28.2393 4.24476 28.7228 5.83789C29.2059 7.42962 29.1723 9.13581 28.627 10.7123L28.6256 10.7165C28.0793 12.293 27.0492 13.6588 25.6827 14.6183Z"
-							fill="white"
-						/>
+							fill="white" />
 						<path
 							d="M15.9361 26.9953L15.933 26.9974C14.5665 27.957 13.5364 29.3227 12.9901 30.8992L12.9887 30.9034C12.4434 32.4799 12.4099 34.1861 12.8929 35.7778C13.3764 37.3709 14.3526 38.7676 15.6816 39.7677C17.0106 40.7677 18.6242 41.3198 20.291 41.3448C21.9579 41.3698 23.5925 40.8664 24.9605 39.9067C26.3285 38.9471 27.3598 37.5805 27.9065 36.0028C28.4526 34.4265 28.4871 32.7204 28.0049 31.1284L28.0036 31.1242C27.5201 29.5311 26.5439 28.1344 25.2149 27.1344L21.8783 31.556L21.8794 31.5569C22.2775 31.8568 22.57 32.2755 22.7149 32.753C22.8599 33.2309 22.8497 33.7433 22.6857 34.2166C22.595 34.4783 22.4599 34.7207 22.2878 34.9338C22.1487 35.106 21.9854 35.2591 21.802 35.3877C21.3915 35.6756 20.9012 35.8266 20.4011 35.8192C19.9011 35.8117 19.417 35.646 19.0183 35.346C18.8401 35.2119 18.683 35.054 18.5508 34.8778C18.3873 34.6597 18.2619 34.4134 18.1817 34.1491C18.0366 33.6711 18.0468 33.1588 18.2108 32.6855C18.3748 32.2122 18.6842 31.8022 19.0946 31.5143L15.9361 26.9953Z"
-							fill="white"
-						/>
+							fill="white" />
 						<path
 							d="M14.6406 16.6203L14.6428 16.6233L10.1081 19.8042L10.1073 19.8031C9.82149 19.3946 9.41335 19.0877 8.94128 18.9262C8.46878 18.7645 7.95649 18.7568 7.47783 18.9042C7.21312 18.9858 6.96621 19.1124 6.7473 19.277C6.57036 19.41 6.41171 19.5679 6.27673 19.7468C5.97474 20.1469 5.80673 20.6318 5.79677 21.1319C5.7868 21.632 5.9354 22.1217 6.22127 22.5307C6.34905 22.7135 6.50132 22.876 6.67285 23.0142C6.88507 23.1853 7.12679 23.3193 7.38809 23.4087C7.86059 23.5703 8.37289 23.578 8.85155 23.4306C9.33021 23.2832 9.75066 22.9883 10.0526 22.5881L14.4579 25.903L14.4575 25.9035C13.4509 27.2372 12.0495 28.2201 10.4542 28.7114L10.45 28.7127C8.85569 29.2027 7.14966 29.1767 5.57604 28.6383C4.00102 28.0994 2.63951 27.0749 1.68663 25.7115C0.733741 24.3482 0.238407 22.7161 0.271615 21.0491C0.304824 19.3821 0.864873 17.7658 1.87149 16.4319C2.87811 15.0979 4.27962 14.1148 5.87515 13.6235C7.46929 13.1325 9.17533 13.1576 10.7492 13.6952L10.7533 13.6966C12.3272 14.2351 13.6878 15.2585 14.6406 16.6203Z"
-							fill="white"
-						/>
+							fill="white" />
 					</svg>
 
-					<svg class="about-typo-icon" width="100%" height="100%" viewBox="0 0 37 38" fill="white" xmlns="http://www.w3.org/2000/svg">
+					<svg class="about-typo-icon" width="100%" height="100%" viewBox="0 0 37 38" fill="white"
+						xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M26.7066 7.18885C26.7066 6.37994 27.0297 5.60417 27.6047 5.03219L22.5457 0C21.0086 1.52894 20.0117 3.49473 19.677 5.604C19.5944 6.125 19.5521 6.65476 19.5521 7.18885C19.5521 9.88519 20.629 12.4711 22.5457 14.3777C24.4625 16.2843 27.0622 17.3554 29.7729 17.3554C30.3098 17.3554 30.8424 17.3134 31.3661 17.2312C33.4867 16.8983 35.4629 15.9066 37 14.3777L31.941 9.3455C31.366 9.91748 30.5861 10.2388 29.7729 10.2388C28.9596 10.2388 28.1797 9.91748 27.6047 9.3455C27.0297 8.77352 26.7066 7.99775 26.7066 7.18885Z"
-							fill="white"
-						/>
+							fill="white" />
 						<path
 							d="M7.22714 10.2388C6.41393 10.2388 5.63403 9.91748 5.059 9.3455L6.31817e-07 14.3777C1.53709 15.9066 3.51335 16.8983 5.63385 17.2312C6.15763 17.3134 6.69021 17.3554 7.22714 17.3554C9.93785 17.3554 12.5375 16.2843 14.4543 14.3777C16.371 12.4711 17.4479 9.88519 17.4479 7.18885C17.4479 6.65476 17.4056 6.125 17.323 5.604C16.9883 3.49473 15.9914 1.52894 14.4543 6.28469e-07L9.39529 5.03219C9.97031 5.60417 10.2934 6.37994 10.2934 7.18885C10.2934 7.99775 9.97031 8.77352 9.39529 9.3455C8.82026 9.91748 8.04035 10.2388 7.22714 10.2388Z"
-							fill="white"
-						/>
+							fill="white" />
 						<path
 							d="M31.9398 28.6533C31.3648 28.0821 30.5855 27.7612 29.7729 27.7612C28.9596 27.7612 28.1797 28.0825 27.6047 28.6545C27.0297 29.2265 26.7066 30.0023 26.7066 30.8112C26.7066 31.6198 27.0295 32.3953 27.6042 32.9673L27.6047 32.9678L22.5457 38L22.5437 37.998C21.0077 36.4693 20.0115 34.5043 19.677 32.396C19.5944 31.875 19.5521 31.3452 19.5521 30.8112C19.5521 28.1148 20.629 25.5289 22.5457 23.6223C24.4625 21.7157 27.0622 20.6446 29.7729 20.6446C30.3098 20.6446 30.8424 20.6866 31.3661 20.7688C33.4867 21.1017 35.4629 22.0934 37 23.6223L31.941 28.6545L31.9398 28.6533Z"
-							fill="white"
-						/>
+							fill="white" />
 						<path
 							d="M10.2934 30.8112C10.2934 31.6201 9.97031 32.3958 9.39529 32.9678L14.4543 38C15.9914 36.4711 16.9883 34.5053 17.323 32.396C17.4056 31.875 17.4479 31.3452 17.4479 30.8112C17.4479 28.1148 16.371 25.5289 14.4543 23.6223C12.5375 21.7157 9.93785 20.6446 7.22714 20.6446C6.69021 20.6446 6.15763 20.6866 5.63385 20.7688C3.51334 21.1017 1.53709 22.0934 0 23.6223L5.059 28.6545C5.63403 28.0825 6.41393 27.7612 7.22714 27.7612C8.04035 27.7612 8.82026 28.0825 9.39529 28.6545C9.97031 29.2265 10.2934 30.0023 10.2934 30.8112Z"
-							fill="white"
-						/>
+							fill="white" />
 					</svg>
 
 					<!-- pseudo <hr> -->
 					<span class="about-typo-line"></span>
-				
+
 					<!-- text -->
 					<p class="about-typo-text">Aa</p>
 					<p class="about-typo-text about-typo-text-bold">Aa</p>
 				</div>
-				<div class="layout-about-item layout-about-badges about-card about-card-alternative about-badges-items">
+			</div>
+
+			<div class="layout-about-item layout-about-badges">
+				<div class="about-card about-card-alternative about-badges-items">
 					<span class="about-badges-item" style="--color: #E0E0F1;"></span>
 					<span class="about-badges-item" style="--color: #4D43F4;"></span>
 					<span class="about-badges-item" style="--color: #1C170C;"></span>
 					<span class="about-badges-item" style="--color: #332E2A;"></span>
 				</div>
-				<div class="layout-about-item layout-about-contact about-card about-card-primary-inverted">
+			</div>
+
+			<div class="layout-about-item layout-about-contact">
+				<div class="about-card about-card-primary-inverted">
 					<!-- TODO not yet implemented -->
 				</div>
-				<div class="layout-about-item layout-about-beau-gosse about-card about-beau-gosse">
-					<div class="about-beau-gosse-img-container">
+			</div>
+
+			<div class="layout-about-item layout-about-beaugosse">
+				<div class="about-card about-beaugosse">
+					<div class="about-beaugosse-img-container">
 						<img src="imgs/home/about/beau-gosse.jpg" />
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
+	</section>
 
-		<section id="contact" class="section-container">
-			<h1 class="section-container-title strikethrough">Contact</h1>
-			<p class="section-container-subtitle">Créons l'extraordinaire ensemble.<br>Parlez-moi de votre projet</p>
-			<!-- TODO ask Baby for API keys -->
-			 <p style="height: 300px;">
-				<!-- TODO remove -->
-				Lorem Lipsum blabla blblbl dummy text u know
-			</p>
-		</section>
+	<section id="contact" class="section-container">
+		<h1 class="section-container-title strikethrough">Contact</h1>
+		<p class="section-container-subtitle">Créons l'extraordinaire ensemble.<br>Parlez-moi de votre projet</p>
+		<!-- TODO ask Baby for API keys -->
+		<p style="height: 300px;">
+			<!-- TODO remove -->
+			Lorem Lipsum blabla blblbl dummy text u know
+		</p>
+	</section>
 
-		<footer>
-			<div class="footer-content">
-				<div>
-					<!-- TODO add clickable icon for the lulz -->
-					<p><strong>&copy; Thibault Chauvet Copyright 2024</strong></p>
-				</div>
-				<div class="footer-content-icons">
-					<svg width="100%" height="100%" viewBox="0 0 24 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M23 0.00079423C21.7916 -0.0198403 20.6065 0.362038 19.6049 1.09479C18.6034 1.82753 17.8337 2.8758 17.4 4.09783C15.6397 3.57234 13.8256 3.28775 12 3.25069C10.1744 3.28784 8.36034 3.57243 6.60002 4.09783C6.16632 2.8758 5.39665 1.82753 4.3951 1.09479C3.39355 0.362038 2.20844 -0.0198403 1.00002 0.00079423H2.34315e-05V12.9235C-0.00218665 13.7773 0.151967 14.623 0.453559 15.4118C0.755151 16.2006 1.19819 16.9168 1.75702 17.5188L8.70702 25.0478C8.98493 25.3508 9.3156 25.591 9.67987 25.7544C10.0441 25.9179 10.4347 26.0013 10.829 26H13.172C13.5661 26.0012 13.9566 25.9177 14.3206 25.7542C14.6847 25.5907 15.0152 25.3506 15.293 25.0478L22.242 17.5199C22.8012 16.9179 23.2445 16.2016 23.5463 15.4126C23.8481 14.6236 24.0023 13.7775 24 12.9235V0.00079423H23ZM9.00002 22.3016L3.17102 15.987C2.79859 15.5856 2.50333 15.1081 2.30233 14.5823C2.10133 14.0564 1.99858 13.4926 2.00002 12.9235V11.0667C2.6878 11.2591 3.35739 11.521 4.00002 11.8488C4.17088 12.762 4.62206 13.5856 5.2801 14.1855C5.93815 14.7855 6.76429 15.1265 7.62402 15.1529C8.5704 16.7749 9.04943 18.6654 9.00002 20.5835V22.3016ZM22 12.9235C22.0016 13.4927 21.8988 14.0567 21.6976 14.5826C21.4965 15.1085 21.2009 15.5859 20.828 15.987L15 22.3016V20.5835C14.9506 18.6654 15.4296 16.7749 16.376 15.1529C17.2358 15.1265 18.0619 14.7855 18.7199 14.1855C19.378 13.5856 19.8292 12.762 20 11.8488C20.6427 11.521 21.3123 11.2591 22 11.0667V12.9235ZM22 8.8546C19.569 9.46017 13 11.9041 13 20.5835V21.6668H11V20.5835C11 11.903 4.43102 9.46017 2.00002 8.8546V2.28547C2.75029 2.51315 3.42985 2.95615 3.96689 3.56768C4.50392 4.1792 4.8785 4.93652 5.05102 5.75962L5.36802 6.78658L6.31502 6.44534C8.15717 5.82021 10.0703 5.47425 12 5.41729C13.9297 5.47438 15.8428 5.82035 17.685 6.44534L18.633 6.78658L18.948 5.75962C19.1209 4.93654 19.4958 4.17929 20.0329 3.56781C20.5701 2.95633 21.2497 2.5133 22 2.28547V8.8546Z" fill="#7A71F7"/>
-						<path d="M2 10.9996V8.99988L2.49135 8.9876C5.21182 9.78304 11 12.4351 11 20.5834V21.6667H13V20.5834C13 11.904 19.569 9.46007 22 8.85449V11.0666C21.3122 11.259 20.6426 11.5209 20 11.8487C19.8292 12.7619 19.378 13.5855 18.7199 14.1854C18.0619 14.7854 17.2358 15.1263 16.376 15.1528C15.4296 16.7748 14.9506 18.6653 15 20.5834V22.2455C14.002 23.1933 12.88 24 12 24C11.1773 24 10.055 23.2068 9.00002 22.2322V20.5834C9.04943 18.6653 8.5704 16.7748 7.62402 15.1528C6.76429 15.1263 5.93815 14.7854 5.2801 14.1854C4.62206 13.5855 4.17088 12.7619 4.00002 11.8487C3.36299 11.5237 2.69946 11.2636 2.01799 11.0716L2 10.9996Z" fill="white"/>
-						<path d="M8.41573 21.6685L7.18702 20.3375C7.54967 20.7595 7.96958 21.2204 8.41573 21.6685Z" fill="white"/>
-					</svg>
-						
-					<svg width="100%" height="100%" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M20.989 22C20.4586 22 19.9499 21.7893 19.5748 21.4142C19.1997 21.0391 18.989 20.5304 18.989 20H17C17 20.5304 16.7893 21.0391 16.4142 21.4142C16.0391 21.7893 15.5304 22 15 22C14.4696 22 13.9609 21.7893 13.5858 21.4142C13.2107 21.0391 13 20.5304 13 20H11C11 20.5304 10.7893 21.0391 10.4142 21.4142C10.0391 21.7893 9.53043 22 9 22C8.46957 22 7.96086 21.7893 7.58579 21.4142C7.21071 21.0391 7 20.5304 7 20H5C4.99475 20.4039 4.86778 20.7967 4.63567 21.1273C4.40357 21.4578 4.07714 21.7106 3.69905 21.8527C3.32096 21.9947 2.90881 22.0194 2.51648 21.9235C2.12414 21.8276 1.76988 21.6155 1.5 21.315L0 22.632C0.376702 23.0557 0.838696 23.3951 1.35571 23.6278C1.87271 23.8605 2.43307 23.9814 3.00004 23.9824C3.56701 23.9834 4.1278 23.8647 4.64566 23.6338C5.16351 23.403 5.62675 23.0654 6.005 22.643C6.38322 23.064 6.84579 23.4006 7.36265 23.6311C7.87951 23.8615 8.43909 23.9806 9.005 23.9806C9.57091 23.9806 10.1305 23.8615 10.6473 23.6311C11.1642 23.4006 11.6268 23.064 12.005 22.643C12.3832 23.064 12.8458 23.4006 13.3627 23.6311C13.8795 23.8615 14.4391 23.9806 15.005 23.9806C15.5709 23.9806 16.1305 23.8615 16.6473 23.6311C17.1642 23.4006 17.6268 23.064 18.005 22.643C18.3832 23.0646 18.8462 23.4016 19.3636 23.6319C19.8811 23.8623 20.4413 23.9807 21.0077 23.9796C21.5741 23.9785 22.1338 23.8578 22.6503 23.6254C23.1669 23.393 23.6285 23.0541 24.005 22.631L22.499 21.316C22.3117 21.5313 22.0803 21.7039 21.8204 21.8219C21.5606 21.9399 21.2784 22.0006 20.993 22H20.989ZM3.007 19C3.57483 19.0004 4.13619 18.8795 4.65354 18.6455C5.1709 18.4115 5.63234 18.0697 6.007 17.643C6.38522 18.064 6.84779 18.4006 7.36465 18.6311C7.88151 18.8615 8.44109 18.9806 9.007 18.9806C9.57291 18.9806 10.1325 18.8615 10.6493 18.6311C11.1662 18.4006 11.6288 18.064 12.007 17.643C12.3852 18.064 12.8478 18.4006 13.3647 18.6311C13.8815 18.8615 14.4411 18.9806 15.007 18.9806C15.5729 18.9806 16.1325 18.8615 16.6493 18.6311C17.1662 18.4006 17.6288 18.064 18.007 17.643C18.3852 18.0646 18.8482 18.4016 19.3656 18.6319C19.8831 18.8623 20.4433 18.9807 21.0097 18.9796C21.5761 18.9785 22.1358 18.8578 22.6523 18.6254C23.1689 18.393 23.6305 18.0541 24.007 17.631L22.501 16.316C22.2311 16.6169 21.8767 16.8293 21.4841 16.9254C21.0915 17.0216 20.679 16.9969 20.3007 16.8547C19.9223 16.7124 19.5957 16.4593 19.3637 16.1284C19.1316 15.7975 19.0048 15.4042 19 15H17C17 15.5304 16.7893 16.0391 16.4142 16.4142C16.0391 16.7893 15.5304 17 15 17C14.4696 17 13.9609 16.7893 13.5858 16.4142C13.2107 16.0391 13 15.5304 13 15H11C11 15.5304 10.7893 16.0391 10.4142 16.4142C10.0391 16.7893 9.53043 17 9 17C8.46957 17 7.96086 16.7893 7.58579 16.4142C7.21071 16.0391 7 15.5304 7 15H5C4.99475 15.4039 4.86778 15.7967 4.63567 16.1273C4.40357 16.4578 4.07714 16.7106 3.69905 16.8527C3.32096 16.9947 2.90881 17.0194 2.51648 16.9235C2.12414 16.8276 1.76988 16.6155 1.5 16.315L0 17.632C0.37459 18.0614 0.836738 18.4056 1.35539 18.6416C1.87405 18.8775 2.4372 18.9997 3.007 19Z" fill="#7A71F7"/>
-						<path d="M6.99997 13H0.00897217V11H5.07697C5.15676 10.441 5.30487 9.89391 5.51797 9.371L1.14297 6.822L2.14797 5.094L6.52797 7.645C6.86513 7.22094 7.24962 6.83679 7.67397 6.5L5.13097 2.127L6.85797 1.121L9.39997 5.5C9.9141 5.29293 10.4513 5.14855 11 5.07V0H13V5.071C13.5525 5.1508 14.0934 5.29685 14.611 5.506L17.159 1.121L18.886 2.127L16.337 6.512C16.7592 6.84726 17.1417 7.22975 17.477 7.652L21.868 5.094L22.873 6.822L18.485 9.379C18.6962 9.89957 18.8432 10.4439 18.923 11H23.991V13H17V12C16.785 5.39 7.21297 5.4 6.99997 12V13Z" fill="white"/>
-					</svg>
-						
-					<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M23.018 8.7854C22.7256 8.51905 22.3836 8.31292 22.0116 8.17881C21.6395 8.0447 21.2446 7.98524 20.8496 8.00381C20.4545 8.02238 20.0669 8.11864 19.7091 8.28706C19.3512 8.45549 19.0301 8.69279 18.764 8.9854L15.547 12.5204C15.2674 12.0569 14.8729 11.6735 14.4016 11.4072C13.9303 11.1409 13.3983 11.0008 12.857 11.0004H3C2.20435 11.0004 1.44129 11.3165 0.87868 11.8791C0.31607 12.4417 0 13.2048 0 14.0004L0 21.0004C0 21.7961 0.31607 22.5591 0.87868 23.1217C1.44129 23.6843 2.20435 24.0004 3 24.0004H13.448L23.235 13.0154C23.7605 12.4226 24.0321 11.6472 23.9916 10.856C23.951 10.0649 23.6014 9.32133 23.018 8.7854ZM21.742 11.6854L12.552 22.0004H3C2.73478 22.0004 2.48043 21.895 2.29289 21.7075C2.10536 21.52 2 21.2656 2 21.0004V14.0004C2 13.7352 2.10536 13.4808 2.29289 13.2933C2.48043 13.1058 2.73478 13.0004 3 13.0004H12.857C13.1466 12.9991 13.4258 13.108 13.6382 13.3048C13.8506 13.5017 13.9803 13.7719 14.001 14.0607C14.0217 14.3496 13.9319 14.6355 13.7498 14.8606C13.5677 15.0858 13.3068 15.2333 13.02 15.2734L7.858 16.0104L8.142 17.9904L13.303 17.2524C13.8691 17.1694 14.4019 16.934 14.8446 16.5715C15.2872 16.209 15.623 15.733 15.816 15.1944L20.243 10.3304C20.332 10.2318 20.4397 10.152 20.5599 10.0955C20.6801 10.039 20.8103 10.007 20.943 10.0014C21.2105 9.99071 21.4717 10.0847 21.671 10.2634C21.8667 10.4437 21.9839 10.6936 21.9972 10.9594C22.0104 11.2252 21.9188 11.4855 21.742 11.6844V11.6854Z" fill="#7A71F7"/>
-						<path d="M10.423 9.15025L11 9.55925L11.577 9.15025C12.03 8.83025 16 5.94225 16 3.20025C16.0245 2.37861 15.7227 1.58069 15.1605 0.98101C14.5983 0.381329 13.8215 0.0286981 13 0.000245905C12.267 -0.00912093 11.5558 0.249392 11 0.727246C10.4441 0.249392 9.73295 -0.00912093 8.99998 0.000245905C8.17848 0.0286981 7.40167 0.381329 6.83947 0.98101C6.27727 1.58069 5.97543 2.37861 5.99998 3.20025C5.99998 5.94225 9.96999 8.83025 10.423 9.15025ZM8.99998 2.00025C9.13359 1.99141 9.26755 2.01121 9.39288 2.05834C9.51822 2.10547 9.63203 2.17883 9.72672 2.27352C9.8214 2.3682 9.89476 2.48202 9.94189 2.60735C9.98902 2.73268 10.0088 2.86664 9.99998 3.00025H12C11.9911 2.86664 12.011 2.73268 12.0581 2.60735C12.1052 2.48202 12.1786 2.3682 12.2733 2.27352C12.3679 2.17883 12.4818 2.10547 12.6071 2.05834C12.7324 2.01121 12.8664 1.99141 13 2.00025C13.2906 2.02941 13.5582 2.17147 13.7452 2.39587C13.9322 2.62027 14.0237 2.9091 14 3.20025C14 4.27425 12.4 5.96825 11 7.08125C9.75998 6.08125 7.99998 4.35425 7.99998 3.20025C7.97626 2.9091 8.06773 2.62027 8.25473 2.39587C8.44174 2.17147 8.70934 2.02941 8.99998 2.00025Z" fill="white"/>
-					</svg>
-						
-				</div>
-				<div>
-					<p>Directeur artistique - Webdesigner - Graphisme print</p>
-				</div>
+	<footer>
+		<div class="footer-content">
+			<div class="footer-content-name">
+				<!-- TODO add clickable icon for the lulz -->
+				<p><strong>&copy; Thibault Chauvet Copyright 2024</strong></p>
 			</div>
-		</footer>
-	</body>
+			<div class="footer-content-icons">
+				<svg width="100%" height="100%" viewBox="0 0 24 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M23 0.00079423C21.7916 -0.0198403 20.6065 0.362038 19.6049 1.09479C18.6034 1.82753 17.8337 2.8758 17.4 4.09783C15.6397 3.57234 13.8256 3.28775 12 3.25069C10.1744 3.28784 8.36034 3.57243 6.60002 4.09783C6.16632 2.8758 5.39665 1.82753 4.3951 1.09479C3.39355 0.362038 2.20844 -0.0198403 1.00002 0.00079423H2.34315e-05V12.9235C-0.00218665 13.7773 0.151967 14.623 0.453559 15.4118C0.755151 16.2006 1.19819 16.9168 1.75702 17.5188L8.70702 25.0478C8.98493 25.3508 9.3156 25.591 9.67987 25.7544C10.0441 25.9179 10.4347 26.0013 10.829 26H13.172C13.5661 26.0012 13.9566 25.9177 14.3206 25.7542C14.6847 25.5907 15.0152 25.3506 15.293 25.0478L22.242 17.5199C22.8012 16.9179 23.2445 16.2016 23.5463 15.4126C23.8481 14.6236 24.0023 13.7775 24 12.9235V0.00079423H23ZM9.00002 22.3016L3.17102 15.987C2.79859 15.5856 2.50333 15.1081 2.30233 14.5823C2.10133 14.0564 1.99858 13.4926 2.00002 12.9235V11.0667C2.6878 11.2591 3.35739 11.521 4.00002 11.8488C4.17088 12.762 4.62206 13.5856 5.2801 14.1855C5.93815 14.7855 6.76429 15.1265 7.62402 15.1529C8.5704 16.7749 9.04943 18.6654 9.00002 20.5835V22.3016ZM22 12.9235C22.0016 13.4927 21.8988 14.0567 21.6976 14.5826C21.4965 15.1085 21.2009 15.5859 20.828 15.987L15 22.3016V20.5835C14.9506 18.6654 15.4296 16.7749 16.376 15.1529C17.2358 15.1265 18.0619 14.7855 18.7199 14.1855C19.378 13.5856 19.8292 12.762 20 11.8488C20.6427 11.521 21.3123 11.2591 22 11.0667V12.9235ZM22 8.8546C19.569 9.46017 13 11.9041 13 20.5835V21.6668H11V20.5835C11 11.903 4.43102 9.46017 2.00002 8.8546V2.28547C2.75029 2.51315 3.42985 2.95615 3.96689 3.56768C4.50392 4.1792 4.8785 4.93652 5.05102 5.75962L5.36802 6.78658L6.31502 6.44534C8.15717 5.82021 10.0703 5.47425 12 5.41729C13.9297 5.47438 15.8428 5.82035 17.685 6.44534L18.633 6.78658L18.948 5.75962C19.1209 4.93654 19.4958 4.17929 20.0329 3.56781C20.5701 2.95633 21.2497 2.5133 22 2.28547V8.8546Z"
+						fill="#7A71F7" />
+					<path
+						d="M2 10.9996V8.99988L2.49135 8.9876C5.21182 9.78304 11 12.4351 11 20.5834V21.6667H13V20.5834C13 11.904 19.569 9.46007 22 8.85449V11.0666C21.3122 11.259 20.6426 11.5209 20 11.8487C19.8292 12.7619 19.378 13.5855 18.7199 14.1854C18.0619 14.7854 17.2358 15.1263 16.376 15.1528C15.4296 16.7748 14.9506 18.6653 15 20.5834V22.2455C14.002 23.1933 12.88 24 12 24C11.1773 24 10.055 23.2068 9.00002 22.2322V20.5834C9.04943 18.6653 8.5704 16.7748 7.62402 15.1528C6.76429 15.1263 5.93815 14.7854 5.2801 14.1854C4.62206 13.5855 4.17088 12.7619 4.00002 11.8487C3.36299 11.5237 2.69946 11.2636 2.01799 11.0716L2 10.9996Z"
+						fill="white" />
+					<path d="M8.41573 21.6685L7.18702 20.3375C7.54967 20.7595 7.96958 21.2204 8.41573 21.6685Z"
+						fill="white" />
+				</svg>
+
+				<svg width="100%" height="100%" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M20.989 22C20.4586 22 19.9499 21.7893 19.5748 21.4142C19.1997 21.0391 18.989 20.5304 18.989 20H17C17 20.5304 16.7893 21.0391 16.4142 21.4142C16.0391 21.7893 15.5304 22 15 22C14.4696 22 13.9609 21.7893 13.5858 21.4142C13.2107 21.0391 13 20.5304 13 20H11C11 20.5304 10.7893 21.0391 10.4142 21.4142C10.0391 21.7893 9.53043 22 9 22C8.46957 22 7.96086 21.7893 7.58579 21.4142C7.21071 21.0391 7 20.5304 7 20H5C4.99475 20.4039 4.86778 20.7967 4.63567 21.1273C4.40357 21.4578 4.07714 21.7106 3.69905 21.8527C3.32096 21.9947 2.90881 22.0194 2.51648 21.9235C2.12414 21.8276 1.76988 21.6155 1.5 21.315L0 22.632C0.376702 23.0557 0.838696 23.3951 1.35571 23.6278C1.87271 23.8605 2.43307 23.9814 3.00004 23.9824C3.56701 23.9834 4.1278 23.8647 4.64566 23.6338C5.16351 23.403 5.62675 23.0654 6.005 22.643C6.38322 23.064 6.84579 23.4006 7.36265 23.6311C7.87951 23.8615 8.43909 23.9806 9.005 23.9806C9.57091 23.9806 10.1305 23.8615 10.6473 23.6311C11.1642 23.4006 11.6268 23.064 12.005 22.643C12.3832 23.064 12.8458 23.4006 13.3627 23.6311C13.8795 23.8615 14.4391 23.9806 15.005 23.9806C15.5709 23.9806 16.1305 23.8615 16.6473 23.6311C17.1642 23.4006 17.6268 23.064 18.005 22.643C18.3832 23.0646 18.8462 23.4016 19.3636 23.6319C19.8811 23.8623 20.4413 23.9807 21.0077 23.9796C21.5741 23.9785 22.1338 23.8578 22.6503 23.6254C23.1669 23.393 23.6285 23.0541 24.005 22.631L22.499 21.316C22.3117 21.5313 22.0803 21.7039 21.8204 21.8219C21.5606 21.9399 21.2784 22.0006 20.993 22H20.989ZM3.007 19C3.57483 19.0004 4.13619 18.8795 4.65354 18.6455C5.1709 18.4115 5.63234 18.0697 6.007 17.643C6.38522 18.064 6.84779 18.4006 7.36465 18.6311C7.88151 18.8615 8.44109 18.9806 9.007 18.9806C9.57291 18.9806 10.1325 18.8615 10.6493 18.6311C11.1662 18.4006 11.6288 18.064 12.007 17.643C12.3852 18.064 12.8478 18.4006 13.3647 18.6311C13.8815 18.8615 14.4411 18.9806 15.007 18.9806C15.5729 18.9806 16.1325 18.8615 16.6493 18.6311C17.1662 18.4006 17.6288 18.064 18.007 17.643C18.3852 18.0646 18.8482 18.4016 19.3656 18.6319C19.8831 18.8623 20.4433 18.9807 21.0097 18.9796C21.5761 18.9785 22.1358 18.8578 22.6523 18.6254C23.1689 18.393 23.6305 18.0541 24.007 17.631L22.501 16.316C22.2311 16.6169 21.8767 16.8293 21.4841 16.9254C21.0915 17.0216 20.679 16.9969 20.3007 16.8547C19.9223 16.7124 19.5957 16.4593 19.3637 16.1284C19.1316 15.7975 19.0048 15.4042 19 15H17C17 15.5304 16.7893 16.0391 16.4142 16.4142C16.0391 16.7893 15.5304 17 15 17C14.4696 17 13.9609 16.7893 13.5858 16.4142C13.2107 16.0391 13 15.5304 13 15H11C11 15.5304 10.7893 16.0391 10.4142 16.4142C10.0391 16.7893 9.53043 17 9 17C8.46957 17 7.96086 16.7893 7.58579 16.4142C7.21071 16.0391 7 15.5304 7 15H5C4.99475 15.4039 4.86778 15.7967 4.63567 16.1273C4.40357 16.4578 4.07714 16.7106 3.69905 16.8527C3.32096 16.9947 2.90881 17.0194 2.51648 16.9235C2.12414 16.8276 1.76988 16.6155 1.5 16.315L0 17.632C0.37459 18.0614 0.836738 18.4056 1.35539 18.6416C1.87405 18.8775 2.4372 18.9997 3.007 19Z"
+						fill="#7A71F7" />
+					<path
+						d="M6.99997 13H0.00897217V11H5.07697C5.15676 10.441 5.30487 9.89391 5.51797 9.371L1.14297 6.822L2.14797 5.094L6.52797 7.645C6.86513 7.22094 7.24962 6.83679 7.67397 6.5L5.13097 2.127L6.85797 1.121L9.39997 5.5C9.9141 5.29293 10.4513 5.14855 11 5.07V0H13V5.071C13.5525 5.1508 14.0934 5.29685 14.611 5.506L17.159 1.121L18.886 2.127L16.337 6.512C16.7592 6.84726 17.1417 7.22975 17.477 7.652L21.868 5.094L22.873 6.822L18.485 9.379C18.6962 9.89957 18.8432 10.4439 18.923 11H23.991V13H17V12C16.785 5.39 7.21297 5.4 6.99997 12V13Z"
+						fill="white" />
+				</svg>
+
+				<svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M23.018 8.7854C22.7256 8.51905 22.3836 8.31292 22.0116 8.17881C21.6395 8.0447 21.2446 7.98524 20.8496 8.00381C20.4545 8.02238 20.0669 8.11864 19.7091 8.28706C19.3512 8.45549 19.0301 8.69279 18.764 8.9854L15.547 12.5204C15.2674 12.0569 14.8729 11.6735 14.4016 11.4072C13.9303 11.1409 13.3983 11.0008 12.857 11.0004H3C2.20435 11.0004 1.44129 11.3165 0.87868 11.8791C0.31607 12.4417 0 13.2048 0 14.0004L0 21.0004C0 21.7961 0.31607 22.5591 0.87868 23.1217C1.44129 23.6843 2.20435 24.0004 3 24.0004H13.448L23.235 13.0154C23.7605 12.4226 24.0321 11.6472 23.9916 10.856C23.951 10.0649 23.6014 9.32133 23.018 8.7854ZM21.742 11.6854L12.552 22.0004H3C2.73478 22.0004 2.48043 21.895 2.29289 21.7075C2.10536 21.52 2 21.2656 2 21.0004V14.0004C2 13.7352 2.10536 13.4808 2.29289 13.2933C2.48043 13.1058 2.73478 13.0004 3 13.0004H12.857C13.1466 12.9991 13.4258 13.108 13.6382 13.3048C13.8506 13.5017 13.9803 13.7719 14.001 14.0607C14.0217 14.3496 13.9319 14.6355 13.7498 14.8606C13.5677 15.0858 13.3068 15.2333 13.02 15.2734L7.858 16.0104L8.142 17.9904L13.303 17.2524C13.8691 17.1694 14.4019 16.934 14.8446 16.5715C15.2872 16.209 15.623 15.733 15.816 15.1944L20.243 10.3304C20.332 10.2318 20.4397 10.152 20.5599 10.0955C20.6801 10.039 20.8103 10.007 20.943 10.0014C21.2105 9.99071 21.4717 10.0847 21.671 10.2634C21.8667 10.4437 21.9839 10.6936 21.9972 10.9594C22.0104 11.2252 21.9188 11.4855 21.742 11.6844V11.6854Z"
+						fill="#7A71F7" />
+					<path
+						d="M10.423 9.15025L11 9.55925L11.577 9.15025C12.03 8.83025 16 5.94225 16 3.20025C16.0245 2.37861 15.7227 1.58069 15.1605 0.98101C14.5983 0.381329 13.8215 0.0286981 13 0.000245905C12.267 -0.00912093 11.5558 0.249392 11 0.727246C10.4441 0.249392 9.73295 -0.00912093 8.99998 0.000245905C8.17848 0.0286981 7.40167 0.381329 6.83947 0.98101C6.27727 1.58069 5.97543 2.37861 5.99998 3.20025C5.99998 5.94225 9.96999 8.83025 10.423 9.15025ZM8.99998 2.00025C9.13359 1.99141 9.26755 2.01121 9.39288 2.05834C9.51822 2.10547 9.63203 2.17883 9.72672 2.27352C9.8214 2.3682 9.89476 2.48202 9.94189 2.60735C9.98902 2.73268 10.0088 2.86664 9.99998 3.00025H12C11.9911 2.86664 12.011 2.73268 12.0581 2.60735C12.1052 2.48202 12.1786 2.3682 12.2733 2.27352C12.3679 2.17883 12.4818 2.10547 12.6071 2.05834C12.7324 2.01121 12.8664 1.99141 13 2.00025C13.2906 2.02941 13.5582 2.17147 13.7452 2.39587C13.9322 2.62027 14.0237 2.9091 14 3.20025C14 4.27425 12.4 5.96825 11 7.08125C9.75998 6.08125 7.99998 4.35425 7.99998 3.20025C7.97626 2.9091 8.06773 2.62027 8.25473 2.39587C8.44174 2.17147 8.70934 2.02941 8.99998 2.00025Z"
+						fill="white" />
+				</svg>
+
+			</div>
+			<div class="footer-content-jobs">
+				<p>Directeur artistique - Webdesigner - Graphisme print</p>
+			</div>
+		</div>
+	</footer>
+</body>
+
 </html>
